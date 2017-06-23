@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.blogsite.dao;
+package com.sg.blogsite.service;
 
 import com.sg.blogsite.model.Blog;
 import java.util.List;
 
-public interface BlogDao {
+/**
+ *
+ * @author apprentice
+ */
+public interface BlogServiceLayer {
 
     public Blog createBlog(Blog blog);
 

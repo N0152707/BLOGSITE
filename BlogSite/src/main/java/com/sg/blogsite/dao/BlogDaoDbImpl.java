@@ -30,7 +30,7 @@ public class BlogDaoDbImpl implements BlogDao {
             = "select top(5) from blog order by blog_date_published DESC";
     private static final String SQL_UPDATE_BLOG
             = "update blog set "
-            + "blog_published = ?, blog_date_published = ?, blogTitle = ?, "
+            + "blog_published = ?, blog_date_published = ?, blog_title = ?, "
             + "blog_artical = ? "
             + "where blog_id = ?";
 
