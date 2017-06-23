@@ -51,7 +51,7 @@ public class CategoryDaoDbStubImpl implements CategoryDao {
     }
 
     @Override
-    public void removeCategory(int categoryId) {
+    public void deleteCategory(int categoryId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -21,7 +21,7 @@ public class BlogDaoDbStubImpl implements BlogDao {
 
     public BlogDaoDbStubImpl() {
         onlyBlog = new Blog();
-        onlyBlog.setBlogPublished(Boolean.FALSE);
+        onlyBlog.setBlogPublished("N");
         onlyBlog.setBlogDatePublished(LocalDate.now());
         onlyBlog.setBlogTitle("Blog Title");
         onlyBlog.setBlogArticle("this is the blog artical");

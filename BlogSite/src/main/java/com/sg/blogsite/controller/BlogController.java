@@ -48,11 +48,11 @@ public class BlogController {
         // grab the incoming values from the form and create a newblog
         // object
         Blog blog = new Blog();
-        blog.setBlogPublished(Boolean.FALSE);
+        blog.setBlogPublished("N");
         blog.setBlogDatePublished(null);  //don't know how to parse a date from a string here
         blog.setBlogTitle("blogTitle");
         blog.setBlogArticle("blogArticle");
-        blog.setBlogDeleted(Boolean.FALSE);
+        blog.setBlogDeleted("N");
 
         // persist the new Contact
         service.createBlog(blog);
