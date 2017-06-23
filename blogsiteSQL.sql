@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS blogsite.category (
 CREATE TABLE IF NOT EXISTS blogsite.user_blog (
   user_blog_id INT NOT NULL AUTO_INCREMENT,
   user_blog_name VARCHAR(45) NOT NULL,
-  user_password VARCHAR(45) NOT NULL,
+  user_blog_password VARCHAR(45) NOT NULL,
   user_blog_first_name VARCHAR(45) NOT NULL,
   user_blog_last_name VARCHAR(45) NOT NULL,
   PRIMARY KEY (user_blog_id)
