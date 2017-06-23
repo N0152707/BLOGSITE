@@ -7,6 +7,7 @@ package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.CategoryDao;
 import com.sg.blogsite.model.Category;
+import java.util.List;
 
 /**
  *
@@ -32,8 +33,18 @@ public class CategoryServiceLayerImpl implements CategoryServiceLayer {
     }
 
     @Override
-    public Category getCategoryById(int categoryId) {
-        return categorydao.getCategoryById(categoryId);
+    public Category readCategory(int categoryId) {
+        return categorydao.readCategory(categoryId);
+    }
+
+    @Override
+    public void deleteCategory(int categoryId) {
+        categorydao.deleteCategory(categoryId);
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categorydao.getAllCategories();
     }
 
 }

@@ -28,13 +28,18 @@ public class TagServiceLayerImpl implements TagServiceLayer {
     }
 
     @Override
-    public void updateTag(Tag tag) {
-        tagdao.updateTag(tag);
+    public void deleteTag(int tagId) {
+        tagdao.deleteTag(tagId);
     }
 
     @Override
-    public Tag getTagById(int tagId) {
-        return tagdao.getTagById(tagId);
+    public Tag readTag(int tagId) {
+        return tagdao.readTag(tagId);
+    }
+
+    @Override
+    public List<Tag> getAllTags() {
+        return tagdao.getAllTags();
     }
 
     @Override

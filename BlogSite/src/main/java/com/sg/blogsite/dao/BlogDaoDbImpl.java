@@ -19,8 +19,8 @@ public class BlogDaoDbImpl implements BlogDao {
 
     private static final String SQL_INSERT_BLOG
             = "insert into blog "
-            + "(blog_published, blog_date_published, blog_title, "
-            + "blog_artical "
+            + "(blog_published, blog_deleted, blog_date_published, blog_title, "
+            + "blog_article "
             + "values (?, ?, ?, ?)";
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
@@ -30,8 +30,8 @@ public class BlogDaoDbImpl implements BlogDao {
             = "select top(5) from blog order by blog_date_published DESC";
     private static final String SQL_UPDATE_BLOG
             = "update blog set "
-            + "blog_published = ?, blog_date_published = ?, blog_title = ?, "
-            + "blog_artical = ? "
+            + "blog_published = ?, blog_deleted = ?, blog_date_published = ?, blog_title = ?, "
+            + "blog_article = ? "
             + "where blog_id = ?";
 
     private JdbcTemplate jdbcTemplate;
@@ -45,6 +45,7 @@ public class BlogDaoDbImpl implements BlogDao {
     public Blog createBlog(Blog blog) {
         jdbcTemplate.update(SQL_INSERT_BLOG,
                 blog.getBlogPublished(),
+                blog.getBlogDeleted(),
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
                 blog.getBlogArticle());
@@ -68,6 +69,7 @@ public class BlogDaoDbImpl implements BlogDao {
     public void updateBlog(Blog blog) {
         jdbcTemplate.update(SQL_UPDATE_BLOG,
                 blog.getBlogPublished(),
+                blog.getBlogDeleted(),
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
                 blog.getBlogArticle(),
@@ -90,7 +92,8 @@ public class BlogDaoDbImpl implements BlogDao {
 
         public Blog mapRow(ResultSet rs, int rowNum) throws SQLException {
             Blog blog = new Blog();
-            blog.setBlogPublished(rs.getBoolean("blogPublished"));
+            blog.setBlogPublished(rs.getString("blogPublished"));
+            blog.setBlogDeleted(rs.getString("blogDeleted"));
             blog.setBlogDatePublished((rs.getDate("blogDatePublished").toLocalDate()));
             blog.setBlogTitle(rs.getString("blogTitle"));
             blog.setBlogArticle(rs.getString("blogArticle"));

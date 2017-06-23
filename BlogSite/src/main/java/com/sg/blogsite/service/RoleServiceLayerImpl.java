@@ -7,6 +7,7 @@ package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.RoleDao;
 import com.sg.blogsite.model.Role;
+import java.util.List;
 
 /**
  *
@@ -21,19 +22,13 @@ public class RoleServiceLayerImpl implements RoleServiceLayer {
     }
 
     @Override
-    public Role createRole(Role role) {
-        roledao.createRole(role);
-        return role;
+    public List<Role> getAllRoles() {
+        return roledao.getAllRoles();
     }
 
     @Override
-    public void updateRole(Role role) {
-        roledao.updateRole(role);
-    }
-
-    @Override
-    public Role getRoleById(int roleId) {
-        return roledao.getRoleById(roleId);
+    public Role readRoleById(int roleId) {
+        return roledao.readRoleById(roleId);
     }
 
 }

@@ -67,7 +67,7 @@ public class CategoryDaoDbImpl implements CategoryDao {
     }
 
     @Override
-    public void removeCategory(int categoryId) {
+    public void deleteCategory(int categoryId) {
         jdbcTemplate.update(SQL_DELETE_CATEGORY, categoryId);
     }
 
