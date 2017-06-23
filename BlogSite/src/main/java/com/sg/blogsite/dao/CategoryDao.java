@@ -5,18 +5,19 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
+import com.sg.blogsite.model.Category;
+import java.util.List;
+
 public interface CategoryDao {
 
-    public Category addCategory(Category category);
+    public Category createCategory(Category category);
 
-//    public void removeCategory(int categoryId);
+    public Category readCategory(int categoryId);
+
     public void updateCategory(Category category);
 
-//    public List<Category> getAllCategories();
-    public Category getCategoryById(int categoryId);
+    public List<Category> getAllCategories();
+
+    public void removeCategory(int categoryId);
 
 }
