@@ -5,18 +5,16 @@
  */
 package com.sg.blogsite.dao;
 
+import com.sg.blogsite.model.Blog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author apprentice
- */
 public class BlogDaoDbImpl implements BlogDao {
 
     private static final String SQL_INSERT_BLOG
@@ -26,6 +24,10 @@ public class BlogDaoDbImpl implements BlogDao {
             + "values (?, ?, ?, ?)";
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
+    private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY
+            = "select * from blog where blog_category_id = ?";
+    private static final String SQL_SELECT_LAST_FIVE_BLOGS
+            = "select top(5) from blog order by blog_date_published DESC";
     private static final String SQL_UPDATE_BLOG
             = "update blog set "
             + "blog_published = ?, blog_date_published = ?, blogTitle = ?, "
@@ -40,19 +42,26 @@ public class BlogDaoDbImpl implements BlogDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public Blog addBlog(Blog blog) {
+    public Blog createBlog(Blog blog) {
         jdbcTemplate.update(SQL_INSERT_BLOG,
                 blog.getBlogPublished(),
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
-                blog.getBlogArtical());
-        // query the database for the id that was just assigned to the new
-        // row in the database
+                blog.getBlogArticle());
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
-        // set the new id value on the contact object and return it
         blog.setBlogId(newId);
         return blog;
+    }
+
+    @Override
+    public Blog readBlog(int blogId) {
+        try {
+            return jdbcTemplate.queryForObject(SQL_SELECT_BLOG,
+                    new BlogMapper(), blogId);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
     }
 
     @Override
@@ -61,33 +70,32 @@ public class BlogDaoDbImpl implements BlogDao {
                 blog.getBlogPublished(),
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
-                blog.getBlogArtical(),
+                blog.getBlogArticle(),
                 blog.getBlogId());
     }
 
     @Override
-    public Blog getBlogById(int blogId) {
-        try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_BLOG,
-                    new BlogMapper(), blogId);
-        } catch (EmptyResultDataAccessException ex) {
-            // there were no results for the given contact id - we just
-            // want to return null in this case
-            return null;
-        }
+    public List<Blog> getLastFiveBlogs() {
+        return jdbcTemplate.query(SQL_SELECT_LAST_FIVE_BLOGS,
+                new BlogMapper());
+    }
+
+    @Override
+    public List<Blog> getAllBlogsByCategory(int categoryId) {
+        return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS_BY_CATEGORY,
+                new BlogMapper());
     }
 
     private static final class BlogMapper implements RowMapper<Blog> {
 
         public Blog mapRow(ResultSet rs, int rowNum) throws SQLException {
             Blog blog = new Blog();
-            blog.setBlogId(rs.getInt("blog_id"));
-            blog.setPublished(rs.getBoolean("published"));
-            blog.setBlogDatePublished(rs.getTimestamp("BlogDatePublished").toLocalDateTime());
-            blog.setBlogTitle(rs.getString("glogTitle"));
-            blog.setBlogArtical(rs.getString("blogArtical"));
+            blog.setBlogPublished(rs.getBoolean("blogPublished"));
+            blog.setBlogDatePublished((rs.getDate("blogDatePublished").toLocalDate()));
+            blog.setBlogTitle(rs.getString("blogTitle"));
+            blog.setBlogArticle(rs.getString("blogArticle"));
+            blog.setBlogId(rs.getInt("blogId"));
             return blog;
         }
     }
-
 }

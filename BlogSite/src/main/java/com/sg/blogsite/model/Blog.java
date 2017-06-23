@@ -13,12 +13,13 @@ import java.util.Objects;
  * @author apprentice
  */
 public class Blog {
-    
+
     Integer blogId;
     Boolean blogPublished;
+    Boolean blogDeleted;
     LocalDate blogDatePublished;
     String blogTitle;
-    String blogArtical;
+    String blogArticle;
 
     public Integer getBlogId() {
         return blogId;
@@ -34,6 +35,14 @@ public class Blog {
 
     public void setBlogPublished(Boolean blogPublished) {
         this.blogPublished = blogPublished;
+    }
+
+    public Boolean getBlogDeleted() {
+        return blogDeleted;
+    }
+
+    public void setBlogDeleted(Boolean blogDeleted) {
+        this.blogDeleted = blogDeleted;
     }
 
     public LocalDate getBlogDatePublished() {
@@ -52,22 +61,23 @@ public class Blog {
         this.blogTitle = blogTitle;
     }
 
-    public String getBlogArtical() {
-        return blogArtical;
+    public String getBlogArticle() {
+        return blogArticle;
     }
 
-    public void setBlogArtical(String blogArtical) {
-        this.blogArtical = blogArtical;
+    public void setBlogArticle(String blogArticle) {
+        this.blogArticle = blogArticle;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.blogId);
-        hash = 53 * hash + Objects.hashCode(this.blogPublished);
-        hash = 53 * hash + Objects.hashCode(this.blogDatePublished);
-        hash = 53 * hash + Objects.hashCode(this.blogTitle);
-        hash = 53 * hash + Objects.hashCode(this.blogArtical);
+        hash = 79 * hash + Objects.hashCode(this.blogId);
+        hash = 79 * hash + Objects.hashCode(this.blogPublished);
+        hash = 79 * hash + Objects.hashCode(this.blogDeleted);
+        hash = 79 * hash + Objects.hashCode(this.blogDatePublished);
+        hash = 79 * hash + Objects.hashCode(this.blogTitle);
+        hash = 79 * hash + Objects.hashCode(this.blogArticle);
         return hash;
     }
 
@@ -86,7 +96,7 @@ public class Blog {
         if (!Objects.equals(this.blogTitle, other.blogTitle)) {
             return false;
         }
-        if (!Objects.equals(this.blogArtical, other.blogArtical)) {
+        if (!Objects.equals(this.blogArticle, other.blogArticle)) {
             return false;
         }
         if (!Objects.equals(this.blogId, other.blogId)) {
@@ -95,12 +105,13 @@ public class Blog {
         if (!Objects.equals(this.blogPublished, other.blogPublished)) {
             return false;
         }
+        if (!Objects.equals(this.blogDeleted, other.blogDeleted)) {
+            return false;
+        }
         if (!Objects.equals(this.blogDatePublished, other.blogDatePublished)) {
             return false;
         }
         return true;
     }
-    
-    
-    
+
 }

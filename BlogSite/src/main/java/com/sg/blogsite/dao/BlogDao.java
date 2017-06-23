@@ -5,17 +5,19 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
+import com.sg.blogsite.model.Blog;
+import java.util.List;
+
 public interface BlogDao {
 
-    public Blog addBlog(Blog blog);
+    public Blog createBlog(Blog blog);
 
-//    public void removeBlog(int blogId);
+    public Blog readBlog(int BlogId);
+
     public void updateBlog(Blog blog);
 
-//    public List<Blog> getAllBlogs();
-    public Blog getBlogById(int blogId);
+    public List<Blog> getLastFiveBlogs();
+
+    public List<Blog> getAllBlogsByCategory(int categoryId);
+
 }
