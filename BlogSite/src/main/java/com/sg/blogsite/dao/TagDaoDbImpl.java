@@ -19,7 +19,7 @@ public class TagDaoDbImpl implements TagDao {
 
     private static final String SQL_INSERT_TAG
             = "insert into tag "
-            + "(tag_name "
+            + "(tag_name) "
             + "values (?)";
     private static final String SQL_SELECT_TAG
             = "select * from tag where tag_id = ?";

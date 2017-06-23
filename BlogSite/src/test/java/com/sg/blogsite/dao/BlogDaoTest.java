@@ -15,6 +15,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -38,6 +40,9 @@ public class BlogDaoTest {
 
     @Before
     public void setUp() {
+        ApplicationContext ctx
+                = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        blogdao = ctx.getBean("blogDao", BlogDao.class);
     }
 
     @After

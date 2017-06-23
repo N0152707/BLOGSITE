@@ -20,8 +20,8 @@ public class BlogDaoDbImpl implements BlogDao {
     private static final String SQL_INSERT_BLOG
             = "insert into blog "
             + "(blog_published, blog_deleted, blog_date_published, blog_title, "
-            + "blog_article "
-            + "values (?, ?, ?, ?)";
+            + "blog_article) "
+            + "values (?, ?, ?, ?, ?)";
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY

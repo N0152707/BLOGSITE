@@ -13,7 +13,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-public class UserBlogDaoImpl implements UserBlogDao {
+public class UserBlogDaoDbImpl implements UserBlogDao {
 
     private static final String SQL_INSERT_USERBLOG
             = "insert into user_blog "
