@@ -5,58 +5,102 @@
  */
 package com.sg.blogsite.dao;
 
+import com.sg.blogsite.model.Tag;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author apprentice
  */
 public class TagDaoTest {
-    
+
+    private TagDao tagdao;
+
     public TagDaoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of addTag method, of class TagDao.
+     * Test of createTag method, of class TagDao.
      */
     @Test
-    public void testAddTag() {
+    public void testCreateTag() {
+        Tag newTag1 = new Tag();
+        newTag1.setTagName("#TestingTags");
+        tagdao.createTag(newTag1);
+        Tag fromDb = tagdao.readTag(newTag1.getTagId());
+        Assert.assertEquals(fromDb, newTag1);
     }
 
     /**
-     * Test of updateTag method, of class TagDao.
+     * Test of deleteTag method, of class TagDao.
      */
     @Test
-    public void testUpdateTag() {
+    public void testDeleteTag() {
+        Tag newTag2 = new Tag();
+        newTag2.setTagName("#TagToDelete");
+        tagdao.createTag(newTag2);
+        Tag fromDb = tagdao.readTag(newTag2.getTagId());
+        assertEquals(fromDb, newTag2);
+        tagdao.deleteTag(newTag2.getTagId());
+        assertNull(tagdao.readTag(newTag2.getTagId()));
     }
 
     /**
-     * Test of getTagById method, of class TagDao.
+     * Test of readTag method, of class TagDao.
      */
     @Test
-    public void testGetTagById() {
+    public void testReadTag() {
+        Tag newTag6 = new Tag();
+        newTag6.setTagName("#AddTagForNumberSix");
+        tagdao.createTag(newTag6);
+        Tag newTag7 = new Tag();
+        newTag7.setTagName("#AddTagForNumberSeven");
+        tagdao.createTag(newTag7);
+        Tag fromDb = tagdao.readTag(newTag6.getTagId());
+        Assert.assertEquals(fromDb, newTag6);
+    }
+
+    /**
+     * Test of getAllTags method, of class TagDao.
+     */
+    @Test
+    public void testGetAllTags() {
+        Tag newTag3 = new Tag();
+        newTag3.setTagName("#TagFirstInList");
+        tagdao.createTag(newTag3);
+        Tag newTag4 = new Tag();
+        newTag4.setTagName("#TagSecondInList");
+        tagdao.createTag(newTag4);
+        Tag newTag5 = new Tag();
+        newTag5.setTagName("#TagThirdInList");
+        tagdao.createTag(newTag5);
+        List<Tag> tagList = tagdao.getAllTags();
+        assertEquals(tagList.size(), 3);
+
     }
 
     /**
@@ -66,8 +110,4 @@ public class TagDaoTest {
     public void testGetAllTagsInABlog() {
     }
 
-      ///arrange
-      ///act
-      ///assert
-    
 }

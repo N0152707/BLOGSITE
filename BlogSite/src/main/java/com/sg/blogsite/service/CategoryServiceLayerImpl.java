@@ -39,7 +39,7 @@ public class CategoryServiceLayerImpl implements CategoryServiceLayer {
 
     @Override
     public void deleteCategory(int categoryId) {
-        categorydao.removeCategory(categoryId);
+        categorydao.deleteCategory(categoryId);
     }
 
     @Override

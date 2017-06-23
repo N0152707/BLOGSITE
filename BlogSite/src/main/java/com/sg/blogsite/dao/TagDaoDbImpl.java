@@ -25,8 +25,12 @@ public class TagDaoDbImpl implements TagDao {
             = "select * from tag where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
             = "select * from tag";
+    //private static final String SQL_SELECT_ALL_TAGS_IN_BLOG
+    //= "select * from tag";
+
     private static final String SQL_SELECT_ALL_TAGS_IN_BLOG
-            = "select * from tag";
+            = "select tag.tag_id, tag.tag_name from tag join blog_has_tag on tag_id = blog_id where tag.tag_id = ?";
+
     private static final String SQL_DELETE_TAG
             = "SET SQL_SAFE_UPDATES=0; delete from tag where tag_id = ?";
 
