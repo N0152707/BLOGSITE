@@ -5,10 +5,15 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
+import com.sg.blogsite.model.Role;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 public class RoleDaoDbImpl implements RoleDao {
 
     private static final String SQL_INSERT_ROLE
@@ -30,14 +35,11 @@ public class RoleDaoDbImpl implements RoleDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public Role addCategory(Role role) {
+    public Role createRole(Role role) {
         jdbcTemplate.update(SQL_INSERT_ROLE,
-                Role.getCategorRole());
-        // query the database for the id that was just assigned to the new
-        // row in the database
+                role.getRoleName());
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
-        // set the new id value on the contact object and return it
         role.setRoleId(newId);
         return role;
     }
@@ -50,13 +52,11 @@ public class RoleDaoDbImpl implements RoleDao {
     }
 
     @Override
-    public Role getRoleById(int roleId) {
+    public Role readRoleById(int roleId) {
         try {
             return jdbcTemplate.queryForObject(SQL_SELECT_ROLE,
                     new RoleMapper(), roleId);
         } catch (EmptyResultDataAccessException ex) {
-            // there were no results for the given id - we just
-            // want to return null in this case
             return null;
         }
     }

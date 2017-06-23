@@ -5,18 +5,16 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
+import com.sg.blogsite.model.Role;
+
 public interface RoleDao {
 
-    public Role addRole(Role role);
+    public Role createRole(Role role);
 
-//    public void removeRole(int roleId);
     public void updateRole(Role role);
 
-//    public List<Role> getAllRoles();
-    public Role getRoleById(int roleId);
+    //public List<Role> getAllRoles();
+    public Role readRoleById(int roleId);
 
+    // public void deleteRole(int roleId);
 }
