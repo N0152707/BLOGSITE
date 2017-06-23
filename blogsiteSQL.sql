@@ -80,3 +80,23 @@ CREATE TABLE IF NOT EXISTS blogsite.role_has_user_blog (
     FOREIGN KEY (user_blog_user_blog_id)
     REFERENCES blogsite.user_blog (user_blog_id)
 );
+
+INSERT INTO `blogsite`.`role`
+(`role_id`,
+`role_name`)
+VALUES
+(1,"admin");
+
+
+INSERT INTO `blogsite`.`role`
+(`role_id`,
+`role_name`)
+VALUES
+(2,"write");
+
+
+INSERT INTO `blogsite`.`role`
+(`role_id`,
+`role_name`)
+VALUES
+(3,"read");
