@@ -6,15 +6,12 @@
 package com.sg.blogsite.dao;
 
 import com.sg.blogsite.model.Role;
+import java.util.List;
 
 public interface RoleDao {
 
-    public Role createRole(Role role);
+    public List<Role> getAllRoles();
 
-    public void updateRole(Role role);
-
-    //public List<Role> getAllRoles();
     public Role readRoleById(int roleId);
 
-    // public void deleteRole(int roleId);
 }
