@@ -1,7 +1,6 @@
-
 DROP SCHEMA IF EXISTS blogsite ;
 
-CREATE SCHEMA IF NOT EXISTS blogsite DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS blogsite;
 
 USE blogsite ;
 
@@ -24,11 +23,11 @@ CREATE TABLE IF NOT EXISTS blogsite.user_blog (
 
 CREATE TABLE IF NOT EXISTS blogsite.blog (
   blog_id INT NOT NULL,
-  blog_published TINYINT(1) NOT NULL,
+  blog_published VARCHAR(45) NOT NULL,
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
   blog_article VARCHAR(45) NOT NULL,
-  blog_deleted TINYINT(1) NOT NULL,
+  blog_deleted VARCHAR(45) NOT NULL,
   category_category_id INT NOT NULL,
   user_blog_user_blog_id INT NOT NULL,
   PRIMARY KEY (blog_id),
@@ -81,5 +80,3 @@ CREATE TABLE IF NOT EXISTS blogsite.role_has_user_blog (
     FOREIGN KEY (user_blog_user_blog_id)
     REFERENCES blogsite.user_blog (user_blog_id)
 );
-
-
