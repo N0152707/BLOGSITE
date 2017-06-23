@@ -15,8 +15,8 @@ import java.util.Objects;
 public class Blog {
 
     Integer blogId;
-    Boolean blogPublished;
-    Boolean blogDeleted;
+    String blogPublished;
+    String blogDeleted;
     LocalDate blogDatePublished;
     String blogTitle;
     String blogArticle;
@@ -29,19 +29,19 @@ public class Blog {
         this.blogId = blogId;
     }
 
-    public Boolean getBlogPublished() {
+    public String getBlogPublished() {
         return blogPublished;
     }
 
-    public void setBlogPublished(Boolean blogPublished) {
+    public void setBlogPublished(String blogPublished) {
         this.blogPublished = blogPublished;
     }
 
-    public Boolean getBlogDeleted() {
+    public String getBlogDeleted() {
         return blogDeleted;
     }
 
-    public void setBlogDeleted(Boolean blogDeleted) {
+    public void setBlogDeleted(String blogDeleted) {
         this.blogDeleted = blogDeleted;
     }
 

@@ -27,7 +27,8 @@ public class UserBlogDaoImpl implements UserBlogDao {
             = "SET SQL_SAFE_UPDATES=0; delete from user_blog where user_blog_id = ?";
     private static final String SQL_UPDATE_USERBLOG
             = "update user_blog set "
-            + "user_blog_name = ? "
+            + "user_blog_name = ?, user_blog_password = ?, user_blog_first_name =?, "
+            + "user_blog_last_name = ?"
             + "where user_blog_id = ?";
 
     private JdbcTemplate jdbcTemplate;
