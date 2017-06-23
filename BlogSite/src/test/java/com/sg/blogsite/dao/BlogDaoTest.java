@@ -50,10 +50,11 @@ public class BlogDaoTest {
     @Test
     public void testCreateBlog() {
         Blog newBlog1 = new Blog();
-        newBlog1.setBlogPublished(Boolean.TRUE);
+        newBlog1.setBlogPublished("2017-09-01");
         newBlog1.setBlogDatePublished(LocalDate.now());
         newBlog1.setBlogTitle("Test1CreateBlog");
         newBlog1.setBlogArticle("blog text added for number 1");
+        newBlog1.setBlogDeleted("No");
         blogdao.createBlog(newBlog1);
         Blog fromDb = blogdao.readBlog(newBlog1.getBlogId());
         Assert.assertEquals(fromDb, newBlog1);
@@ -72,10 +73,11 @@ public class BlogDaoTest {
     @Test
     public void testUpdateBlog() {
         Blog newBlog3 = new Blog();
-        newBlog3.setBlogPublished(Boolean.TRUE);
+        newBlog3.setBlogPublished("2017-06-01");
         newBlog3.setBlogDatePublished(LocalDate.now());
         newBlog3.setBlogTitle("Test3CreateBlog");
         newBlog3.setBlogArticle("blog text added for number 3");
+        newBlog3.setBlogDeleted("No");
         blogdao.createBlog(newBlog3);
         newBlog3.setBlogTitle("UpdatedBlogTitle");
         blogdao.updateBlog(newBlog3);
@@ -90,16 +92,18 @@ public class BlogDaoTest {
     @Test
     public void testGetLastFiveBlogs() {
         Blog newBlog4 = new Blog();
-        newBlog4.setBlogPublished(Boolean.TRUE);
+        newBlog4.setBlogPublished("2017-03-01");
         newBlog4.setBlogDatePublished(LocalDate.now());
         newBlog4.setBlogTitle("Test4CreateBlog");
         newBlog4.setBlogArticle("blog text added for number 4");
+        newBlog4.setBlogDeleted("No");
         blogdao.createBlog(newBlog4);
         Blog newBlog5 = new Blog();
-        newBlog5.setBlogPublished(Boolean.TRUE);
+        newBlog5.setBlogPublished("2017-05-01");
         newBlog5.setBlogDatePublished(LocalDate.now());
         newBlog5.setBlogTitle("Test5CreateBlog");
         newBlog5.setBlogArticle("blog text added for number 5");
+        newBlog5.setBlogDeleted("No");
         blogdao.createBlog(newBlog5);
         List<Blog> blogList = blogdao.getLastFiveBlogs();
         assertEquals(blogList.size(), 2);

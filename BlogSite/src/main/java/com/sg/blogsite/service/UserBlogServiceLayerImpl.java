@@ -7,6 +7,7 @@ package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.UserBlogDao;
 import com.sg.blogsite.model.UserBlog;
+import java.util.List;
 
 /**
  *
@@ -35,6 +36,16 @@ public class UserBlogServiceLayerImpl implements UserBlogServiceLayer {
     @Override
     public void updateUserBlog(UserBlog userBlog) {
         userblogdao.updateUserBlog(userBlog);
+    }
+
+    @Override
+    public void deleteUserBlog(int userBlogId) {
+        userblogdao.deleteUserBlog(userBlogId);
+    }
+
+    @Override
+    public List<UserBlog> getAllUserBlogs() {
+        return userblogdao.getAllUserBlogs();
     }
 
 }
