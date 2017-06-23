@@ -5,16 +5,19 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
+import com.sg.blogsite.model.UserBlog;
+import java.util.List;
+
 public interface UserBlogDao {
 
-//    public UserBlog addUserBlog(UserBlog userBlog);
-//    public void removeUserBlog(int userBlogId);
-//    public void updateUserBlog(UserBlog userBlog);
-//    public List<UserBlog> getAllUserBlogs();
+    public UserBlog createUserBlog(UserBlog userBlog);
+
+    public void deleteUserBlog(int userBlogId);
+
+    public void updateUserBlog(UserBlog userBlog);
+
+    public List<UserBlog> getAllUserBlogs();
+
     public UserBlog getUserBlogById(int userBlogId);
 
 }

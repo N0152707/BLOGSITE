@@ -5,14 +5,30 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
-public class UserBlogDaoImpl {
+import com.sg.blogsite.model.UserBlog;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
-    private static final String SQL_SELECT_USERBLOG
+public class UserBlogDaoImpl implements UserBlogDao {
+
+    private static final String SQL_INSERT_USERBLOG
+            = "insert into user_blog "
+            + "(user_blog_name, user_blog_password, user_blog_first_name, user_blog_last_name"
+            + "values (?, ?, ?, ?)";
+    private static final String SQL_SELECT_USERBLOG_BY_ID
             = "select * from user_blog where user_blog_id = ?";
+    private static final String SQL_SELECT_ALL_USERBLOGS
+            = "select * from user_blog";
+    private static final String SQL_DELETE_USERBLOG
+            = "SET SQL_SAFE_UPDATES=0; delete from user_blog where user_blog_id = ?";
+    private static final String SQL_UPDATE_USERBLOG
+            = "update user_blog set "
+            + "user_blog_name = ? "
+            + "where user_blog_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -21,13 +37,45 @@ public class UserBlogDaoImpl {
     }
 
     @Override
-    public UserBlog getCategoryById(int userBlogId) {
+    public UserBlog createUserBlog(UserBlog userBlog) {
+        jdbcTemplate.update(SQL_INSERT_USERBLOG,
+                userBlog.getUserBlogName(),
+                userBlog.getUserBlogPassword(),
+                userBlog.getUserBlogFirstName(),
+                userBlog.getUserBlogLastName());
+        int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
+                Integer.class);
+        userBlog.setUserBlogId(newId);
+        return userBlog;
+    }
+
+    @Override
+    public void deleteUserBlog(int userBlogId) {
+        jdbcTemplate.update(SQL_DELETE_USERBLOG, userBlogId);
+    }
+
+    @Override
+    public void updateUserBlog(UserBlog userBlog) {
+        jdbcTemplate.update(SQL_UPDATE_USERBLOG,
+                userBlog.getUserBlogId(),
+                userBlog.getUserBlogName(),
+                userBlog.getUserBlogPassword(),
+                userBlog.getUserBlogFirstName(),
+                userBlog.getUserBlogLastName());
+    }
+
+    @Override
+    public List<UserBlog> getAllUserBlogs() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_USERBLOGS,
+                new UserBlogMapper());
+    }
+
+    @Override
+    public UserBlog getUserBlogById(int userBlogId) {
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USERBLOG,
+            return jdbcTemplate.queryForObject(SQL_SELECT_USERBLOG_BY_ID,
                     new UserBlogMapper(), userBlogId);
         } catch (EmptyResultDataAccessException ex) {
-            // there were no results for the given id - we just
-            // want to return null in this case
             return null;
         }
     }
@@ -39,6 +87,8 @@ public class UserBlogDaoImpl {
             userBlog.setUserBlogId(rs.getInt("user_blog_id"));
             userBlog.setUserBlogName(rs.getString("user_blog_name"));
             userBlog.setUserBlogPassword(rs.getString("user_blog_password"));
+            userBlog.setUserBlogName(rs.getString("user_blog_first_name"));
+            userBlog.setUserBlogPassword(rs.getString("user_blog_last_name"));
             return userBlog;
         }
     }

@@ -7,12 +7,8 @@ package com.sg.blogsite.model;
 
 import java.util.Objects;
 
-/**
- *
- * @author apprentice
- */
 public class UserBlog {
-    
+
     Integer userBlogId;
     String userBlogName;
     String userBlogPassword;
@@ -99,8 +95,5 @@ public class UserBlog {
         }
         return true;
     }
-    
-    
-    
-    
+
 }
