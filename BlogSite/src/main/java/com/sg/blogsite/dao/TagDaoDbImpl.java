@@ -5,11 +5,17 @@
  */
 package com.sg.blogsite.dao;
 
-/**
- *
- * @author apprentice
- */
-public class TagDaoDbImpl {
+import com.sg.blogsite.model.Tag;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+public class TagDaoDbImpl implements TagDao {
 
     private static final String SQL_INSERT_TAG
             = "insert into tag "
@@ -17,10 +23,12 @@ public class TagDaoDbImpl {
             + "values (?)";
     private static final String SQL_SELECT_TAG
             = "select * from tag where tag_id = ?";
-    private static final String SQL_UPDATE_TAG
-            = "update tag set "
-            + "name_name = ? "
-            + "where tag_id = ?";
+    private static final String SQL_SELECT_ALL_TAGS
+            = "select * from tag";
+    private static final String SQL_SELECT_ALL_TAGS_IN_BLOG
+            = "select * from tag";
+    private static final String SQL_DELETE_TAG
+            = "SET SQL_SAFE_UPDATES=0; delete from tag where tag_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -30,35 +38,40 @@ public class TagDaoDbImpl {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public Tag addCategory(Tag tag) {
+    public Tag createTag(Tag tag) {
         jdbcTemplate.update(SQL_INSERT_TAG,
                 tag.getTagName());
-        // query the database for the id that was just assigned to the new
-        // row in the database
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
-        // set the new id value on the contact object and return it
         tag.setTagId(newId);
         return tag;
     }
 
     @Override
-    public void updateTag(Tag tag) {
-        jdbcTemplate.update(SQL_UPDATE_TAG,
-                tag.getTagName(),
-                tag.getTagId());
+    public Tag readTag(int tagId) {
+        try {
+            return jdbcTemplate.queryForObject(SQL_SELECT_TAG,
+                    new TagMapper(), tagId);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
     }
 
     @Override
-    public Tag getCategoryById(int tagId) {
-        try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_TAG,
-                    new CategoryMapper(), categoryId);
-        } catch (EmptyResultDataAccessException ex) {
-            // there were no results for the given id - we just
-            // want to return null in this case
-            return null;
-        }
+    public void deleteTag(int tagId) {
+        jdbcTemplate.update(SQL_DELETE_TAG, tagId);
+    }
+
+    @Override
+    public List<Tag> getAllTags() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_TAGS,
+                new TagMapper());
+    }
+
+    @Override
+    public List<Tag> getAllTagsInABlog(int blogId) {
+        return jdbcTemplate.query(SQL_SELECT_ALL_TAGS_IN_BLOG,
+                new TagMapper(), blogId);
     }
 
     private static final class TagMapper implements RowMapper<Tag> {
