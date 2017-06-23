@@ -6,6 +6,7 @@
 package com.sg.blogsite.service;
 
 import com.sg.blogsite.model.Role;
+import java.util.List;
 
 /**
  *
@@ -13,12 +14,8 @@ import com.sg.blogsite.model.Role;
  */
 public interface RoleServiceLayer {
 
-    public Role createRole(Role role);
+    public List<Role> getAllRoles();
 
-//    public void removeRole(int roleId);
-    public void updateRole(Role role);
-
-//    public List<Role> getAllRoles();
-    public Role getRoleById(int roleId);
+    public Role readRoleById(int roleId);
 
 }

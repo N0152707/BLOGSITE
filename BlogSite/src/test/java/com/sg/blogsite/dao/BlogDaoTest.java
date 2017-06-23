@@ -91,7 +91,7 @@ public class BlogDaoTest {
     public void testGetLastFiveBlogs() {
         Blog newBlog4 = new Blog();
         newBlog4.setBlogPublished(Boolean.TRUE);
-        newBlog4.setBlogDatePublished(LocalDate.now();
+        newBlog4.setBlogDatePublished(LocalDate.now());
         newBlog4.setBlogTitle("Test4CreateBlog");
         newBlog4.setBlogArticle("blog text added for number 4");
         blogdao.createBlog(newBlog4);

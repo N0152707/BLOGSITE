@@ -20,7 +20,7 @@ public interface CategoryServiceLayer {
 
     public void updateCategory(Category category);
 
-    public void removeCategory(int categoryId);
+    public void deleteCategory(int categoryId);
 
     public List<Category> getAllCategories();
 
