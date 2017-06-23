@@ -45,10 +45,7 @@ public class UserBlogDaoTest {
     public void testGetUserBlogById() {
         ///arrange
         ///act
-        ///assets
-        
-        
-        
+        ///assert
     }
 
    
