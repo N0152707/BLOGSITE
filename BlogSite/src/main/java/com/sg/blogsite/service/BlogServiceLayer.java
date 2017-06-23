@@ -16,12 +16,12 @@ public interface BlogServiceLayer {
 
     public Blog createBlog(Blog blog);
 
-    public void deleteBlog(int blogId);
+    public Blog readBlog(int blogId);
 
     public void updateBlog(Blog blog);
 
-    public List<Blog> getAllBlogs();
+    public List<Blog> getLastFiveBlogs();
 
-    public Blog getLastFiveBlogs(int blogId);
+    public List<Blog> getAllBlogsByCategory(int categoryId);
 
 }

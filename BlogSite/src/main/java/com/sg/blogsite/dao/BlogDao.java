@@ -12,7 +12,7 @@ public interface BlogDao {
 
     public Blog createBlog(Blog blog);
 
-    public Blog readBlog(int BlogId);
+    public Blog readBlog(int blogId);
 
     public void updateBlog(Blog blog);
 

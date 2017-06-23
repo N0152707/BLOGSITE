@@ -7,6 +7,7 @@ package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.BlogDao;
 import com.sg.blogsite.model.Blog;
+import java.util.List;
 
 /**
  *
@@ -32,18 +33,19 @@ public class BlogServiceLayerImpl implements BlogServiceLayer {
     }
 
     @Override
-    public void deleteBlog(int blogId) {
-        blogdao.deleteBlog(blogId);
+    public Blog readBlog(int blogId) {
+        return blogdao.readBlog(blogId);
     }
 
     @Override
-    public Object getAllBlogs() {
-        return blogdao.getAllBlogs();
+    public List<Blog> getLastFiveBlogs() {
+        return blogdao.getLastFiveBlogs();
+
     }
 
     @Override
-    public Blog getLastFiveBlogs(int blogId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Blog> getAllBlogsByCategory(int categoryId) {
+        return blogdao.getAllBlogsByCategory(categoryId);
     }
 
 }
