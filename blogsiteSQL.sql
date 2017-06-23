@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS blogsite.blog (
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
   blog_article VARCHAR(45) NOT NULL,
+  blog_deleted TINYINT(1) NOT NULL
   category_category_id INT NOT NULL,
   user_blog_user_blog_id INT NOT NULL,
   PRIMARY KEY (blog_id),
