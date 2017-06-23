@@ -5,14 +5,14 @@ CREATE SCHEMA IF NOT EXISTS blogsite;
 USE blogsite ;
 
 CREATE TABLE IF NOT EXISTS blogsite.category (
-  category_id INT NOT NULL,
+  category_id INT NOT NULL AUTO_INCREMENT,
   category_name VARCHAR(45) NOT NULL,
   PRIMARY KEY (category_id)
 );
 
 
 CREATE TABLE IF NOT EXISTS blogsite.user_blog (
-  user_blog_id INT NOT NULL,
+  user_blog_id INT NOT NULL AUTO_INCREMENT,
   user_blog_name VARCHAR(45) NOT NULL,
   user_password VARCHAR(45) NOT NULL,
   user_blog_first_name VARCHAR(45) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS blogsite.user_blog (
 
 
 CREATE TABLE IF NOT EXISTS blogsite.blog (
-  blog_id INT NOT NULL,
+  blog_id INT NOT NULL AUTO_INCREMENT,
   blog_published VARCHAR(45) NOT NULL,
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS blogsite.role (
 );
 
 CREATE TABLE IF NOT EXISTS blogsite.tag (
-  tag_id INT NOT NULL,
+  tag_id INT NOT NULL AUTO_INCREMENT,
   tag_name VARCHAR(45) NOT NULL,
   PRIMARY KEY (tag_id)
 );
