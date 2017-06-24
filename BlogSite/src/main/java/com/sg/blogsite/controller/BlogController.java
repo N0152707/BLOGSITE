@@ -18,13 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-<<<<<<< HEAD
-/**
- *
- * @author apprentice
- */
-=======
->>>>>>> 4c74918171d7b48076ace5932368fe499b9aec8a
 @Controller
 public class BlogController {
 
