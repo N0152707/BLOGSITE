@@ -11,16 +11,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- *
- * @author apprentice
- */
+@Controller
 public class BlogController {
 
     private BlogServiceLayer service;
@@ -30,16 +28,14 @@ public class BlogController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/displayBlogsPage", method = RequestMethod.GET)
+    @RequestMapping(value = {"/BlogSite", "/", "/index.jsp"}, method = RequestMethod.GET)
     public String displayBlogsPage(Model model) {
         // Get all the blogs from the get last 5 method
-        List<Blog> blogList = service.getLastFiveBlogs();
-
+        // List<Blog> blogList = service.getLastFiveBlogs();
         // Put the List of blogs on the Model
-        model.addAttribute("blogList", blogList);
-
+        //model.addAttribute("blogList", blogList);
         // Return the logical name of our View component
-        return "blog";
+        return "blogSite";
     }
 
     //i don't think we need a addBlogForm in here, that is initially just displayed as an empty page to be filled in
