@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS blogsite.blog (
   blog_published VARCHAR(45) NOT NULL,
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
-  blog_article VARCHAR(45) NOT NULL,
+  blog_article VARCHAR(500) NOT NULL,
   blog_deleted VARCHAR(45) NOT NULL,
   PRIMARY KEY (blog_id)
 );
@@ -71,21 +71,21 @@ CREATE TABLE IF NOT EXISTS blogsite.role_has_user_blog (
     REFERENCES blogsite.user_blog (user_blog_id)
 );
 
-INSERT INTO blogsite_test.role
+INSERT INTO blogsite.role
 (role_id,
 role_name)
 VALUES
 (1,"Admin");
 
 
-INSERT INTO blogsite_test.role
+INSERT INTO blogsite.role
 (role_id,
 role_name)
 VALUES
 (2,"Author");
 
 
-INSERT INTO blogsite_test.role
+INSERT INTO blogsite.role
 (role_id,
 role_name)
 VALUES
@@ -130,9 +130,9 @@ tag_name)
 VALUES
 (3 , "#perfect loaf");
 
-
-INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 1);
-INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 2);
-INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 3);
-
-INSERT into blogsite.role_has_user_blog (role_role_id, user_blog_user_blog_id) values (1, 1);
+-- 
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 1);
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 2);
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 3);
+-- 
+-- INSERT into blogsite.role_has_user_blog (role_role_id, user_blog_user_blog_id) values (1, 1);
