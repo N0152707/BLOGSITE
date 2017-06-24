@@ -5,11 +5,20 @@
  */
 package com.sg.blogsite.dao;
 
+import com.sg.blogsite.model.Blog;
+import com.sg.blogsite.model.Role;
+import com.sg.blogsite.model.Tag;
+import java.time.LocalDate;
+import java.util.List;
+import javax.management.relation.RoleList;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -17,6 +26,8 @@ import org.junit.Test;
  */
 public class RoleDaoTest {
 
+      private RoleDao roledao;
+    
     public RoleDaoTest() {
     }
 
@@ -28,8 +39,11 @@ public class RoleDaoTest {
     public static void tearDownClass() {
     }
 
-    @Before
+      @Before
     public void setUp() {
+        ApplicationContext ctx
+                = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        roledao = ctx.getBean("roleDao", RoleDao.class);
     }
 
     @After
@@ -41,13 +55,24 @@ public class RoleDaoTest {
      */
     @Test
     public void testGetAllRoles() {
+        roledao.getAllRoles();
+        List<Role> roleList = roledao.getAllRoles();
+        assertEquals(roleList.size(), 3);
     }
-
+    
     /**
      * Test of readRoleById method, of class RoleDao.
      */
     @Test
     public void testReadRoleById() {
-    }
+        roledao.readRoleById(1);
+        assertEquals("admin", "admin");
+        roledao.readRoleById(2);
+        assertEquals("write", "write");
+        roledao.readRoleById(3);
+        assertEquals("read", "read");
 
-}
+    }
+ }
+
+
