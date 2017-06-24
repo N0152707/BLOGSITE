@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS blogsite.blog (
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
   blog_article VARCHAR(45) NOT NULL,
-  blog_deleted VARCHAR(45) NOT NULL,,
-  PRIMARY KEY (blog_id),
+  blog_deleted VARCHAR(45) NOT NULL,
+  PRIMARY KEY (blog_id)
 );
 
 CREATE TABLE IF NOT EXISTS blogsite.role (

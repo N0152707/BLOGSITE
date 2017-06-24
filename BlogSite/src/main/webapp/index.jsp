@@ -17,7 +17,7 @@
             <div class="navbar">
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/home.jsp">
+                        <a href="${pageContext.request.contextPath}/index.jsp">
                             Home
                         </a>
                     </li>
