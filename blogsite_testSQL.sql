@@ -83,6 +83,7 @@ INSERT INTO blogsite_test.role
 (role_id,
 role_name)
 VALUES
+<<<<<<< HEAD
 (2,"Author");
 
 
@@ -91,3 +92,16 @@ INSERT INTO blogsite_test.role
 role_name)
 VALUES
 (3,"Read-Only");
+=======
+(2,"write");
+
+INSERT INTO `blogsite_test`.`role`
+(`role_id`,
+`role_name`)
+VALUES
+<<<<<<< HEAD
+(3,"read");
+=======
+(3,"read");
+>>>>>>> 3fe6c41c333b530d681762b9e07217f79cd70d1c
+>>>>>>> d680051143bfe7b288115a67a97a32e21ab8176b
