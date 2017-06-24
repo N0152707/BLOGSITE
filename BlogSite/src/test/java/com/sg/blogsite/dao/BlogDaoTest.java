@@ -70,6 +70,22 @@ public class BlogDaoTest {
      */
     @Test
     public void testReadBlog() {
+        Blog newBlog9 = new Blog();
+        newBlog9.setBlogPublished("2017-09-09");
+        newBlog9.setBlogDatePublished(LocalDate.now());
+        newBlog9.setBlogTitle("Test9CreateBlog");
+        newBlog9.setBlogArticle("blog text added for number 9");
+        newBlog9.setBlogDeleted("No");
+        blogdao.createBlog(newBlog9);
+        Blog newBlog10 = new Blog();
+        newBlog10.setBlogPublished("2017-10-01");
+        newBlog10.setBlogDatePublished(LocalDate.now());
+        newBlog10.setBlogTitle("Test1CreateBlog");
+        newBlog10.setBlogArticle("blog text added for number 10");
+        newBlog10.setBlogDeleted("No");
+        blogdao.createBlog(newBlog10);
+        Blog fromDb = blogdao.readBlog(newBlog9.getBlogId());
+        Assert.assertEquals(fromDb, newBlog9);
     }
 
     /**
@@ -110,6 +126,27 @@ public class BlogDaoTest {
         newBlog5.setBlogArticle("blog text added for number 5");
         newBlog5.setBlogDeleted("No");
         blogdao.createBlog(newBlog5);
+        Blog newBlog6 = new Blog();
+        newBlog6.setBlogPublished("2017-06-01");
+        newBlog6.setBlogDatePublished(LocalDate.now());
+        newBlog6.setBlogTitle("Test6CreateBlog");
+        newBlog6.setBlogArticle("blog text added for number 6");
+        newBlog6.setBlogDeleted("No");
+        blogdao.createBlog(newBlog6);
+        Blog newBlog7 = new Blog();
+        newBlog7.setBlogPublished("2017-07-01");
+        newBlog7.setBlogDatePublished(LocalDate.now());
+        newBlog7.setBlogTitle("Test7CreateBlog");
+        newBlog7.setBlogArticle("blog text added for number 7");
+        newBlog7.setBlogDeleted("No");
+        blogdao.createBlog(newBlog7);
+        Blog newBlog8 = new Blog();
+        newBlog8.setBlogPublished("2017-08-01");
+        newBlog8.setBlogDatePublished(LocalDate.now());
+        newBlog8.setBlogTitle("Test8CreateBlog");
+        newBlog8.setBlogArticle("blog text added for number 8");
+        newBlog8.setBlogDeleted("No");
+        blogdao.createBlog(newBlog8);
         List<Blog> blogList = blogdao.getLastFiveBlogs();
         assertEquals(blogList.size(), 5);
 
@@ -120,6 +157,20 @@ public class BlogDaoTest {
      */
     @Test
     public void testGetAllBlogsByCategory() {
+        Blog newBlog11 = new Blog();
+        newBlog11.setBlogPublished("2017-11-01");
+        newBlog11.setBlogDatePublished(LocalDate.now());
+        newBlog11.setBlogTitle("Test11CreateBlog");
+        newBlog11.setBlogArticle("blog text added for number 11");
+        newBlog11.setBlogDeleted("No");
+        blogdao.createBlog(newBlog11);
+        Blog newBlog12 = new Blog();
+        newBlog12.setBlogPublished("2017-05-01");
+        newBlog12.setBlogDatePublished(LocalDate.now());
+        newBlog12.setBlogTitle("Test12CreateBlog");
+        newBlog12.setBlogArticle("blog text added for number 12");
+        newBlog12.setBlogDeleted("No");
+        blogdao.createBlog(newBlog12);
     }
 
 }
