@@ -75,18 +75,17 @@ VALUES
 (1,"Admin");
 
 
-INSERT INTO blogsite_test.role
+/* INSERT INTO blogsite_test.role
 (role_id,
 role_name)
 VALUES
-(2,"Author");
+(2,"Author"); */
 
 
 INSERT INTO blogsite_test.role
 (role_id,
 role_name)
 VALUES
-(3,"Read-Only");
 (2,"write");
 
 INSERT INTO `blogsite_test`.`role`
