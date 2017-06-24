@@ -7,6 +7,7 @@ package com.sg.blogsite.controller;
 
 import com.sg.blogsite.model.Blog;
 import com.sg.blogsite.service.BlogServiceLayer;
+import java.time.LocalDate;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-<<<<<<< HEAD
 /**
  *
  * @author apprentice
  */
-=======
->>>>>>> 4c74918171d7b48076ace5932368fe499b9aec8a
 @Controller
 public class BlogController {
 
@@ -38,9 +36,9 @@ public class BlogController {
     @RequestMapping(value = {"/BlogSite", "/", "/index.jsp"}, method = RequestMethod.GET)
     public String displayBlogsPage(Model model) {
         // Get all the blogs from the get last 5 method
-        // List<Blog> blogList = service.getLastFiveBlogs();
+        List<Blog> blogList = service.getLastFiveBlogs();
         // Put the List of blogs on the Model
-        //model.addAttribute("blogList", blogList);
+        model.addAttribute("blogList", blogList);
         // Return the logical name of our View component
         return "blogSite";
     }
@@ -52,7 +50,7 @@ public class BlogController {
         // object
         Blog blog = new Blog();
         blog.setBlogPublished("N");
-        blog.setBlogDatePublished(null);  //don't know how to parse a date from a string here
+        blog.setBlogDatePublished(LocalDate.now());  //don't know how to parse a date from a string here
         blog.setBlogTitle("blogTitle");
         blog.setBlogArticle("blogArticle");
         blog.setBlogDeleted("N");
@@ -78,13 +76,10 @@ public class BlogController {
     @RequestMapping(value = "/editBlog", method = RequestMethod.POST)
     public String editBlog(@Valid @ModelAttribute("blog") Blog blog,
             BindingResult result) {
-
         if (result.hasErrors()) {
             return "editBlogForm";
         }
-
         service.updateBlog(blog);
-
         return "redirect:displayBlogsPage";
     }
 

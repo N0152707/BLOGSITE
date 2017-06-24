@@ -33,11 +33,8 @@ public class RoleController {
     public String getAllRoles(Model model) {
         // Get all the roles
         List<Role> roleList = service.getAllRoles();
-
-        // Put the List of blogs on the Model
         model.addAttribute("roleList", roleList);
 
-        // Return the logical name of our View component
         return "role";
     }
 

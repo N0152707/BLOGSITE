@@ -37,7 +37,6 @@ public class CategoryController {
         // Get all the categories
         List<Category> categoryList = service.getAllCategories();
 
-        // Put the List of blogs on the Model
         model.addAttribute("categoryList", categoryList);
 
         // Return the logical name of our View component
@@ -46,8 +45,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public String addCategory(HttpServletRequest request) {
-        // grab the incoming values from the form and create a newblog
-        // object
+        // grab the incoming values from the form and create a new object
         Category category = new Category();
         category.setCategoryName("categoryName");
 
