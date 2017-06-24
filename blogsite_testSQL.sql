@@ -47,13 +47,9 @@ CREATE TABLE IF NOT EXISTS blogsite_test.blog_has_tag (
   blog_blog_id INT NOT NULL,
   tag_tag_id INT NOT NULL,
   PRIMARY KEY (blog_blog_id, tag_tag_id),
-  INDEX fk_blog_has_tag_tag1_idx (tag_tag_id ASC),
-  INDEX fk_blog_has_tag_blog1_idx (blog_blog_id ASC),
   CONSTRAINT fk_blog_has_tag_blog1
     FOREIGN KEY (blog_blog_id)
-    REFERENCES blogsite_test.blog (blog_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES blogsite_test.blog (blog_id),
   CONSTRAINT fk_blog_has_tag_tag1
     FOREIGN KEY (tag_tag_id)
     REFERENCES blogsite_test.tag (tag_id)
@@ -83,7 +79,6 @@ INSERT INTO blogsite_test.role
 (role_id,
 role_name)
 VALUES
-<<<<<<< HEAD
 (2,"Author");
 
 
@@ -92,16 +87,12 @@ INSERT INTO blogsite_test.role
 role_name)
 VALUES
 (3,"Read-Only");
-=======
 (2,"write");
 
 INSERT INTO `blogsite_test`.`role`
 (`role_id`,
 `role_name`)
 VALUES
-<<<<<<< HEAD
 (3,"read");
-=======
-(3,"read");
->>>>>>> 3fe6c41c333b530d681762b9e07217f79cd70d1c
->>>>>>> d680051143bfe7b288115a67a97a32e21ab8176b
+
+
