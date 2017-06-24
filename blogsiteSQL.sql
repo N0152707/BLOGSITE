@@ -27,16 +27,8 @@ CREATE TABLE IF NOT EXISTS blogsite.blog (
   blog_date_published DATE NOT NULL,
   blog_title VARCHAR(45) NOT NULL,
   blog_article VARCHAR(45) NOT NULL,
-  blog_deleted VARCHAR(45) NOT NULL,
-  category_category_id INT NOT NULL,
-  user_blog_user_blog_id INT NOT NULL,
+  blog_deleted VARCHAR(45) NOT NULL,,
   PRIMARY KEY (blog_id),
-  CONSTRAINT fk_blog_category1
-    FOREIGN KEY (category_category_id)
-    REFERENCES blogsite.category (category_id),
-  CONSTRAINT fk_blog_user_blog1
-    FOREIGN KEY (user_blog_user_blog_id)
-    REFERENCES blogsite.user_blog (user_blog_id)
 );
 
 CREATE TABLE IF NOT EXISTS blogsite.role (
@@ -60,9 +52,7 @@ CREATE TABLE IF NOT EXISTS blogsite.blog_has_tag (
   INDEX fk_blog_has_tag_blog1_idx (blog_blog_id ASC),
   CONSTRAINT fk_blog_has_tag_blog1
     FOREIGN KEY (blog_blog_id)
-    REFERENCES blogsite.blog (blog_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES blogsite.blog (blog_id),
   CONSTRAINT fk_blog_has_tag_tag1
     FOREIGN KEY (tag_tag_id)
     REFERENCES blogsite.tag (tag_id)
