@@ -84,3 +84,9 @@ INSERT INTO `blogsite_test`.`role`
 `role_name`)
 VALUES
 (2,"write");
+
+INSERT INTO `blogsite_test`.`role`
+(`role_id`,
+`role_name`)
+VALUES
+(3,"read");
