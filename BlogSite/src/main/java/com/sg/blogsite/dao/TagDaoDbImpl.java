@@ -18,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TagDaoDbImpl implements TagDao {
 
     private static final String SQL_INSERT_TAG
-            = "insert into tag "
-            + "(tag_name) "
-            + "values (?)";
+            = "INSERT INTO tag (tag_name) VALUES (?)";
     private static final String SQL_SELECT_TAG
             = "select * from tag where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
@@ -32,7 +30,7 @@ public class TagDaoDbImpl implements TagDao {
             = "select tag.tag_id, tag.tag_name from tag join blog_has_tag on tag_id = blog_id where tag.tag_id = ?";
 
     private static final String SQL_DELETE_TAG
-            = "SET SQL_SAFE_UPDATES=0; delete from tag where tag_id = ?";
+            = " DELETE FROM tag WHERE tag_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 

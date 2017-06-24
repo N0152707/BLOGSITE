@@ -111,7 +111,7 @@ public class BlogDaoTest {
         newBlog5.setBlogDeleted("No");
         blogdao.createBlog(newBlog5);
         List<Blog> blogList = blogdao.getLastFiveBlogs();
-        assertEquals(blogList.size(), 2);
+        assertEquals(blogList.size(), 5);
 
     }
 

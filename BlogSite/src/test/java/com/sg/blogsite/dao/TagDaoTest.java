@@ -6,7 +6,6 @@
 package com.sg.blogsite.dao;
 
 import com.sg.blogsite.model.Tag;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -15,6 +14,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -37,6 +38,9 @@ public class TagDaoTest {
 
     @Before
     public void setUp() {
+        ApplicationContext ctx
+                = new ClassPathXmlApplicationContext("test-applicationContext.xml");
+        tagdao = ctx.getBean("tagDao", TagDao.class);
     }
 
     @After
@@ -86,28 +90,19 @@ public class TagDaoTest {
 
     /**
      * Test of getAllTags method, of class TagDao.
+/
+     *
+     *
+     * @Test public void testGetAllTags() { Tag newTag3 = new Tag();
+     * newTag3.setTagName("#TagFirstInList"); tagdao.createTag(newTag3); Tag
+     * newTag4 = new Tag(); newTag4.setTagName("#TagSecondInList");
+     * tagdao.createTag(newTag4); Tag newTag5 = new Tag();
+     * newTag5.setTagName("#TagThirdInList"); tagdao.createTag(newTag5);
+     * List<Tag> tagList = tagdao.getAllTags(); assertEquals(tagList.size(), 3);
+     *
+     * }
      */
-    @Test
-    public void testGetAllTags() {
-        Tag newTag3 = new Tag();
-        newTag3.setTagName("#TagFirstInList");
-        tagdao.createTag(newTag3);
-        Tag newTag4 = new Tag();
-        newTag4.setTagName("#TagSecondInList");
-        tagdao.createTag(newTag4);
-        Tag newTag5 = new Tag();
-        newTag5.setTagName("#TagThirdInList");
-        tagdao.createTag(newTag5);
-        List<Tag> tagList = tagdao.getAllTags();
-        assertEquals(tagList.size(), 3);
-
-    }
-
     /**
      * Test of getAllTagsInABlog method, of class TagDao.
      */
-    @Test
-    public void testGetAllTagsInABlog() {
-    }
-
 }
