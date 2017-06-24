@@ -72,15 +72,22 @@ CREATE TABLE IF NOT EXISTS blogsite_test.role_has_user_blog (
     REFERENCES blogsite_test.user_blog (user_blog_id)
 );
 
-INSERT INTO `blogsite_test`.`role`
-(`role_id`,
-`role_name`)
+INSERT INTO blogsite_test.role
+(role_id,
+role_name)
 VALUES
-(1,"admin");
+(1,"Admin");
 
 
-INSERT INTO `blogsite_test`.`role`
-(`role_id`,
-`role_name`)
+INSERT INTO blogsite_test.role
+(role_id,
+role_name)
 VALUES
-(2,"write");
+(2,"Author");
+
+
+INSERT INTO blogsite_test.role
+(role_id,
+role_name)
+VALUES
+(3,"Read-Only");
