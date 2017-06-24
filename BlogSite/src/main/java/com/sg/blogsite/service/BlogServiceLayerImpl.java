@@ -40,7 +40,6 @@ public class BlogServiceLayerImpl implements BlogServiceLayer {
     @Override
     public List<Blog> getLastFiveBlogs() {
         return blogdao.getLastFiveBlogs();
-
     }
 
     @Override

@@ -33,14 +33,11 @@ public class BlogController {
         this.service = service;
     }
 
-    @RequestMapping(value = {"/BlogSite", "/", "/index.jsp"}, method = RequestMethod.GET)
-    public String displayBlogsPage(Model model) {
-        // Get all the blogs from the get last 5 method
+    @RequestMapping(value = {"/BlogSite", "/displayHome"}, method = RequestMethod.GET)
+    public String displayHome(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
-        // Put the List of blogs on the Model
         model.addAttribute("blogList", blogList);
-        // Return the logical name of our View component
-        return "blogSite";
+        return "home";
     }
 
     //i don't think we need a addBlogForm in here, that is initially just displayed as an empty page to be filled in
