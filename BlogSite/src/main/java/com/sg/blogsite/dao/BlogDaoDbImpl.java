@@ -25,9 +25,9 @@ public class BlogDaoDbImpl implements BlogDao {
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY
-            = "select * from blog where blog_category_id = ?";
+            = "select * from blog where category_id = ?";  //this needs to be a join of some sort
     private static final String SQL_SELECT_LAST_FIVE_BLOGS
-            = "select top(5) from blog order by blog_date_published DESC";
+            = "select * from blog order by blog_date_published DESC limit 5";
     private static final String SQL_UPDATE_BLOG
             = "update blog set "
             + "blog_published = ?, blog_deleted = ?, blog_date_published = ?, blog_title = ?, "
@@ -92,12 +92,12 @@ public class BlogDaoDbImpl implements BlogDao {
 
         public Blog mapRow(ResultSet rs, int rowNum) throws SQLException {
             Blog blog = new Blog();
-            blog.setBlogPublished(rs.getString("blogPublished"));
-            blog.setBlogDeleted(rs.getString("blogDeleted"));
-            blog.setBlogDatePublished((rs.getDate("blogDatePublished").toLocalDate()));
-            blog.setBlogTitle(rs.getString("blogTitle"));
-            blog.setBlogArticle(rs.getString("blogArticle"));
-            blog.setBlogId(rs.getInt("blogId"));
+            blog.setBlogId(rs.getInt("blog_Id"));
+            blog.setBlogPublished(rs.getString("blog_Published"));
+            blog.setBlogDatePublished((rs.getDate("blog_Date_Published").toLocalDate()));
+            blog.setBlogTitle(rs.getString("blog_Title"));
+            blog.setBlogArticle(rs.getString("blog_Article"));
+            blog.setBlogDeleted(rs.getString("blog_Deleted"));
             return blog;
         }
     }

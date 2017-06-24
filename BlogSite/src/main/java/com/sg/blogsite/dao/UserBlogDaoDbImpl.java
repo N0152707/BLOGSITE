@@ -17,7 +17,7 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
 
     private static final String SQL_INSERT_USERBLOG
             = "insert into user_blog "
-            + "(user_blog_name, user_blog_password, user_blog_first_name, user_blog_last_name"
+            + "(user_blog_name, user_blog_password, user_blog_first_name, user_blog_last_name) "
             + "values (?, ?, ?, ?)";
     private static final String SQL_SELECT_USERBLOG_BY_ID
             = "select * from user_blog where user_blog_id = ?";

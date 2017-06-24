@@ -19,7 +19,7 @@ public class CategoryDaoDbImpl implements CategoryDao {
 
     private static final String SQL_INSERT_CATEGORY
             = "insert into category "
-            + "(category_name "
+            + "(category_name) "
             + "values (?)";
     private static final String SQL_SELECT_CATEGORY
             = "select * from category where category_id = ?";
