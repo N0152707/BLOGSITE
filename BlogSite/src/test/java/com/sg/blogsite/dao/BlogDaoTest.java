@@ -7,7 +7,6 @@ package com.sg.blogsite.dao;
 
 import com.sg.blogsite.model.Blog;
 import java.time.LocalDate;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -94,27 +93,26 @@ public class BlogDaoTest {
     /**
      * Test of getLastFiveBlogs method, of class BlogDao.
      */
-    @Test
-    public void testGetLastFiveBlogs() {
-        Blog newBlog4 = new Blog();
-        newBlog4.setBlogPublished("2017-03-01");
-        newBlog4.setBlogDatePublished(LocalDate.now());
-        newBlog4.setBlogTitle("Test4CreateBlog");
-        newBlog4.setBlogArticle("blog text added for number 4");
-        newBlog4.setBlogDeleted("No");
-        blogdao.createBlog(newBlog4);
-        Blog newBlog5 = new Blog();
-        newBlog5.setBlogPublished("2017-05-01");
-        newBlog5.setBlogDatePublished(LocalDate.now());
-        newBlog5.setBlogTitle("Test5CreateBlog");
-        newBlog5.setBlogArticle("blog text added for number 5");
-        newBlog5.setBlogDeleted("No");
-        blogdao.createBlog(newBlog5);
-        List<Blog> blogList = blogdao.getLastFiveBlogs();
-        assertEquals(blogList.size(), 5);
-
-    }
-
+//    @Test
+//    public void testGetLastFiveBlogs() {
+//        Blog newBlog4 = new Blog();
+//        newBlog4.setBlogPublished("2017-03-01");
+//        newBlog4.setBlogDatePublished(LocalDate.now());
+//        newBlog4.setBlogTitle("Test4CreateBlog");
+//        newBlog4.setBlogArticle("blog text added for number 4");
+//        newBlog4.setBlogDeleted("No");
+//        blogdao.createBlog(newBlog4);
+//        Blog newBlog5 = new Blog();
+//        newBlog5.setBlogPublished("2017-05-01");
+//        newBlog5.setBlogDatePublished(LocalDate.now());
+//        newBlog5.setBlogTitle("Test5CreateBlog");
+//        newBlog5.setBlogArticle("blog text added for number 5");
+//        newBlog5.setBlogDeleted("No");
+//        blogdao.createBlog(newBlog5);
+//        List<Blog> blogList = blogdao.getLastFiveBlogs();
+//        assertEquals(blogList.size(), 5);
+//
+//    }
     /**
      * Test of getAllBlogsByCategory method, of class BlogDao.
      */
