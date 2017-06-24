@@ -6,6 +6,7 @@
 package com.sg.blogsite.dao;
 
 import com.sg.blogsite.model.Tag;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -57,6 +58,7 @@ public class TagDaoTest {
         tagdao.createTag(newTag1);
         Tag fromDb = tagdao.readTag(newTag1.getTagId());
         Assert.assertEquals(fromDb, newTag1);
+        tagdao.deleteTag(newTag1.getTagId());
     }
 
     /**
@@ -71,11 +73,31 @@ public class TagDaoTest {
         assertEquals(fromDb, newTag2);
         tagdao.deleteTag(newTag2.getTagId());
         assertNull(tagdao.readTag(newTag2.getTagId()));
+       
+      
     }
 
     /**
      * Test of readTag method, of class TagDao.
      */
+    @Test
+    public void testGetAllTags() {
+        Tag newTag3 = new Tag();
+        newTag3.setTagName("#TagFirstInList");
+        tagdao.createTag(newTag3);
+        Tag newTag4 = new Tag();
+        newTag4.setTagName("#TagSecondInList");
+        tagdao.createTag(newTag4);
+        Tag newTag5 = new Tag();
+        newTag5.setTagName("#TagThirdInList");
+        tagdao.createTag(newTag5);
+        List<Tag> tagList = tagdao.getAllTags();
+        assertEquals(tagList.size(), 3);
+        tagdao.deleteTag(newTag3.getTagId());
+        tagdao.deleteTag(newTag4.getTagId());
+        tagdao.deleteTag(newTag5.getTagId());
+    }
+
     @Test
     public void testReadTag() {
         Tag newTag6 = new Tag();
@@ -86,23 +108,8 @@ public class TagDaoTest {
         tagdao.createTag(newTag7);
         Tag fromDb = tagdao.readTag(newTag6.getTagId());
         Assert.assertEquals(fromDb, newTag6);
+        tagdao.deleteTag(newTag7.getTagId());
+        tagdao.deleteTag(newTag6.getTagId());
     }
 
-    /**
-     * Test of getAllTags method, of class TagDao.
-/
-     *
-     *
-     * @Test public void testGetAllTags() { Tag newTag3 = new Tag();
-     * newTag3.setTagName("#TagFirstInList"); tagdao.createTag(newTag3); Tag
-     * newTag4 = new Tag(); newTag4.setTagName("#TagSecondInList");
-     * tagdao.createTag(newTag4); Tag newTag5 = new Tag();
-     * newTag5.setTagName("#TagThirdInList"); tagdao.createTag(newTag5);
-     * List<Tag> tagList = tagdao.getAllTags(); assertEquals(tagList.size(), 3);
-     *
-     * }
-     */
-    /**
-     * Test of getAllTagsInABlog method, of class TagDao.
-     */
 }

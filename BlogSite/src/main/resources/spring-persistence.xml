@@ -75,17 +75,17 @@
 
     <bean id="roleServiceLayer" 
        class="com.sg.blogsite.service.RoleServiceLayerImpl">
-        <constructor-arg ref="blogDao"/>
+        <constructor-arg ref="roleDao"/>
     </bean>
 
-    <bean id="blogServiceLayer" 
-       class="com.sg.blogsite.service.BlogServiceLayerImpl">
-        <constructor-arg ref="blogDao"/>
+    <bean id="tagServiceLayer" 
+       class="com.sg.blogsite.service.TagServiceLayerImpl">
+        <constructor-arg ref="tagDao"/>
     </bean>
 
-    <bean id="blogServiceLayer" 
-       class="com.sg.blogsite.service.BlogServiceLayerImpl">
-        <constructor-arg ref="blogDao"/>
+    <bean id="userBlogServiceLayer" 
+       class="com.sg.blogsite.service.UserBlogServiceLayerImpl">
+        <constructor-arg ref="userBlogDao"/>
     </bean>
 
     
