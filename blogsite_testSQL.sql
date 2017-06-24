@@ -28,16 +28,7 @@ CREATE TABLE IF NOT EXISTS blogsite_test.blog (
   blog_title VARCHAR(45) NOT NULL,
   blog_article VARCHAR(45) NOT NULL,
   blog_deleted VARCHAR(45) NOT NULL,
-  category_category_id INT NOT NULL,
-  user_blog_user_blog_id INT NOT NULL,
-  PRIMARY KEY (blog_id),
-  CONSTRAINT fk_blog_category1
-    FOREIGN KEY (category_category_id)
-    REFERENCES blogsite_test.category (category_id),
-  CONSTRAINT fk_blog_user_blog1
-    FOREIGN KEY (user_blog_user_blog_id)
-    REFERENCES blogsite_test.user_blog (user_blog_id)
-);
+  PRIMARY KEY (blog_id));
 
 CREATE TABLE IF NOT EXISTS blogsite_test.role (
   role_id INT NOT NULL,
@@ -93,10 +84,3 @@ INSERT INTO `blogsite_test`.`role`
 `role_name`)
 VALUES
 (2,"write");
-
-
-INSERT INTO `blogsite_test`.`role`
-(`role_id`,
-`role_name`)
-VALUES
-(3,"read");
