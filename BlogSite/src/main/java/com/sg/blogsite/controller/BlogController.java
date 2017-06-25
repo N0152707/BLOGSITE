@@ -50,7 +50,7 @@ public class BlogController {
         // object
         Blog blog = new Blog();
         blog.setBlogPublished("N");
-        blog.setBlogDatePublished(LocalDate.now());  //don't know how to parse a date from a string here
+        blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
         blog.setBlogTitle("blogTitle");
         blog.setBlogArticle("blogArticle");
         blog.setBlogDeleted("N");

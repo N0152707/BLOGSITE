@@ -63,6 +63,11 @@
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
+    <bean id="blogHasTagDao"
+          class="com.sg.blogsite.dao.BlogHasTagDaoDbImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
     <bean id="blogServiceLayer" 
        class="com.sg.blogsite.service.BlogServiceLayerImpl">
         <constructor-arg ref="blogDao"/>

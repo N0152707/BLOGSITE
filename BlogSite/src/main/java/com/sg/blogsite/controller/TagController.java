@@ -31,9 +31,11 @@ public class TagController {
 
     @RequestMapping(value = "/addTag", method = RequestMethod.POST)
     public String addTag(HttpServletRequest request) {
+        String blogIdParameter = request.getParameter("blogId");
+        int blogId = Integer.parseInt(blogIdParameter);
         Tag tag = new Tag();
         tag.setTagName("tagName");
-        service.createTag(tag);
+        service.createTag(tag, blogId);
         tag.setTagId(tag.getTagId());
         return "tag";
     }

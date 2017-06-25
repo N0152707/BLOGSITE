@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface TagServiceLayer {
 
-    public Tag createTag(Tag tag);
+    public Tag createTag(Tag tag, int blogId);
 
     public void deleteTag(int tagId);
 
