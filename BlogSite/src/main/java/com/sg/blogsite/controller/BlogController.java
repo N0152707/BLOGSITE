@@ -31,8 +31,8 @@ public class BlogController {
         this.catService = catService;
     }
 
-    @RequestMapping(value = {"/BlogSite", "/"}, method = RequestMethod.GET)
-    public String displayHome(Model model) {
+    @RequestMapping(value = "/displayBlogPosts", method = RequestMethod.GET)
+    public String displayBlogPosts(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
         // Return the logical name of our View component
