@@ -43,23 +43,34 @@
                     </li>  
                 </ul>
             </div>
-            <p>
-                This is the landing page for our BlogSite. One team, one dream.
-            </p>
             <br/>
             <h3>Insert Category Name</h3>
-            <h5>This is most difficult to do without content than I thought</h5>
-            <div class="col-md-9" id="blogContentByCategory">
-                <table class="col-md-11"
-                       <c:forEach var="currentItem" items="${postsByCategory}">
-                           <tr>
-                               <td width="65%"><c:out value="$currentItem.title"/></td>
-                               <td width="35%"><c:out value="$currentItem.date"/></td></tr>
-                           <br/>
-                           <tr width="100%"><c:out value="$currentItem.content"/></tr>
-                           <tr width="100%"><c:out value="$currentItem.author"/></tr>
-                       </c:forEach>
+            <br/>
+            <div class="col-md-10" id="displayBlogPosts">
+                <table id="blogList" class="table table-hover">
+                    <tr>
+                        <th width="65%">Post Title</th>
+                        <th width="35%">Date</th>
+                    </tr>
+                    <c:forEach var="currentItem" items="${blogList}">
+                        <tr>
+                            <td>hi<c:out value="$currentItem.blogTitle"/></td>
+                            <td><c:out value="$currentItem.blogDatePublished"/></td>
+                        </tr>
+                    </c:forEach>
                 </table>
+            </div>
+            <div class="col-md-2">
+                <div class="col-md-11">
+                    <c:forEach var="currentItem" items="${categoryList}">
+                        <button type ="button"
+                                class="col-md-11 btn btn-default"
+                                style="margin: 10px"
+                                id="${currentItem.categoryId}">
+                            <c:out value="${currentItem.categoryName}"/>
+                        </button>
+                    </c:forEach>
+                </div>
             </div>
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>

@@ -8,10 +8,6 @@ package com.sg.blogsite.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- *
- * @author apprentice
- */
 public class Blog {
 
     Integer blogId;
