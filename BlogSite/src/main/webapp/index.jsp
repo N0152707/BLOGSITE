@@ -36,7 +36,7 @@
             <br/>
             <h3>Insert Category Name</h3>
             <br/>
-            <div class="col-md-10" id="displayBlogPosts">
+            <div class="col-md-10" id="displayBlogPosts" action="/BlogSite" method="GET">
                 <table id="blogList" class="table table-hover">
                     <tr>
                         <th width="65%">Post Title</th>
