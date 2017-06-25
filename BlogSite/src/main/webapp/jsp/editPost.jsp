@@ -1,3 +1,8 @@
+<%-- 
+    Document   : editPost
+    Created on : Jun 24, 2017, 3:43:02 PM
+    Author     : apprentice
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -5,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <title>MyStreamOfConsciousnessBlog</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
@@ -16,8 +21,8 @@
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/index.jsp">
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/home.jsp">
                             Home
                         </a>
                     </li>
@@ -31,25 +36,38 @@
                             About Us
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/editPost.jsp">
                             Edit Post
                         </a>
                     </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/editPage.jsp">
-                            Edit Page
-                        </a>
-                    </li>  
                 </ul>
             </div>
-            <p>
-                This is the landing page for our BlogSite. One team, one dream.
-            </p>
-            <br/>
-            <h3>Insert Category Name</h3>
-            <h5>This is most difficult to do without content than I thought</h5>
-            <div class="col-md-9" id="blogContentByCategory">
+            <h2>Edit Post</h2>
+            <h5>Edit you post in the window below</h5>
+            <div class="col-md-9">
+        <form class="form-horizontal" 
+              role="form" method="GET" 
+              action="editBlog">
+            <div class="form-group">
+                <label for="display-blog-title" class="col-md-9 control-label">Blog Title:</label>
+                <div class="col-md-9">
+                    
+                    <select id="blogTitle" class="form-control" name="blogTitle" placeholder="Blog Title"> 
+                        <c:forEach var="currentBlog" items="${blogList}">
+                            <option label="${currentBlog.BlogTitle}" value="<c:out value="${currentBlog.blogId}"/>
+                      
+                        </c:forEach>
+                    </select>   
+                </div>
+            </div>
+            </div>
+
+            
+            
+            
+            
+            <div class="col-md-9" id="blogContent">
                 <table class="col-md-11"
                        <c:forEach var="currentItem" items="${postsByCategory}">
                            <tr>

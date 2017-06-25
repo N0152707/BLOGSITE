@@ -19,17 +19,16 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
             = "insert into user_blog "
             + "(user_blog_name, user_blog_password, user_blog_first_name, user_blog_last_name) "
             + "values (?, ?, ?, ?)";
+    private static final String SQL_SELECT_USERBLOG
+            = "select * from user_blog where user_blog_id = ?";
     private static final String SQL_SELECT_USERBLOG_BY_ID
             = "select * from user_blog where user_blog_id = ?";
     private static final String SQL_SELECT_ALL_USERBLOGS
             = "select * from user_blog";
     private static final String SQL_DELETE_USERBLOG
-            = "SET SQL_SAFE_UPDATES=0; delete from user_blog where user_blog_id = ?";
+            = " DELETE FROM user_blog WHERE user_blog_id = ?";
     private static final String SQL_UPDATE_USERBLOG
-            = "update user_blog set "
-            + "user_blog_name = ?, user_blog_password = ?, user_blog_first_name =?, "
-            + "user_blog_last_name = ?"
-            + "where user_blog_id = ?";
+            = "UPDATE user_blog SET user_blog_name = ?, user_blog_password = ?, user_blog_first_name = ?, user_blog_last_name = ? WHERE user_blog_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -58,11 +57,11 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
     @Override
     public void updateUserBlog(UserBlog userBlog) {
         jdbcTemplate.update(SQL_UPDATE_USERBLOG,
-                userBlog.getUserBlogId(),
                 userBlog.getUserBlogName(),
                 userBlog.getUserBlogPassword(),
                 userBlog.getUserBlogFirstName(),
-                userBlog.getUserBlogLastName());
+                userBlog.getUserBlogLastName(),
+                userBlog.getUserBlogId());
     }
 
     @Override
@@ -81,6 +80,16 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
         }
     }
 
+    @Override
+    public UserBlog readUserBlog(int userBlogId) {
+        try {
+            return jdbcTemplate.queryForObject(SQL_SELECT_USERBLOG,
+                    new UserBlogMapper(), userBlogId);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+
     private static final class UserBlogMapper implements RowMapper<UserBlog> {
 
         public UserBlog mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -88,8 +97,8 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
             userBlog.setUserBlogId(rs.getInt("user_blog_id"));
             userBlog.setUserBlogName(rs.getString("user_blog_name"));
             userBlog.setUserBlogPassword(rs.getString("user_blog_password"));
-            userBlog.setUserBlogName(rs.getString("user_blog_first_name"));
-            userBlog.setUserBlogPassword(rs.getString("user_blog_last_name"));
+            userBlog.setUserBlogFirstName(rs.getString("user_blog_first_name"));
+            userBlog.setUserBlogLastName(rs.getString("user_blog_last_name"));
             return userBlog;
         }
     }
