@@ -16,6 +16,8 @@ public interface UserBlogDao {
 
     public void updateUserBlog(UserBlog userBlog);
 
+    public UserBlog readUserBlog(int userBlogId);
+
     public List<UserBlog> getAllUserBlogs();
 
     public UserBlog getUserBlogById(int userBlogId);
