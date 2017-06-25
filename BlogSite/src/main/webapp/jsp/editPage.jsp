@@ -1,3 +1,8 @@
+<%-- 
+    Document   : editPage
+    Created on : Jun 24, 2017, 7:48:19 PM
+    Author     : apprentice
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -5,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <title>MyStreamOfConsciousnessBlog</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
@@ -16,8 +21,8 @@
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/index.jsp">
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/home.jsp">
                             Home
                         </a>
                     </li>
@@ -36,41 +41,41 @@
                             Edit Post
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/editPage.jsp">
                             Edit Page
                         </a>
-                    </li>  
+                    </li>        
                 </ul>
             </div>
-            <br/>
-            <h3>Insert Category Name</h3>
-            <br/>
-            <div class="col-md-10" id="displayBlogPosts" action="/BlogSite" method="GET">
-                <table id="blogList" class="table table-hover">
-                    <tr>
-                        <th width="65%">Post Title</th>
-                        <th width="35%">Date</th>
-                    </tr>
-                    <c:forEach var="currentItem" items="${blogList}">
-                        <tr>
-                            <td>hi<c:out value="$currentItem.blogTitle"/></td>
-                            <td><c:out value="$currentItem.blogDatePublished"/></td>
-                        </tr>
-                    </c:forEach>
+            <div class="row">
+    <!-- 
+        Add a col to hold the summary table - have it take up half the row 
+    -->
+    <div class="col-md-6">
+        <h2>Edit Post</h2>
+        <h5>Edit you post in the window below</h5>
+        <table id="contactTable" class="table table-hover">
+            <tr>
+                <th width="20%">Date</th>
+                <th width="40%">Title</th>
+                <th width="20%">Published</th>
+                <th width="20%">Deleted</th>
+            </tr>
+        </table>                    
+    </div> <!-- End col div -->
+
+            
+                       
+                       <c:forEach var="currentItem" items="${postsByCategory}">
+                           <tr>
+                               <td width="65%"><c:out value="$currentItem.title"/></td>
+                               <td width="35%"><c:out value="$currentItem.date"/></td></tr>
+                           <br/>
+                           <tr width="100%"><c:out value="$currentItem.content"/></tr>
+                           <tr width="100%"><c:out value="$currentItem.author"/></tr>
+                       </c:forEach>
                 </table>
-            </div>
-            <div class="col-md-2">
-                <div class="col-md-11">
-                    <c:forEach var="currentItem" items="${categoryList}">
-                        <button type ="button"
-                                class="col-md-11 btn btn-default"
-                                style="margin: 10px"
-                                id="${currentItem.categoryId}">
-                            <c:out value="${currentItem.categoryName}"/>
-                        </button>
-                    </c:forEach>
-                </div>
             </div>
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>

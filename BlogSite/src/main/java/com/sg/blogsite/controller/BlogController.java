@@ -32,6 +32,39 @@ public class BlogController {
     public String displayHome(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
+<<<<<<< HEAD
+        // Return the logical name of our View component
+        return "blogSite";
+    }
+
+    //i don't think we need a addBlogForm in here, that is initially just displayed as an empty page to be filled in
+    @RequestMapping(value = "/addBlog", method = RequestMethod.POST)
+    public String addBlog(HttpServletRequest request) {
+        // grab the incoming values from the form and create a newblog
+        // object
+        Blog blog = new Blog();
+        blog.setBlogPublished("N");
+        blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
+        blog.setBlogTitle("blogTitle");
+        blog.setBlogArticle("blogArticle");
+        blog.setBlogDeleted("N");
+
+        // persist the new Contact
+        service.createBlog(blog);
+
+        // we don't want to forward to a View component - we want to
+        // redirect to the endpoint that displays the Contacts Page
+        // so it can display the new Contact in the table.
+        return "redirect:displayBlogsPage";
+    }
+
+    @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
+    public String displayEditBlogForm(HttpServletRequest request, Model model) {
+        String blogIdParameter = request.getParameter("blogId");
+        int blogId = Integer.parseInt(blogIdParameter);
+        Blog blog = service.readBlog(blogId);
+=======
+>>>>>>> 15641ef0a4dd43963d629489d1171309a0c6498d
         model.addAttribute("blog", blog);
         return "index";
     }

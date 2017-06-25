@@ -63,8 +63,18 @@
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
+<<<<<<< HEAD
+    <bean id="blogHasTagDao"
+          class="com.sg.blogsite.dao.BlogHasTagDaoDbImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="blogServiceLayer" 
+       class="com.sg.blogsite.service.BlogServiceLayerImpl">
+=======
     <bean id="blogServiceLayer"
           class="com.sg.blogsite.service.BlogServiceLayerImpl">
+>>>>>>> 15641ef0a4dd43963d629489d1171309a0c6498d
         <constructor-arg ref="blogDao"/>
     </bean>
 
