@@ -8,10 +8,6 @@ package com.sg.blogsite.service;
 import com.sg.blogsite.model.Blog;
 import java.util.List;
 
-/**
- *
- * @author apprentice
- */
 public interface BlogServiceLayer {
 
     public Blog createBlog(Blog blog);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sg.blogsite.controller;
 
 import com.sg.blogsite.model.Category;
@@ -18,10 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- *
- * @author apprentice
- */
 @Controller
 public class CategoryController {
 
@@ -34,12 +25,8 @@ public class CategoryController {
 
     @RequestMapping(value = "/displayCategoriesPage", method = RequestMethod.GET)
     public String displayCategoriesPage(Model model) {
-        // Get all the categories
         List<Category> categoryList = service.getAllCategories();
-
         model.addAttribute("categoryList", categoryList);
-
-        // Return the logical name of our View component
         return "category";
     }
 
@@ -48,13 +35,7 @@ public class CategoryController {
         // grab the incoming values from the form and create a new object
         Category category = new Category();
         category.setCategoryName("categoryName");
-
-        // persist the new Contact
         service.createCategory(category);
-
-        // we don't want to forward to a View component - we want to
-        // redirect to the endpoint that displays the Contacts Page
-        // so it can display the new Contact in the table.
         return "redirect:displayCategoriesPage";
     }
 
@@ -70,13 +51,10 @@ public class CategoryController {
     @RequestMapping(value = "/editCategory", method = RequestMethod.POST)
     public String editCategory(@Valid @ModelAttribute("category") Category category,
             BindingResult result) {
-
         if (result.hasErrors()) {
             return "editCategoryForm";
         }
-
         service.updateCategory(category);
-
         return "redirect:displayCategoriesPage";
     }
 
