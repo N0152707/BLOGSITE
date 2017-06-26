@@ -4,7 +4,6 @@ import com.sg.blogsite.model.Blog;
 import com.sg.blogsite.model.Category;
 import com.sg.blogsite.service.BlogServiceLayer;
 import com.sg.blogsite.service.CategoryServiceLayer;
-import java.time.LocalDate;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -34,18 +33,6 @@ public class BlogController {
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("categorySelected", categorySelected);
         return "index";
-    }
-
-    @RequestMapping(value = "/addBlog", method = RequestMethod.POST)
-    public String addBlog(HttpServletRequest request) {
-        Blog blog = new Blog();
-        blog.setBlogPublished("N");
-        blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
-        blog.setBlogTitle("blogTitle");
-        blog.setBlogArticle("blogArticle");
-        blog.setBlogDeleted("N");
-        service.createBlog(blog);
-        return "redirect:displayBlogsPage";
     }
 
     @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
