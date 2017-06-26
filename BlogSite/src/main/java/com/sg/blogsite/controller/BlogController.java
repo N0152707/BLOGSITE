@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sg.blogsite.controller;
 
 import com.sg.blogsite.model.Blog;
@@ -60,7 +55,7 @@ public class BlogController {
         Blog blog = service.readBlog(blogId);
 
         model.addAttribute("blog", blog);
-        return "index";
+        return "editPost";
     }
 
     @RequestMapping(value = "setCategory", method = RequestMethod.GET)
@@ -74,9 +69,16 @@ public class BlogController {
         int categoryId = Integer.parseInt(categoryIdParameter);
         Category category = catService.readCategory(categoryId);
         categorySelected = category.getCategoryName();
-//        List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
-//        model.addAttribute("blogList", blogList);
+        List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
+        model.addAttribute("blogList", blogList);
         return "index";
+    }
+
+    @RequestMapping(value = "getAllCategories", method = RequestMethod.GET)
+    public List<Category> getAllCategories(Model model) {
+        List<Category> categoryList = catService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+        return categoryList;
     }
 
 }
