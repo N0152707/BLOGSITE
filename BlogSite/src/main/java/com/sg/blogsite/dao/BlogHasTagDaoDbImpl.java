@@ -26,7 +26,7 @@ public class BlogHasTagDaoDbImpl implements BlogHasTagDao {
     private static final String SQL_SELECT_ALL_BLOGHASTAGS_IN_BLOG
             = "select blog_has_tag.blog_blog_id, blog_has_tag.tag_tag_id from blog_has_tag where bog_has_tag=blog_has_tag.blog_blog_id = ?";
     private static final String SQL_DELETE_BLOGHASTAG
-            = " DELETE FROM blog_has_tag WHERE blog_blog_id=? and tag_tag_id = ?";
+            = "DELETE FROM blog_has_tag WHERE blog_blog_id=? and tag_tag_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 

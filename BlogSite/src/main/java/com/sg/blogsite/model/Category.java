@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author apprentice
  */
 public class Category {
-    
+
     Integer categoryId;
     String categoryName;
 
@@ -60,7 +60,5 @@ public class Category {
         }
         return true;
     }
-    
-    
-    
+
 }

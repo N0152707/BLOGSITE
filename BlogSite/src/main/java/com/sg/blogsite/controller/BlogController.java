@@ -23,7 +23,7 @@ public class BlogController {
 
     private BlogServiceLayer service;
     private CategoryServiceLayer catService;
-//    Blog blog;
+    String categorySelected = "Most Recent Posts";
 
     @Inject
     public BlogController(BlogServiceLayer service, CategoryServiceLayer catService) {
@@ -32,19 +32,13 @@ public class BlogController {
     }
 
     @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
-    public String displayFrontPage(Model model) {
+    public String displayHomePage(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
-        // Return the logical name of our View component
+        List<Category> categoryList = catService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("categorySelected", categorySelected);
         return "index";
-    }
-
-    @RequestMapping(value = "/displayBlogPosts", method = RequestMethod.GET)
-    public String displayBlogPosts(Model model) {
-        List<Blog> blogList = service.getLastFiveBlogs();
-        model.addAttribute("blogList", blogList);
-        // Return the logical name of our View component
-        return "blog";
     }
 
     @RequestMapping(value = "/addBlog", method = RequestMethod.POST)
@@ -69,18 +63,20 @@ public class BlogController {
         return "index";
     }
 
-    public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
-        String categoryIdParameter = request.getParameter("categoryId");
-        int categoryId = Integer.parseInt(categoryIdParameter);
-        List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
-        model.addAttribute("blogList", blogList);
-        return "blog";
+    @RequestMapping(value = "setCategory", method = RequestMethod.GET)
+    public void setCategory(HttpServletRequest request, Model model) {
+
     }
 
-    @RequestMapping(value = "getAllCategories", method = RequestMethod.GET)
-    public List<Category> getAllCategories(Model model) {
-        List<Category> categoryList = catService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-        return categoryList;
+    @RequestMapping(value = "getAllBlogsByCategory", method = RequestMethod.GET)
+    public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
+        String categoryIdParameter = request.getParameter("selectedCat");
+        int categoryId = Integer.parseInt(categoryIdParameter);
+        Category category = catService.readCategory(categoryId);
+        categorySelected = category.getCategoryName();
+//        List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
+//        model.addAttribute("blogList", blogList);
+        return "index";
     }
+
 }
