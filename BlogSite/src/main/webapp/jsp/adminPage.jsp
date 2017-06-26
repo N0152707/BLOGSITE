@@ -1,3 +1,8 @@
+<%-- 
+    Document   : adminPage
+    Created on : Jun 26, 2017, 9:52:35 AM
+    Author     : apprentice
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -5,19 +10,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <title>MyStreamOfConsciousnessBlog</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        
+        <div class="container">
             <h1>MyStreamOfConsciousnessBlog</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/index.jsp">
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/home.jsp">
                             Home
                         </a>
                     </li>
@@ -36,58 +41,72 @@
                             Edit Post
                         </a>
                     </li>
+                    <li role="presentation" >
+                        <a href="${pageContext.request.contextPath}/editPage.jsp">
+                            Edit Page
+                        </a>
+                    </li>    
+                    <li role="presentation" class="active">
+                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                            Edit Page
+                        </a>
+                    </li> 
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/editPost.jsp">
+                            Edit Post
+                        </a>
+                    </li>
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/editPage.jsp">
                             Edit Page
                         </a>
-                    </li>  
+                    </li> 
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/adminPage.jsp">
-                            Admin Page
+                            Edit Page
                         </a>
                     </li> 
                 </ul>
             </div>
-            <br/>
-            <h3>Insert Category Name</h3>
-            <br/>
-            <div class="col-md-10"> 
-                <table id="blogTable" class="table table-hover">
-                    <tr>
-                        <th width="65%">Post Title</th>
-                        <th width="35%">Date</th>
-                    </tr>
-                    <c:forEach var="currentItem1" items="${blogList}">
-                        <tr>
-                            <td><c:out value="${currentItem1.blogTitle}"/></td>
-                            <td><c:out value="${currentItem1.blogDatePublished}"/></td>
-                        </tr>
-                        <tr>
-                            <td><c:out value="${currentItem1.blogArticle}"/></td>
-                        </tr>
-                   </c:forEach>
-                </table>
-            </div>
-            <div class="col-md-2">
-                <h3>Categories</h3>
-                <div class="col-md-11">
-                    <c:forEach var="currentItem2" items="${categoryList}">
-                        <button type ="button"
-                                class="col-md-11 btn btn-default"
-                                style="margin: 10px"
-                                id="${currentItem2.categoryId}">
-                            <c:url value="/displayCategoriesPage" var="myUrl"> 
-                                <a href="displayCategoriesPage?categoryId=${currentCategory.categoryId}"> 
-                                <c:out value="${currentItem2.categoryName}"/>
-                                </a>
-                            </c:url>
-                        </button>
-                    </c:forEach>
-                </div>
+            <div class="row">
+    <!-- 
+        Add a col to hold the summary table - have it take up half the row 
+    -->
+    <div class="col-md-6">
+        <h2>Admin Page</h2>
+        <table id="adminTable" class="table table-hover">
+            <tr>
+                <th width="20%">Date</th>
+                <th width="40%">Title</th>
+                <th width="20%">Published</th>
+                <th width="20%">Deleted</th>
+            </tr>
+            <c:forEach var="currentBlog" items="${blogList}">
+            <tr>
+                <td>
+                    <c:out value="${currentBlog.blogDatePublished}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogTitle}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogPublished}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogDeleted}"/>
+                </td>
+                
+            </tr>
+        </table>                    
+    </div> <!-- End col div -->
+
+            
+                       
+                       
             </div>
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-        
+
     </body>
 </html>

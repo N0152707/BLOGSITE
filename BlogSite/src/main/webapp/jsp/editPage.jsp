@@ -45,7 +45,12 @@
                         <a href="${pageContext.request.contextPath}/editPage.jsp">
                             Edit Page
                         </a>
-                    </li>        
+                    </li> 
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                            Admin Page
+                        </a>
+                    </li> 
                 </ul>
             </div>
             <div class="row">
@@ -55,27 +60,35 @@
     <div class="col-md-6">
         <h2>Edit Post</h2>
         <h5>Edit you post in the window below</h5>
-        <table id="contactTable" class="table table-hover">
+        <table id="editTable" class="table table-hover">
             <tr>
                 <th width="20%">Date</th>
                 <th width="40%">Title</th>
                 <th width="20%">Published</th>
                 <th width="20%">Deleted</th>
             </tr>
+            <c:forEach var="currentBlog" items="${blogList}">
+            <tr>
+                <td>
+                    <c:out value="${currentBlog.blogDatePublished}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogTitle}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogPublished}"/>
+                </td>
+                <td>
+                    <c:out value="${currentBlog.blogDeleted}"/>
+                </td>
+                
+            </tr>
         </table>                    
     </div> <!-- End col div -->
 
             
                        
-                       <c:forEach var="currentItem" items="${postsByCategory}">
-                           <tr>
-                               <td width="65%"><c:out value="$currentItem.title"/></td>
-                               <td width="35%"><c:out value="$currentItem.date"/></td></tr>
-                           <br/>
-                           <tr width="100%"><c:out value="$currentItem.content"/></tr>
-                           <tr width="100%"><c:out value="$currentItem.author"/></tr>
-                       </c:forEach>
-                </table>
+                       
             </div>
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>

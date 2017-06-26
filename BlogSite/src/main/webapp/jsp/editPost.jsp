@@ -41,6 +41,11 @@
                             Edit Post
                         </a>
                     </li>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                            Admin Page
+                        </a>
+                    </li> 
                 </ul>
             </div>
             <h2>Edit Post</h2>
@@ -55,7 +60,7 @@
                     
                     <select id="blogTitle" class="form-control" name="blogTitle" placeholder="Blog Title"> 
                         <c:forEach var="currentBlog" items="${blogList}">
-                            <option label="${currentBlog.BlogTitle}" value="<c:out value="${currentBlog.blogId}"/>
+                            <option label="${currentBlog.blogTitle}" value="<c:out value="${currentBlog.blogId}"/>
                       
                         </c:forEach>
                     </select>   
