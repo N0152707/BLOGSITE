@@ -29,15 +29,15 @@ public class CategoryController {
         model.addAttribute("categoryList", categoryList);
         return "category";
     }
-
-    @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
-    public String addCategory(HttpServletRequest request) {
-        // grab the incoming values from the form and create a new object
-        Category category = new Category();
-        category.setCategoryName("categoryName");
-        service.createCategory(category);
-        return "redirect:displayCategoriesPage";
-    }
+//
+//    @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
+//    public String addCategory(HttpServletRequest request) {
+//        // grab the incoming values from the form and create a new object
+//        Category category = new Category();
+//        category.setCategoryName("categoryName");
+//        service.createCategory(category);
+//        return "redirect:displayCategoriesPage";
+//    }
 
     @RequestMapping(value = "/editCategoryForm", method = RequestMethod.GET)
     public String displayEditCategoryForm(HttpServletRequest request, Model model) {

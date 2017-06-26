@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/author-admin.jsp">
+                    <a href="${pageContext.request.contextPath}/displayAddPost">
                         Add Post
                     </a>
                 </li>

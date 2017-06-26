@@ -9,9 +9,12 @@ import com.sg.blogsite.service.TagServiceLayer;
 import java.time.LocalDate;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Controller
 public class AddPostController {
 
     private BlogServiceLayer blogService;
@@ -19,13 +22,17 @@ public class AddPostController {
     private TagServiceLayer tagService;
 
     @Inject
-    public AddPostController(BlogServiceLayer blogService, CategoryServiceLayer catService) {
+    public AddPostController(BlogServiceLayer blogService, CategoryServiceLayer catService, TagServiceLayer tagService) {
         this.blogService = blogService;
         this.catService = catService;
         this.tagService = tagService;
     }
 
-    @RequestMapping(value = "/addBlog", method = RequestMethod.POST)
+    @RequestMapping(value = "/displayAddPost", method = RequestMethod.GET)
+    public String displayAddPost(Model model) {
+        return "addPost";
+    }
+
     public String addBlog(HttpServletRequest request) {
         Blog blog = new Blog();
         blog.setBlogPublished("N");
@@ -37,7 +44,6 @@ public class AddPostController {
         return "redirect:index";
     }
 
-    @RequestMapping(value = "/addTag", method = RequestMethod.POST)
     public String addTag(HttpServletRequest request) {
         String blogIdParameter = request.getParameter("blogId");
         int blogId = Integer.parseInt(blogIdParameter);
@@ -48,7 +54,6 @@ public class AddPostController {
         return "tag";
     }
 
-    @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public String addCategory(HttpServletRequest request) {
         // grab the incoming values from the form and create a new object
         Category category = new Category();

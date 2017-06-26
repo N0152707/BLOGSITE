@@ -29,17 +29,16 @@ public class TagController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/addTag", method = RequestMethod.POST)
-    public String addTag(HttpServletRequest request) {
-        String blogIdParameter = request.getParameter("blogId");
-        int blogId = Integer.parseInt(blogIdParameter);
-        Tag tag = new Tag();
-        tag.setTagName("tagName");
-        service.createTag(tag, blogId);
-        tag.setTagId(tag.getTagId());
-        return "tag";
-    }
-
+//    @RequestMapping(value = "/addTag", method = RequestMethod.POST)
+//    public String addTag(HttpServletRequest request) {
+//        String blogIdParameter = request.getParameter("blogId");
+//        int blogId = Integer.parseInt(blogIdParameter);
+//        Tag tag = new Tag();
+//        tag.setTagName("tagName");
+//        service.createTag(tag, blogId);
+//        tag.setTagId(tag.getTagId());
+//        return "tag";
+//    }
     @RequestMapping(value = "/deleteTag", method = RequestMethod.GET)
     public String deleteTag(HttpServletRequest request) {
         String tagIdParameter = request.getParameter("tagId");
