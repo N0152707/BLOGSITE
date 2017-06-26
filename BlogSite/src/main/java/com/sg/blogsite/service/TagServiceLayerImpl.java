@@ -19,8 +19,9 @@ public class TagServiceLayerImpl implements TagServiceLayer {
     TagDao tagdao;
     BlogHasTagDao bhtdao;
 
-    public TagServiceLayerImpl(TagDao dao) {
+    public TagServiceLayerImpl(TagDao dao, BlogHasTagDao bhtdao) {
         this.tagdao = dao;
+        this.bhtdao = bhtdao;
     }
 
     @Override
@@ -48,8 +49,8 @@ public class TagServiceLayerImpl implements TagServiceLayer {
     }
 
     @Override
-    public List<Tag> getAllTagsInABlog(int tagId) {
-        return tagdao.getAllTagsInABlog(tagId);
+    public List<Tag> getAllTagsInABlog(int blogId) {
+        return tagdao.getAllTagsInABlog(blogId);
     }
 
 }

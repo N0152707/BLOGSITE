@@ -2,7 +2,6 @@ package com.sg.blogsite.controller;
 
 import com.sg.blogsite.model.Category;
 import com.sg.blogsite.service.CategoryServiceLayer;
-import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -23,20 +22,13 @@ public class CategoryController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/displayCategoriesPage", method = RequestMethod.GET)
-    public String displayCategoriesPage(Model model) {
-        List<Category> categoryList = service.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-        return "category";
-    }
-
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public String addCategory(HttpServletRequest request) {
         // grab the incoming values from the form and create a new object
         Category category = new Category();
         category.setCategoryName("categoryName");
         service.createCategory(category);
-        return "redirect:displayCategoriesPage";
+        return "category";
     }
 
     @RequestMapping(value = "/editCategoryForm", method = RequestMethod.GET)
@@ -55,7 +47,7 @@ public class CategoryController {
             return "editCategoryForm";
         }
         service.updateCategory(category);
-        return "redirect:displayCategoriesPage";
+        return "category";
     }
 
     @RequestMapping(value = "/deleteCategory", method = RequestMethod.GET)
@@ -63,7 +55,7 @@ public class CategoryController {
         String categoryIdParameter = request.getParameter("categoryId");
         int categoryId = Integer.parseInt(categoryIdParameter);
         service.deleteCategory(categoryId);
-        return "redirect:displayContactsPage";
+        return "";
     }
 
 }

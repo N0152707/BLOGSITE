@@ -3,21 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.blogsite.service;
+package com.sg.blogsite.dao;
 
-import com.sg.blogsite.model.Role;
+import com.sg.blogsite.model.RoleHasUserBlog;
 import java.util.List;
 
 /**
  *
  * @author apprentice
  */
-public interface RoleServiceLayer {
+public interface RoleHasUserBlogDao {
 
-    public List<Role> getAllRoles();
-
-    public Role readRoleById(int roleId);
-
-    public List<Role> getAllRolesInAUserBlog(int userBlogId);
+    public List<RoleHasUserBlog> getAllRoleHasUserBlogsForAUserBlog(int userBlogId, int roleId);
 
 }

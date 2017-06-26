@@ -21,6 +21,9 @@ public class RoleDaoDbImpl implements RoleDao {
     private static final String SQL_SELECT_ALL_ROLES
             = "select * from role";
 
+    private static final String SQL_SELECT_ALL_ROLES_FOR_A_USERBLOG
+            = "select role_has_user_blog.role_role_id, role_has_user_blog.user_blog_user_blog_id from role_has_user_blog where role_has_user_blog=role_has_user_blog.role_role_id = ?";
+
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -41,6 +44,12 @@ public class RoleDaoDbImpl implements RoleDao {
     public List<Role> getAllRoles() {
         return jdbcTemplate.query(SQL_SELECT_ALL_ROLES,
                 new RoleMapper());
+    }
+
+    @Override
+    public List<Role> getAllRolesInAUserBlog(int roleId) {
+        return jdbcTemplate.query(SQL_SELECT_ALL_ROLES_FOR_A_USERBLOG,
+                new RoleMapper(), roleId);
     }
 
     private static final class RoleMapper implements RowMapper<Role> {
