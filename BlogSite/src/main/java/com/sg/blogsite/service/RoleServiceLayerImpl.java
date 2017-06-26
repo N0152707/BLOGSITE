@@ -6,6 +6,7 @@
 package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.RoleDao;
+import com.sg.blogsite.dao.RoleHasUserBlogDao;
 import com.sg.blogsite.model.Role;
 import java.util.List;
 
@@ -16,9 +17,11 @@ import java.util.List;
 public class RoleServiceLayerImpl implements RoleServiceLayer {
 
     RoleDao roledao;
+    RoleHasUserBlogDao rhubdao;
 
-    public RoleServiceLayerImpl(RoleDao dao) {
+    public RoleServiceLayerImpl(RoleDao dao, RoleHasUserBlogDao rhubdao) {
         this.roledao = dao;
+        this.rhubdao = rhubdao;
     }
 
     @Override
@@ -29,6 +32,11 @@ public class RoleServiceLayerImpl implements RoleServiceLayer {
     @Override
     public Role readRoleById(int roleId) {
         return roledao.readRoleById(roleId);
+    }
+
+    @Override
+    public List<Role> getAllRolesInAUserBlog(int userBlogId) {
+        return roledao.getAllRolesInAUserBlog(userBlogId);
     }
 
 }

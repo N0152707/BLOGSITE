@@ -14,4 +14,6 @@ public interface RoleDao {
 
     public Role readRoleById(int roleId);
 
+    public List<Role> getAllRolesInAUserBlog(int roleId);
+
 }

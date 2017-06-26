@@ -95,7 +95,7 @@
                 <td>
                     <c:out value="${currentBlog.blogDeleted}"/>
                 </td>
-                
+            </c:forEach>        
             </tr>
         </table>                    
     </div> <!-- End col div -->

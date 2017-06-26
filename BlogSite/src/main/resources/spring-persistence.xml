@@ -68,6 +68,11 @@
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
+    <bean id="roleHasUserBlogDao"
+          class="com.sg.blogsite.dao.RoleHasUserBlogDaoDbImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
     <bean id="blogServiceLayer"
           class="com.sg.blogsite.service.BlogServiceLayerImpl">
         <constructor-arg ref="blogDao"/>
@@ -81,11 +86,13 @@
     <bean id="roleServiceLayer"
           class="com.sg.blogsite.service.RoleServiceLayerImpl">
         <constructor-arg ref="roleDao"/>
+        <constructor-arg ref="roleHasUserBlogDao"/>
     </bean>
 
     <bean id="tagServiceLayer"
           class="com.sg.blogsite.service.TagServiceLayerImpl">
         <constructor-arg ref="tagDao"/>
+        <constructor-arg ref="blogHasTagDao"/>
     </bean>
 
     <bean id="userBlogServiceLayer"

@@ -39,6 +39,14 @@ public class CategoryController {
 //        return "redirect:displayCategoriesPage";
 //    }
 
+    public String addCategory(HttpServletRequest request) {
+        // grab the incoming values from the form and create a new object
+        Category category = new Category();
+        category.setCategoryName("categoryName");
+        service.createCategory(category);
+        return "category";
+    }
+
     @RequestMapping(value = "/editCategoryForm", method = RequestMethod.GET)
     public String displayEditCategoryForm(HttpServletRequest request, Model model) {
         String categoryIdParameter = request.getParameter("categoryId");
@@ -55,7 +63,7 @@ public class CategoryController {
             return "editCategoryForm";
         }
         service.updateCategory(category);
-        return "redirect:displayCategoriesPage";
+        return "category";
     }
 
     @RequestMapping(value = "/deleteCategory", method = RequestMethod.GET)
@@ -63,7 +71,7 @@ public class CategoryController {
         String categoryIdParameter = request.getParameter("categoryId");
         int categoryId = Integer.parseInt(categoryIdParameter);
         service.deleteCategory(categoryId);
-        return "redirect:displayContactsPage";
+        return "";
     }
 
 }
