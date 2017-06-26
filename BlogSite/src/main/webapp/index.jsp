@@ -11,7 +11,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
+        
             <h1>MyStreamOfConsciousnessBlog</h1>
             <hr/>
             <div class="navbar">
@@ -46,28 +46,36 @@
             <br/>
             <h3>Insert Category Name</h3>
             <br/>
-            <div class="col-md-10" id="displayBlogPosts">
-                <table id="blogList" class="table table-hover">
+<!--            <div class="col-md-10" id="displayBlogPosts" action="/BlogSite" method="GET">  -->
+ <!--           <sf:form method="get" commandName="displayBlogPosts"> -->
+                <table id="blogTable" class="table table-hover">
                     <tr>
                         <th width="65%">Post Title</th>
                         <th width="35%">Date</th>
                     </tr>
-                    <c:forEach var="currentItem" items="${blogList}">
+                    <c:url value="/displayBlogPosts" var="myUrl"> 
+                    <c:forEach var="currentItem1" items="${blogList}">
                         <tr>
-                            <td>hi<c:out value="$currentItem.blogTitle"/></td>
-                            <td><c:out value="$currentItem.blogDatePublished"/></td>
+                            <td><c:out value="$currentItem1.blogTitle"/></td>
+                            <td><c:out value="$currentItem1.blogDatePublished"/></td>
                         </tr>
                     </c:forEach>
+                    </c:url>
                 </table>
-            </div>
+  <!--          </sf:form>  -->
             <div class="col-md-2">
+                <h3>Categories</h3>
                 <div class="col-md-11">
-                    <c:forEach var="currentItem" items="${categoryList}">
+                    <c:forEach var="currentItem2" items="${categoryList}">
                         <button type ="button"
                                 class="col-md-11 btn btn-default"
                                 style="margin: 10px"
-                                id="${currentItem.categoryId}">
-                            <c:out value="${currentItem.categoryName}"/>
+                                id="${currentItem2.categoryId}">
+                            <c:url value="/displayCategoriesPage" var="myUrl"> 
+                                <a href="displayCategoriesPage?categoryId=${currentCategory.categoryId}"> 
+                                <c:out value="${currentItem2.categoryName}"/>
+                                </a>
+                            </c:url>
                         </button>
                     </c:forEach>
                 </div>
@@ -75,6 +83,6 @@
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-
+        
     </body>
 </html>

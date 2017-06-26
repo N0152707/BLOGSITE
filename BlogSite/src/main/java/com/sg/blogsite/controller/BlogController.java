@@ -23,7 +23,7 @@ public class BlogController {
 
     private BlogServiceLayer service;
     private CategoryServiceLayer catService;
-    Blog blog;
+//    Blog blog;
 
     @Inject
     public BlogController(BlogServiceLayer service, CategoryServiceLayer catService) {
@@ -31,32 +31,31 @@ public class BlogController {
         this.catService = catService;
     }
 
+    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+    public String displayFrontPage(Model model) {
+        List<Blog> blogList = service.getLastFiveBlogs();
+        model.addAttribute("blogList", blogList);
+        // Return the logical name of our View component
+        return "index";
+    }
+
     @RequestMapping(value = "/displayBlogPosts", method = RequestMethod.GET)
     public String displayBlogPosts(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
         // Return the logical name of our View component
-        return "blogSite";
+        return "blog";
     }
 
-    //i don't think we need a addBlogForm in here, that is initially just displayed as an empty page to be filled in
     @RequestMapping(value = "/addBlog", method = RequestMethod.POST)
     public String addBlog(HttpServletRequest request) {
-        // grab the incoming values from the form and create a newblog
-        // object
         Blog blog = new Blog();
         blog.setBlogPublished("N");
         blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
         blog.setBlogTitle("blogTitle");
         blog.setBlogArticle("blogArticle");
         blog.setBlogDeleted("N");
-
-        // persist the new Contact
         service.createBlog(blog);
-
-        // we don't want to forward to a View component - we want to
-        // redirect to the endpoint that displays the Contacts Page
-        // so it can display the new Contact in the table.
         return "redirect:displayBlogsPage";
     }
 
