@@ -1,6 +1,6 @@
 <%-- 
-    Document   : editPage
-    Created on : Jun 24, 2017, 7:48:19 PM
+    Document   : adminPage
+    Created on : Jun 26, 2017, 9:52:35 AM
     Author     : apprentice
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -41,14 +41,29 @@
                             Edit Post
                         </a>
                     </li>
+                    <li role="presentation" >
+                        <a href="${pageContext.request.contextPath}/editPage.jsp">
+                            Edit Page
+                        </a>
+                    </li>    
                     <li role="presentation" class="active">
+                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                            Edit Page
+                        </a>
+                    </li> 
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/editPost.jsp">
+                            Edit Post
+                        </a>
+                    </li>
+                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/editPage.jsp">
                             Edit Page
                         </a>
                     </li> 
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/adminPage.jsp">
-                            Admin Page
+                            Edit Page
                         </a>
                     </li> 
                 </ul>
@@ -58,9 +73,8 @@
         Add a col to hold the summary table - have it take up half the row 
     -->
     <div class="col-md-6">
-        <h2>Edit Post</h2>
-        <h5>Edit you post in the window below</h5>
-        <table id="editTable" class="table table-hover">
+        <h2>Admin Page</h2>
+        <table id="adminTable" class="table table-hover">
             <tr>
                 <th width="20%">Date</th>
                 <th width="40%">Title</th>

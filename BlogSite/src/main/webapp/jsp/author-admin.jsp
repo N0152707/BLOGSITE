@@ -31,6 +31,21 @@
                             About Us
                         </a>
                     </li>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/editPost.jsp">
+                            Edit Post
+                        </a>
+                    </li>
+                    <li role="presentation" >
+                        <a href="${pageContext.request.contextPath}/editPage.jsp">
+                            Edit Page
+                        </a>
+                    </li> 
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                            Admin Page
+                        </a>
+                    </li> 
                 </ul>
             </div>
             <p>
