@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class EditPageControllerTEMPORARY {
+public class SelectToEditPostController {
 
     private BlogServiceLayer service;
     private CategoryServiceLayer catService;
     String categorySelected = "Most Recent Posts";
 
     @Inject
-    public EditPageControllerTEMPORARY(BlogServiceLayer service, CategoryServiceLayer catService) {
+    public SelectToEditPostController(BlogServiceLayer service, CategoryServiceLayer catService) {
         this.service = service;
         this.catService = catService;
     }
 
-    @RequestMapping(value = {"editPage", "/editPage.jsp"}, method = RequestMethod.GET)
-    public String displayHomePage(Model model) {
+    @RequestMapping(value = {"displaySelectEditPost"}, method = RequestMethod.GET)
+    public String displaySelectEditPost(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
         List<Category> categoryList = catService.getAllCategories();

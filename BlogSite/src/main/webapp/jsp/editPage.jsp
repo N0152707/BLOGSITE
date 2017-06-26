@@ -16,33 +16,28 @@
         <div class="navbar">
             <ul class="nav nav-tabs">
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/index.jsp">
+                    <a href="${pageContext.request.contextPath}/index">
                         Home
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="${pageContext.request.contextPath}/author-admin.jsp">
-                        Author-Admin
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/aboutUs.jsp">
-                        About Us
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/editPost.jsp">
-                        Edit Post
+                        Add Post
                     </a>
                 </li>
                 <li role="presentation" class="active">
-                    <a href="${pageContext.request.contextPath}/editPage">
-                        Edit Page
+                    <a href="${pageContext.request.contextPath}/displaySelectEditPost">
+                        Select To Edit
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="${pageContext.request.contextPath}/adminPage.jsp">
-                        Admin Page
+                        Publish/Delete Post
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="${pageContext.request.contextPath}/aboutUs.jsp">
+                        Static Example
                     </a>
                 </li>
             </ul>
