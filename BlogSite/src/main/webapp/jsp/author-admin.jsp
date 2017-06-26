@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/author-admin.jsp">
+                        <a href="${pageContext.request.contextPath}/addBlog">
                             Author-Admin
                         </a>
                     </li>
