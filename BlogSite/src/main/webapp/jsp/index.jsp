@@ -46,23 +46,23 @@
             <br/>
             <h3>Insert Category Name</h3>
             <br/>
-<!--            <div class="col-md-10" id="displayBlogPosts" action="/BlogSite" method="GET">  -->
- <!--           <sf:form method="get" commandName="displayBlogPosts"> -->
+            <div class="col-md-10"> 
                 <table id="blogTable" class="table table-hover">
                     <tr>
                         <th width="65%">Post Title</th>
                         <th width="35%">Date</th>
                     </tr>
-                    <c:url value="/displayBlogPosts" var="myUrl"> 
                     <c:forEach var="currentItem1" items="${blogList}">
                         <tr>
-                            <td><c:out value="$currentItem1.blogTitle"/></td>
-                            <td><c:out value="$currentItem1.blogDatePublished"/></td>
+                            <td><c:out value="${currentItem1.blogTitle}"/></td>
+                            <td><c:out value="${currentItem1.blogDatePublished}"/></td>
                         </tr>
-                    </c:forEach>
-                    </c:url>
+                        <tr>
+                            <td><c:out value="${currentItem1.blogArticle}"/></td>
+                        </tr>
+                   </c:forEach>
                 </table>
-  <!--          </sf:form>  -->
+            </div>
             <div class="col-md-2">
                 <h3>Categories</h3>
                 <div class="col-md-11">
