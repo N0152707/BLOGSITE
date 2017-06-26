@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/editPost.jsp">
+                        <a href="${pageContext.request.contextPath}/editBlogForm">
                             Edit Post
                         </a>
                     </li>
@@ -64,6 +64,7 @@
                         </tr>
                         <tr>
                             <td><c:out value="${currentItem1.blogArticle}"/></td>
+                            
                         </tr>
                    </c:forEach>
                 </table>

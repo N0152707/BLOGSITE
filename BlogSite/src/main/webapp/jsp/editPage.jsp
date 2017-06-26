@@ -22,7 +22,7 @@
             <div class="navbar">
                 <ul class="nav nav-tabs">
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/home.jsp">
+                        <a href="${pageContext.request.contextPath}/index">
                             Home
                         </a>
                     </li>
@@ -58,8 +58,7 @@
         Add a col to hold the summary table - have it take up half the row 
     -->
     <div class="col-md-6">
-        <h2>Edit Post</h2>
-        <h5>Edit you post in the window below</h5>
+        <h2>Edit Page</h2>
         <table id="editTable" class="table table-hover">
             <tr>
                 <th width="20%">Date</th>

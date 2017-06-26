@@ -66,7 +66,7 @@ public class BlogController {
         Blog blog = service.readBlog(blogId);
 
         model.addAttribute("blog", blog);
-        return "index";
+        return "editPost";
     }
 
     public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
@@ -74,7 +74,7 @@ public class BlogController {
         int categoryId = Integer.parseInt(categoryIdParameter);
         List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
         model.addAttribute("blogList", blogList);
-        return "blog";
+        return "redirect:displayBlogsPage";
     }
 
     @RequestMapping(value = "getAllCategories", method = RequestMethod.GET)
@@ -83,4 +83,5 @@ public class BlogController {
         model.addAttribute("categoryList", categoryList);
         return categoryList;
     }
+
 }
