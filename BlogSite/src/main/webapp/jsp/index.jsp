@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/editPage.jsp">
+                    <a href="${pageContext.request.contextPath}/editPage">
                         Edit Page
                     </a>
                 </li>

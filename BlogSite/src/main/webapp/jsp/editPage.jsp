@@ -30,13 +30,13 @@
                         About Us
                     </a>
                 </li>
-                <li role="presentation" class="active">
+                <li role="presentation">
                     <a href="${pageContext.request.contextPath}/editPost.jsp">
                         Edit Post
                     </a>
                 </li>
-                <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/editPage.jsp">
+                <li role="presentation" class="active">
+                    <a href="${pageContext.request.contextPath}/editPage">
                         Edit Page
                     </a>
                 </li>
