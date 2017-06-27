@@ -21,33 +21,33 @@
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                    <li role="presentation">
+                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/index">
                             Home
                         </a>
                     </li>
+                    <li role="presentation" >
+                        <a href="${pageContext.request.contextPath}/displayAddPost">
+                            Add Post
+                        </a>
+                    </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/author-admin.jsp">
-                            Author-Admin
+                        <a href="${pageContext.request.contextPath}/displaySelectEditPost">
+                            Select To Edit
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/displayPublishDelete">
+                            Publish/Delete Post
                         </a>
                     </li>
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/aboutUs.jsp">
-                            About Us
+                            Static Example
                         </a>
                     </li>
-                    <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/editBlogForm">
-                            Edit Post
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
-                            Admin Page
-                        </a>
-                    </li> 
-                </ul>
             </div>
+                            
             <h2>Edit Post</h2>
             <h5>Edit you post in the window below</h5>
             <div class="col-md-12">
@@ -56,36 +56,89 @@
         </div>
     </div>
 
-    <textarea class="tinymce">
-<center>
-    <h1>
-    Blog Page
-    </h1>
-  </center>
-    <div id="ImageBox">
-                        <span class="col-md-4" id="imageBox1"> </span>
-                        <span class="col-md-4" id="imageBox2"> </span>
-                        <span class="col-md-4" id="imageBox3"> </span>
-                    </div>
-
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <center><h3> Blog Title </h3></center>
-                        <div id="textBox">
-
-                    </div>
-                    <div class="col-md-6">
-                        <center><h3> Popular Hashtags </h3></center>
-                        <center>
-                            <div  id="hashtagBox">
-                                <div>#hashtag1</div>
-                                <div>#hashtag2</div>
-                            </div>
-                        </center>
+    
+    
+      <sf:form class="form-horizontal" role="form" modelAttribute="blog"
+                     action="editBlogForm" method="POST">
+                <div class="form-group">
+                    <label for="add-blogTitle" class="col-md-4 control-label">blogTitle:</label>
+                    <div class="col-md-8">
+                        <sf:input type="text" class="form-control" id="add-blogTitle"
+                                  path="blogTitle" placeholder="blogTitle"/>
+                        <sf:errors path="blogTitle" cssclass="error"></sf:errors>
                     </div>
                 </div>
+               
+                    <textarea id="blogId" name="blogArticle">
+                        
+${blog.blogArticle};
+
+                    </textarea>"/>                 
+                       
+                     <sf:hidden path="blogId"/>
+      
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" class="btn btn-default" value="Edit Blog"/>
+                    </div>
                 </div>
-    </textarea>
+            </sf:form>                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<!--    
+    <div class="container">
+    <div class="row col-md-12">
+        <div class="col-md-10 col-md-offset-1">
+            <br/><br/>
+            <form method="post">
+                <input type="date" id="blogDate" >
+                <input type="text" id="blogTitle" placeholder="Title of blog post">
+                 <input type="text" id="categoryName" placeholder="Category Name">
+                 <input type="text" id="tagName" placeholder="Tag Name">
+                 
+                <textarea id="blogText"></textarea>
+            </form>
+            <input type="submit" value="save">
+            <input type="submit" value="edit">
+        </div>
+    </div>
+</div>-->
 
     <!-- javascript -->
 
@@ -94,13 +147,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>   
-
-
-
-
-
-
-
-
 </body>
 </html>
+
+
+
+
+

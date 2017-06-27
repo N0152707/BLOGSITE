@@ -15,7 +15,7 @@
         <hr/>
         <div class="navbar">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active">
+                <li role="presentation">
                     <a href="${pageContext.request.contextPath}/index">
                         Home
                     </a>
@@ -30,8 +30,8 @@
                         Select To Edit
                     </a>
                 </li>
-                <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                <li role="presentation" class="active">
+                    <a href="${pageContext.request.contextPath}/displayPublishDelete">
                         Publish/Delete Post
                     </a>
                 </li>
@@ -48,15 +48,21 @@
         <br/>
         <div class="col-md-8">
             <table id="blogTable" class="table table-hover">
-                <tr><th width="65%"></th>
-                    <th width="35%"></th></tr>
-                        <c:forEach var="currentItem" items="${blogList}">
+                <tr><th width="10%">DATE</th>
+                    <th width="45%">TITLE</th>
+                    <th width="15%">AUTHOR</th>
+                    <th width="10%">PUBLISHED?</th>
+                    <th width="10%">DELETED?</th>
+                    <th width="10%">ACTION</th>
+                </tr>
+                <c:forEach var="currentItem" items="${blogList}">
                     <tr>
-                        <td style="font-size: 19pt"><c:out value="${currentItem.blogTitle}"/></td>
-                        <td style="font-size: 14pt"><c:out value="${currentItem.blogDatePublished}"/></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt"> ${currentItem.blogArticle}"</td>
+                        <td style="font-size: 12pt"><c:out value="${currentItem.blogDatePublished}"/></td>
+                        <td style="font-size: 14pt"><c:out value="${currentItem.blogTitle}"/></td>
+                        <td style="font-size: 14pt">To Be Coded</td>
+                        <td style="font-size: 14pt; text-align: center"><c:out value="${currentItem.blogPublished}"/></td>
+                        <td style="font-size: 14pt; text-align: center"><c:out value="${currentItem.blogDeleted}"/></td>
+                        <td style="font-size: 11pt"><div> PUBLISH </div><div> DELETE </div><div> RECOVER</div></td>
                     </tr>
                 </c:forEach>
             </table>

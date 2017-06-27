@@ -30,18 +30,21 @@ public class AddPostController {
 
     @RequestMapping(value = "/displayAddPost", method = RequestMethod.GET)
     public String displayAddPost(Model model) {
+        model.addAttribute("blog", blogService.readBlog(12));
+
         return "addPost";
     }
 
+    @RequestMapping(value = "/createBlog", method = RequestMethod.POST)
     public String addBlog(HttpServletRequest request) {
         Blog blog = new Blog();
         blog.setBlogPublished("N");
-        blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
-        blog.setBlogTitle("blogTitle");
-        blog.setBlogArticle("blogArticle");
+        blog.setBlogDatePublished(LocalDate.now());  //user has to enter the date as 2017-02-28
+        blog.setBlogTitle(request.getParameter("blogTitle"));
+        blog.setBlogArticle(request.getParameter("blogArticle"));
         blog.setBlogDeleted("N");
-        blog.setUserBlogUserBlogId(1);
-        blog.setCategoryCategoryId(1);
+        blog.setUserBlogUserBlogId(Integer.parseInt(request.getParameter("userBlogId")));
+        blog.setCategoryCategoryId(Integer.parseInt(request.getParameter("categoryId")));
         blogService.createBlog(blog);
         return "redirect:index";
     }

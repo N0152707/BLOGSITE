@@ -32,10 +32,10 @@ category_category_id INT NOT NULL,
   user_blog_user_blog_id INT NOT NULL,
 
   PRIMARY KEY (blog_id),
-  CONTSTRAINT fk_blog_category
+  CONSTRAINT fk_blog_category
   FOREIGN KEY (category_category_id)
-  REFERENCES blogsite.category (category_id)
-  CONTSTRAINT fk_blog_user_blog
+  REFERENCES blogsite.category (category_id),
+  CONSTRAINT fk_blog_user_blog
   FOREIGN KEY (user_blog_user_blog_id)
   REFERENCES blogsite.user_blog (user_blog_id)
 );
@@ -100,7 +100,6 @@ role_name)
 VALUES
 (3,"Read-Only");
 
-
 INSERT into blogsite.user_blog 
 (user_blog_name, 
 user_blog_password, 
@@ -159,3 +158,10 @@ INSERT INTO blogsite.category
 (category_name) VALUES ("Woodwork Projects");
 
 select * from blogsite.category ;
+
+-- 
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 1);
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 2);
+-- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 3);
+-- 
+-- INSERT into blogsite.role_has_user_blog (role_role_id, user_blog_user_blog_id) values (1, 1);

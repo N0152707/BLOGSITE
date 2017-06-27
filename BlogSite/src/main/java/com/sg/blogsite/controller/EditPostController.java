@@ -78,7 +78,7 @@ public class EditPostController {
         int blogId = Integer.parseInt(blogIdParameter);
         Blog blog = blogService.readBlog(blogId);
 
-        model.addAttribute("blog", blog);
+        model.addAttribute("blog", blogService.readBlog(blogId));
         return "editPost";
     }
 }

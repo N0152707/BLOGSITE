@@ -13,44 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class BlogController {
+public class PublishDeleteController {
 
     private BlogServiceLayer service;
     private CategoryServiceLayer catService;
     String categorySelected = "Most Recent Posts";
 
     @Inject
-    public BlogController(BlogServiceLayer service, CategoryServiceLayer catService) {
+    public PublishDeleteController(BlogServiceLayer service, CategoryServiceLayer catService) {
         this.service = service;
         this.catService = catService;
     }
 
-    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
-    public String displayHomePage(Model model) {
+    @RequestMapping(value = "/displayPublishDelete", method = RequestMethod.GET)
+    public String displayPublishDelete(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
         List<Category> categoryList = catService.getAllCategories();
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("categorySelected", categorySelected);
-        return "index";
+        return "publishDelete";
     }
 
-    //MOVED TO EDITPOST CONTROLLE
-//    @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
-//    public String displayEditBlogForm(HttpServletRequest request, Model model) {
-//        String blogIdParameter = request.getParameter("blogId");
-//        int blogId = Integer.parseInt(blogIdParameter);
-//        Blog blog = service.readBlog(blogId);
-//
-//        model.addAttribute("blog", blog);
-//        return "editPost";
-//    }
-    @RequestMapping(value = "setCategory", method = RequestMethod.GET)
-    public void setCategory(HttpServletRequest request, Model model) {
-
-    }
-
-    @RequestMapping(value = "/getAllBlogsByCategory", method = RequestMethod.GET)
+    @RequestMapping(value = "/getBlogsByCategoryPublishDelete", method = RequestMethod.GET)
     public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
         String categoryIdParameter = request.getParameter("selectedCat");
         int categoryId = Integer.parseInt(categoryIdParameter);
@@ -61,11 +46,10 @@ public class BlogController {
         return "index";
     }
 
-    @RequestMapping(value = "getAllCategories", method = RequestMethod.GET)
+    @RequestMapping(value = "getAllCategoriesPublishDelete", method = RequestMethod.GET)
     public List<Category> getAllCategories(Model model) {
         List<Category> categoryList = catService.getAllCategories();
         model.addAttribute("categoryList", categoryList);
         return categoryList;
     }
-
 }
