@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                        <a href="${pageContext.request.contextPath}/displayPublishDelete">
                             Publish/Delete Post
                         </a>
                     </li>
@@ -43,7 +43,9 @@
                     </li>
                 </ul>
             </div>
+
             <br/>
+
             <div class="col-md-6">
                 <h3>Add Post</h3>
                 <h5>Add your post in the below windows</h5>
@@ -56,12 +58,14 @@
                             <input type="text" class="form-control" name="blogTitle" placeholder="blogTitle"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="add-blogArticle" class="col-md-4 control-label">blogArticle:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="blogArticle" placeholder="blogArticle"/>
-                        </div>
-                    </div>
+
+                    <textarea id="blogText" name="blogArticle" >
+                        
+#tag1
+#tag2
+#tag3
+
+                    </textarea>
 
                     <div class="form-group">
                         <label for="add-tagName" class="col-md-4 control-label">tagName:</label>
@@ -75,19 +79,20 @@
                             <input type="submit" class="btn btn-default" value="Create Blog"/>
                         </div>
                     </div>
-
                 </form>
                 <br/><br/>
-
-                <textarea id="blogText"></textarea>
             </div>
         </div>
     </div>
 </div>
-
 <script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
 </body>
 </html>
+
+
+
+
