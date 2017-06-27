@@ -50,7 +50,7 @@ public class BlogController {
 
     }
 
-    @RequestMapping(value = "getAllBlogsByCategory", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllBlogsByCategory", method = RequestMethod.GET)
     public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
         String categoryIdParameter = request.getParameter("selectedCat");
         int categoryId = Integer.parseInt(categoryIdParameter);

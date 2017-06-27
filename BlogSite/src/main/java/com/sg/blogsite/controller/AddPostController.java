@@ -33,13 +33,15 @@ public class AddPostController {
         return "addPost";
     }
 
+    @RequestMapping(value = "/createBlog", method = RequestMethod.POST)
     public String addBlog(HttpServletRequest request) {
         Blog blog = new Blog();
         blog.setBlogPublished("N");
-        blog.setBlogDatePublished(LocalDate.parse("blogDate"));  //user has to enter the date as 2017-02-28
-        blog.setBlogTitle("blogTitle");
-        blog.setBlogArticle("blogArticle");
+        blog.setBlogDatePublished(LocalDate.now());  //user has to enter the date as 2017-02-28
+        blog.setBlogTitle(request.getParameter("blogTitle"));
+        blog.setBlogArticle(request.getParameter("blogArticle"));
         blog.setBlogDeleted("N");
+       
         blogService.createBlog(blog);
         return "redirect:index";
     }
