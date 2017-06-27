@@ -35,16 +35,16 @@ public class BlogController {
         return "index";
     }
 
-    @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
-    public String displayEditBlogForm(HttpServletRequest request, Model model) {
-        String blogIdParameter = request.getParameter("blogId");
-        int blogId = Integer.parseInt(blogIdParameter);
-        Blog blog = service.readBlog(blogId);
-
-        model.addAttribute("blog", blog);
-        return "editPost";
-    }
-
+    //MOVED TO EDITPOST CONTROLLE
+//    @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
+//    public String displayEditBlogForm(HttpServletRequest request, Model model) {
+//        String blogIdParameter = request.getParameter("blogId");
+//        int blogId = Integer.parseInt(blogIdParameter);
+//        Blog blog = service.readBlog(blogId);
+//
+//        model.addAttribute("blog", blog);
+//        return "editPost";
+//    }
     @RequestMapping(value = "setCategory", method = RequestMethod.GET)
     public void setCategory(HttpServletRequest request, Model model) {
 

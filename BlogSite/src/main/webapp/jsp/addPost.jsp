@@ -43,53 +43,51 @@
                     </li>
                 </ul>
             </div>
-
             <br/>
+            <div class="col-md-6">
+                <h3>Add Post</h3>
+                <h5>Add your post in the below windows</h5>
+                <form class="form-horizontal" 
+                      role="form" method="POST" 
+                      action="createBlog">
+                    <div class="form-group">
+                        <label for="add-blogTitle" class="col-md-4 control-label">blogTitle:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="blogTitle" placeholder="blogTitle"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-blogArticle" class="col-md-4 control-label">blogArticle:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="blogArticle" placeholder="blogArticle"/>
+                        </div>
+                    </div>
 
-            <h3>Add Post</h3>
-            <h5>Edit your post in the window below</h5>
-            <div class="col-md-12">
-                </select>
+                    <div class="form-group">
+                        <label for="add-tagName" class="col-md-4 control-label">tagName:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="tagName" placeholder="tagName"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <input type="submit" class="btn btn-default" value="Create Blog"/>
+                        </div>
+                    </div>
+
+                </form>
+                <br/><br/>
+
+                <textarea id="blogText"></textarea>
             </div>
-            <textarea class="tinymce">
-<center>
-    <h1>
-    Blog Page
-    </h1>
-  </center>
-    <div id="ImageBox">
-                        <span class="col-md-4" id="imageBox1"> </span>
-                        <span class="col-md-4" id="imageBox2"> </span>
-                        <span class="col-md-4" id="imageBox3"> </span>
-                    </div>
+        </div>
+    </div>
+</div>
 
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <center><h3> Blog Title </h3></center>
-                        <div id="textBox">
-
-                    </div>
-                    <div class="col-md-6">
-                        <center><h3> Popular Hashtags </h3></center>
-                        <center>
-                            <div  id="hashtagBox">
-                                <div>#hashtag1</div>
-                                <div>#hashtag2</div>
-                            </div>
-                        </center>
-                    </div>
-                </div>
-                </div>
-            </textarea>
-
-            <!-- javascript -->
-            <!-- Placed at the end of the document so the pages load faster -->
-
-            <script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
-            <script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-
-    </body>
+<script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+</body>
 </html>

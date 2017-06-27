@@ -39,14 +39,14 @@ public class TagController {
 //        tag.setTagId(tag.getTagId());
 //        return "tag";
 //    }
-    @RequestMapping(value = "/deleteTag", method = RequestMethod.GET)
-    public String deleteTag(HttpServletRequest request) {
-        String tagIdParameter = request.getParameter("tagId");
-        int tagId = Integer.parseInt(tagIdParameter);
-        service.deleteTag(tagId);
-        return "";
-    }
-
+    //MOVED TO EDITPOST CONTROLLER
+//    @RequestMapping(value = "/deleteTag", method = RequestMethod.GET)
+//    public String deleteTag(HttpServletRequest request) {
+//        String tagIdParameter = request.getParameter("tagId");
+//        int tagId = Integer.parseInt(tagIdParameter);
+//        service.deleteTag(tagId);
+//        return "";
+//    }
     @RequestMapping(value = "/getTagById", method = RequestMethod.GET)
     public String getTagById(HttpServletRequest request) {
         String tagIdParameter = request.getParameter("tagId");

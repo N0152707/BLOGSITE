@@ -65,13 +65,13 @@ public class CategoryController {
         service.updateCategory(category);
         return "category";
     }
-
-    @RequestMapping(value = "/deleteCategory", method = RequestMethod.GET)
-    public String deleteCategory(HttpServletRequest request) {
-        String categoryIdParameter = request.getParameter("categoryId");
-        int categoryId = Integer.parseInt(categoryIdParameter);
-        service.deleteCategory(categoryId);
-        return "";
-    }
+    //MOVED TO EDITPOST CONTROLLE
+//    @RequestMapping(value = "/deleteCategory", method = RequestMethod.GET)
+//    public String deleteCategory(HttpServletRequest request) {
+//        String categoryIdParameter = request.getParameter("categoryId");
+//        int categoryId = Integer.parseInt(categoryIdParameter);
+//        service.deleteCategory(categoryId);
+//        return "";
+//    }
 
 }
