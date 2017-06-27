@@ -117,7 +117,7 @@ blog_article,
 category_category_id,
  user_blog_user_blog_id,
 blog_deleted) 
-VALUES ("Y", "2017-05-18", "The Perfect Date", "While precision, time, and technique are important, you can
+VALUES ("Y", "2017-05-18", "The Perfect Bread", "While precision, time, and technique are important, you can
 achieve a pretty fantastic loaf of homemade bread simply and quickly with a few key elements: (1) water, salt, yeast, fat, and 
 quality flour high in protein, (2) a mixer with a kneading attachment, and (3) a dutch oven. That's it? Who knows.", 1, 1, "N");
 
