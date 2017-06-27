@@ -56,7 +56,7 @@
                         <td style="font-size: 14pt"><c:out value="${currentItem.blogDatePublished}"/></td>
                     </tr>
                     <tr>
-                        <td style="font-size: 12pt"><c:out value="${currentItem.blogArticle}"/></td>
+                        <td style="font-size: 12pt"> ${currentItem.blogArticle}"</td>
                     </tr>
                 </c:forEach>
             </table>

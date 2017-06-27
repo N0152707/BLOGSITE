@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                        <a href="${pageContext.request.contextPath}/displayPublishDelete">
                             Publish/Delete Post
                         </a>
                     </li>
@@ -56,8 +56,72 @@
         </div>
     </div>
 
-
     
+    
+      <sf:form class="form-horizontal" role="form" modelAttribute="blog"
+                     action="editBlogForm" method="POST">
+                <div class="form-group">
+                    <label for="add-blogTitle" class="col-md-4 control-label">blogTitle:</label>
+                    <div class="col-md-8">
+                        <sf:input type="text" class="form-control" id="add-blogTitle"
+                                  path="blogTitle" placeholder="blogTitle"/>
+                        <sf:errors path="blogTitle" cssclass="error"></sf:errors>
+                    </div>
+                </div>
+               
+                    <textarea id="blogId" name="blogArticle">
+                        
+${blog.blogArticle};
+
+                    </textarea>"/>                 
+                       
+                     <sf:hidden path="blogId"/>
+      
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" class="btn btn-default" value="Edit Blog"/>
+                    </div>
+                </div>
+            </sf:form>                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<!--    
     <div class="container">
     <div class="row col-md-12">
         <div class="col-md-10 col-md-offset-1">
@@ -74,7 +138,7 @@
             <input type="submit" value="edit">
         </div>
     </div>
-</div>
+</div>-->
 
     <!-- javascript -->
 
