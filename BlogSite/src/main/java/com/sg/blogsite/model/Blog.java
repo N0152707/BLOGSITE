@@ -16,6 +16,24 @@ public class Blog {
     LocalDate blogDatePublished;
     String blogTitle;
     String blogArticle;
+    int userBlogUserBlogId;
+    int categoryCategoryId;
+
+    public int getUserBlogUserBlogId() {
+        return userBlogUserBlogId;
+    }
+
+    public void setUserBlogUserBlogId(int userBlogUserBlogId) {
+        this.userBlogUserBlogId = userBlogUserBlogId;
+    }
+
+    public int getCategoryCategoryId() {
+        return categoryCategoryId;
+    }
+
+    public void setCategoryCategoryId(int categoryCategoryId) {
+        this.categoryCategoryId = categoryCategoryId;
+    }
 
     public Integer getBlogId() {
         return blogId;

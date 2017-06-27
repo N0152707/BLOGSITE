@@ -40,6 +40,8 @@ public class AddPostController {
         blog.setBlogTitle("blogTitle");
         blog.setBlogArticle("blogArticle");
         blog.setBlogDeleted("N");
+        blog.setUserBlogUserBlogId(1);
+        blog.setCategoryCategoryId(1);
         blogService.createBlog(blog);
         return "redirect:index";
     }
