@@ -66,7 +66,7 @@
             <h3>Browse by Topic</h3>
             <c:forEach var="currentItem" items="${categoryList}">
                 <form action="getAllBlogsByCategory" method="GET">
-                    <button type ="button"
+                    <button type ="submit"
                             name="selectedCat"
                             class="col-md-11 btn btn-default"
                             style="font-size: 13pt"

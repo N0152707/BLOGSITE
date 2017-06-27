@@ -25,7 +25,7 @@ public class BlogDaoDbImpl implements BlogDao {
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY
-            = "select * from blog where category_id = ?";  //this needs to be a join of some sort
+            = "select * from blogsite.blog where category_id = ?";  //this needs to be a join of some sort
     private static final String SQL_SELECT_LAST_FIVE_BLOGS
             = "select * from blog order by blog_date_published DESC limit 5";
     private static final String SQL_UPDATE_BLOG

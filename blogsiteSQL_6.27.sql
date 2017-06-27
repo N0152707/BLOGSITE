@@ -32,10 +32,10 @@ category_category_id INT NOT NULL,
   user_blog_user_blog_id INT NOT NULL,
 
   PRIMARY KEY (blog_id),
-  CONTSTRAINT fk_blog_category
+  CONSTRAINT fk_blog_category
   FOREIGN KEY (category_category_id)
-  REFERENCES blogsite.category (category_id)
-  CONTSTRAINT fk_blog_user_blog
+  REFERENCES blogsite.category (category_id),
+  CONSTRAINT fk_blog_user_blog
   FOREIGN KEY (user_blog_user_blog_id)
   REFERENCES blogsite.user_blog (user_blog_id)
 );
@@ -114,11 +114,26 @@ INSERT into blogsite.blog
 blog_date_published, 
 blog_title, 
 blog_article,
+category_category_id,
+ user_blog_user_blog_id,
 blog_deleted) 
-VALUES ("Y", "2017-05-18", "The Perfect Loaf", "While precision, time, and technique are important, you can
+VALUES ("Y", "2017-05-18", "The Perfect Date", "While precision, time, and technique are important, you can
 achieve a pretty fantastic loaf of homemade bread simply and quickly with a few key elements: (1) water, salt, yeast, fat, and 
-quality flour high in protein, (2) a mixer with a kneading attachment, and (3) a dutch oven. That's it? Yes.", "N");
+quality flour high in protein, (2) a mixer with a kneading attachment, and (3) a dutch oven. That's it? Who knows.", 1, 1, "N");
 
+INSERT INTO blogsite.category (category_name) values ("Living");
+
+INSERT into blogsite.blog 
+(blog_published, 
+blog_date_published, 
+blog_title, 
+blog_article,
+category_category_id,
+ user_blog_user_blog_id,
+blog_deleted) 
+VALUES ("Y", "2016-05-18", "Starting A Pretty Great Day", "Wake up early after a restful night's sleep and walk out the front
+door into perfect weather for a run that rejuvenates your mind and body. Then, head to a local bakery for a fresh and delicious breakfast with 
+a friend.", 2, 1, "N");
 
 INSERT INTO blogsite.tag
 (tag_id,
