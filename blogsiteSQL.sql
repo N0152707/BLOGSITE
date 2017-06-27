@@ -100,6 +100,7 @@ role_name)
 VALUES
 (3,"Read-Only");
 
+
 INSERT into blogsite.user_blog 
 (user_blog_name, 
 user_blog_password, 
@@ -114,11 +115,26 @@ INSERT into blogsite.blog
 blog_date_published, 
 blog_title, 
 blog_article,
+category_category_id,
+ user_blog_user_blog_id,
 blog_deleted) 
-VALUES ("Y", "2017-05-18", "The Perfect Loaf", "While precision, time, and technique are important, you can
+VALUES ("Y", "2017-05-18", "The Perfect Bread", "While precision, time, and technique are important, you can
 achieve a pretty fantastic loaf of homemade bread simply and quickly with a few key elements: (1) water, salt, yeast, fat, and 
-quality flour high in protein, (2) a mixer with a kneading attachment, and (3) a dutch oven. That's it? Yes.", "N");
+quality flour high in protein, (2) a mixer with a kneading attachment, and (3) a dutch oven. That's it? Who knows.", 1, 1, "N");
 
+INSERT INTO blogsite.category (category_name) values ("Living");
+
+INSERT into blogsite.blog 
+(blog_published, 
+blog_date_published, 
+blog_title, 
+blog_article,
+category_category_id,
+ user_blog_user_blog_id,
+blog_deleted) 
+VALUES ("Y", "2016-05-18", "Starting A Pretty Great Day", "Wake up early after a restful night's sleep and walk out the front
+door into perfect weather for a run that rejuvenates your mind and body. Then, head to a local bakery for a fresh and delicious breakfast with 
+a friend.", 2, 1, "N");
 
 INSERT INTO blogsite.tag
 (tag_id,
@@ -143,10 +159,3 @@ INSERT INTO blogsite.category
 (category_name) VALUES ("Woodwork Projects");
 
 select * from blogsite.category ;
-
--- 
--- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 1);
--- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 2);
--- INSERT into blogsite.blog_has_tag (blog_blog_id, tag_tag_id) VALUES (1, 3);
--- 
--- INSERT into blogsite.role_has_user_blog (role_role_id, user_blog_user_blog_id) values (1, 1);
