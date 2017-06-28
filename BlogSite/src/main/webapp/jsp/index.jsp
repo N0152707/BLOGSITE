@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                    <a href="${pageContext.request.contextPath}/displayPublishDelete">
                         Publish/Delete Post
                     </a>
                 </li>
