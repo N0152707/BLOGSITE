@@ -29,25 +29,9 @@ public class BlogController {
     public String displayHomePage(Model model) {
         List<Blog> blogList = service.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
-        List<Category> categoryList = catService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
+        getAllCategories(model);
         model.addAttribute("categorySelected", categorySelected);
         return "index";
-    }
-
-    //MOVED TO EDITPOST CONTROLLE
-//    @RequestMapping(value = "/editBlogForm", method = RequestMethod.GET)
-//    public String displayEditBlogForm(HttpServletRequest request, Model model) {
-//        String blogIdParameter = request.getParameter("blogId");
-//        int blogId = Integer.parseInt(blogIdParameter);
-//        Blog blog = service.readBlog(blogId);
-//
-//        model.addAttribute("blog", blog);
-//        return "editPost";
-//    }
-    @RequestMapping(value = "setCategory", method = RequestMethod.GET)
-    public void setCategory(HttpServletRequest request, Model model) {
-
     }
 
     @RequestMapping(value = "/getAllBlogsByCategory", method = RequestMethod.GET)
@@ -58,6 +42,8 @@ public class BlogController {
         categorySelected = category.getCategoryName();
         List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
         model.addAttribute("blogList", blogList);
+        getAllCategories(model);
+        model.addAttribute("categorySelected", categorySelected);
         return "index";
     }
 

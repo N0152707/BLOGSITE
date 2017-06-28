@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : editPost
     Created on : Jun 24, 2017, 3:43:02 PM
     Author     : apprentice
@@ -21,7 +21,7 @@
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
-                     <li role="presentation">
+                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/index">
                             Home
                         </a>
@@ -47,107 +47,97 @@
                         </a>
                     </li>
             </div>
-                            
+
             <h2>Edit Post</h2>
             <h5>Edit you post in the window below</h5>
             <div class="col-md-12">
-                </select>   
-            </div>
-        </div>
-    </div>
 
-    
-    
-      <sf:form class="form-horizontal" role="form" modelAttribute="blog"
-                     action="editBlogForm" method="POST">
-                <div class="form-group">
-                    <label for="add-blogTitle" class="col-md-4 control-label">blogTitle:</label>
-                    <div class="col-md-8">
+                <sf:form class="form-horizontal" role="form" modelAttribute="blog"
+                         action="editBlogForm" method="POST">
+                    <div class="form-group">
+                        <label for="add-blogTitle" class="control-label">Title:</label>
+
                         <sf:input type="text" class="form-control" id="add-blogTitle"
                                   path="blogTitle" placeholder="blogTitle"/>
                         <sf:errors path="blogTitle" cssclass="error"></sf:errors>
+                        </div>
+
+                        <textarea id="blogId" name="blogArticle">${blog.blogArticle};
+                    </textarea>
+                    <sf:hidden path="blogId"/>
+                    <br/>
+                    <div class="form-group">
+                        <div class="align-right">
+                            <button type="submit" class="btn btn-default">Edit Blog</button>
+                        </div>
+                    </div>
+                </sf:form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--
+                <div class="container">
+                <div class="row col-md-12">
+                    <div class="col-md-10 col-md-offset-1">
+                        <br/><br/>
+                        <form method="post">
+                            <input type="date" id="blogDate" >
+                            <input type="text" id="blogTitle" placeholder="Title of blog post">
+                             <input type="text" id="categoryName" placeholder="Category Name">
+                             <input type="text" id="tagName" placeholder="Tag Name">
+
+                            <textarea id="blogText"></textarea>
+                        </form>
+                        <input type="submit" value="save">
+                        <input type="submit" value="edit">
                     </div>
                 </div>
-               
-                    <textarea id="blogId" name="blogArticle">
-                        
-${blog.blogArticle};
+            </div>-->
 
-                    </textarea>"/>                 
-                       
-                     <sf:hidden path="blogId"/>
-      
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-8">
-                        <input type="submit" class="btn btn-default" value="Edit Blog"/>
-                    </div>
-                </div>
-            </sf:form>                
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+            <!-- javascript -->
 
-<!--    
-    <div class="container">
-    <div class="row col-md-12">
-        <div class="col-md-10 col-md-offset-1">
-            <br/><br/>
-            <form method="post">
-                <input type="date" id="blogDate" >
-                <input type="text" id="blogTitle" placeholder="Title of blog post">
-                 <input type="text" id="categoryName" placeholder="Category Name">
-                 <input type="text" id="tagName" placeholder="Tag Name">
-                 
-                <textarea id="blogText"></textarea>
-            </form>
-            <input type="submit" value="save">
-            <input type="submit" value="edit">
-        </div>
-    </div>
-</div>-->
-
-    <!-- javascript -->
-
-    <script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>   
-</body>
+            <script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
+            <script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    </body>
 </html>
 
 

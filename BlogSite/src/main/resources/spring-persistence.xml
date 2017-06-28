@@ -99,6 +99,23 @@
           class="com.sg.blogsite.service.UserBlogServiceLayerImpl">
         <constructor-arg ref="userBlogDao"/>
     </bean>
+    
+    
+    
+    
+    
+     <bean id="blogStaticDao"
+          class="com.sg.blogsite.dao.BlogStaticDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="blogStaticServiceLayer"
+          class="com.sg.blogsite.service.BlogStaticServiceLayerImpl">
+        <constructor-arg ref="blogStaticDao"/>
+    </bean>
+    
+    
+    
 
 
 </beans>

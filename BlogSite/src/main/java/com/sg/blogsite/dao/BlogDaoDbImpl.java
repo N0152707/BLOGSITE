@@ -89,7 +89,7 @@ public class BlogDaoDbImpl implements BlogDao {
     @Override
     public List<Blog> getAllBlogsByCategory(int categoryId) {
         return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS_BY_CATEGORY,
-                new BlogMapper());
+                new BlogMapper(), categoryId);
     }
 
     private static final class BlogMapper implements RowMapper<Blog> {

@@ -31,22 +31,23 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/adminPage.jsp">
+                    <a href="${pageContext.request.contextPath}/displayPublishDelete">
                         Publish/Delete Post
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/aboutUs.jsp">
+                    <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                         Static Example
                     </a>
                 </li>
             </ul>
         </div>
         <br/>
-        <div method="GET">
-            <h3><c:out value="${categorySelected}"/></h3></div>
-        <br/>
         <div class="col-md-8">
+            <div method="GET">
+                <h3><c:out value="${categorySelected}"/></h3></div>
+            <br/>
+
             <table id="blogTable" class="table table-hover">
                 <tr><th width="65%"></th>
                     <th width="35%"></th></tr>

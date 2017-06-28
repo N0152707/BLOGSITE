@@ -1,5 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+/* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -178,50 +177,4 @@ public class BlogDaoTest {
         assertEquals(blogList.size(), 5);
 
     }
-
-//    @Test
-//    public void testGetLastFiveBlogs() {
-//        Blog newBlog4 = new Blog();
-//        newBlog4.setBlogPublished("2017-03-01");
-//        newBlog4.setBlogDatePublished(LocalDate.now());
-//        newBlog4.setBlogTitle("Test4CreateBlog");
-//        newBlog4.setBlogArticle("blog text added for number 4");
-//        newBlog4.setBlogDeleted("No");
-//        blogdao.createBlog(newBlog4);
-//        Blog newBlog5 = new Blog();
-//        newBlog5.setBlogPublished("2017-05-01");
-//        newBlog5.setBlogDatePublished(LocalDate.now());
-//        newBlog5.setBlogTitle("Test5CreateBlog");
-//        newBlog5.setBlogArticle("blog text added for number 5");
-//        newBlog5.setBlogDeleted("No");
-//        blogdao.createBlog(newBlog5);
-//        List<Blog> blogList = blogdao.getLastFiveBlogs();
-//        assertEquals(blogList.size(), 5);
-//
-//    }
-    /**
-     * Test of getAllBlogsByCategory method, of class BlogDao.
-     */
-    @Test
-    public void testGetAllBlogsByCategory() {
-        Blog newBlog11 = new Blog();
-        newBlog11.setBlogPublished("Y");
-        newBlog11.setBlogDatePublished(LocalDate.now());
-        newBlog11.setBlogTitle("Test11CreateBlog");
-        newBlog11.setBlogArticle("blog text added for number 11");
-        newBlog11.setBlogDeleted("N");
-        newBlog11.setUserBlogUserBlogId(1);
-        newBlog11.setCategoryCategoryId(1);
-        blogdao.createBlog(newBlog11);
-        Blog newBlog12 = new Blog();
-        newBlog12.setBlogPublished("N");
-        newBlog12.setBlogDatePublished(LocalDate.now());
-        newBlog12.setBlogTitle("Test12CreateBlog");
-        newBlog12.setBlogArticle("blog text added for number 12");
-        newBlog12.setBlogDeleted("Y");
-        newBlog12.setUserBlogUserBlogId(1);
-        newBlog12.setCategoryCategoryId(1);
-        blogdao.createBlog(newBlog12);
-    }
-
 }
