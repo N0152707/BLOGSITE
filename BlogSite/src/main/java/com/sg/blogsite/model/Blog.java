@@ -7,6 +7,8 @@ package com.sg.blogsite.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Blog {
 
@@ -14,7 +16,11 @@ public class Blog {
     String blogPublished;
     String blogDeleted;
     LocalDate blogDatePublished;
+    @NotEmpty(message = "You must supply a value for a Blog.")
+    @Length(max = 45, message = "Blog Title must be no more than 45 characters in length.")
     String blogTitle;
+    @NotEmpty(message = "You must supply a value for the Blog.")
+    @Length(max = 50, message = "the Blog must be no more than 500 characters in length.")
     String blogArticle;
     int userBlogUserBlogId;
     int categoryCategoryId;

@@ -122,10 +122,10 @@ DROP TABLE IF EXISTS blogsite.static_page ;
 
 CREATE TABLE IF NOT EXISTS blogsite.static_page (
   static_page_id INT NOT NULL AUTO_INCREMENT,
-  stat_page_location VARCHAR(45) NULL,
-  static_page_active VARCHAR(1) NULL,
-  static_page_title VARCHAR(45) NULL,
+  blog_static_title VARCHAR(45) NULL,
+  blog_static_article VARCHAR(500) NULL,
   PRIMARY KEY (static_page_id));
+
 
 INSERT INTO blogsite.role
 (role_id,

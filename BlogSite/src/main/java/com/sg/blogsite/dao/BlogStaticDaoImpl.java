@@ -14,10 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author apprentice
  */
-public class BlogStaticDaoImpl implements BlogStaticDao  {
+public class BlogStaticDaoImpl implements BlogStaticDao {
 
-    
-     private static final String SQL_INSERT_STATIC_BLOG
+    private static final String SQL_INSERT_STATIC_BLOG
             = "insert into static_page "
             + "(blog_static_title, "
             + "blog_static_article) "
@@ -28,29 +27,17 @@ public class BlogStaticDaoImpl implements BlogStaticDao  {
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
-      @Override
-      @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public BlogStatic createStaticBlog(BlogStatic blogStatic) {
-       jdbcTemplate.update(SQL_INSERT_STATIC_BLOG,
-                blogStatic.getBlogStaticArticle(),
-                blogStatic.getBlogStaticTitle());
+        jdbcTemplate.update(SQL_INSERT_STATIC_BLOG,
+                blogStatic.getBlogStaticTitle(),
+                blogStatic.getBlogStaticArticle());
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
         blogStatic.setBlogStaticId(newId);
         return blogStatic;
     }
- 
 
 }
-    
-    
-    
-    
-  
-
-   
-
-
-  
-

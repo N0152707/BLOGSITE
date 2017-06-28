@@ -6,14 +6,18 @@
 package com.sg.blogsite.model;
 
 import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author apprentice
  */
 public class Tag {
-    
+
     Integer tagId;
+    @NotEmpty(message = "You must supply a value for the Tag name.")
+    @Length(max = 45, message = "Tag must be no more than 45 characters in length.")
     String tagName;
 
     public Integer getTagId() {
@@ -60,9 +64,5 @@ public class Tag {
         }
         return true;
     }
-    
-    
-    
-    
-    
+
 }
