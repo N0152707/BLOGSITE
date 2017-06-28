@@ -32,10 +32,10 @@ category_category_id INT NOT NULL,
   user_blog_user_blog_id INT NOT NULL,
 
   PRIMARY KEY (blog_id),
-  CONTSTRAINT fk_blog_category
+  CONSTRAINT fk_blog_category
   FOREIGN KEY (category_category_id)
-  REFERENCES blogsite.category (category_id)
-  CONTSTRAINT fk_blog_user_blog
+  REFERENCES blogsite.category (category_id),
+  CONSTRAINT fk_blog_user_blog
   FOREIGN KEY (user_blog_user_blog_id)
   REFERENCES blogsite.user_blog (user_blog_id)
 );
