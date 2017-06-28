@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/aboutUs.jsp">
+                    <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                         Static Example
                     </a>
                 </li>
