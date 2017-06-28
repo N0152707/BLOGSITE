@@ -15,41 +15,78 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PublishDeleteController {
 
-    private BlogServiceLayer service;
+    private BlogServiceLayer blogService;
     private CategoryServiceLayer catService;
     String categorySelected = "Most Recent Posts";
 
     @Inject
-    public PublishDeleteController(BlogServiceLayer service, CategoryServiceLayer catService) {
-        this.service = service;
+    public PublishDeleteController(BlogServiceLayer blogService, CategoryServiceLayer catService) {
+        this.blogService = blogService;
         this.catService = catService;
     }
 
     @RequestMapping(value = "/displayPublishDelete", method = RequestMethod.GET)
     public String displayPublishDelete(Model model) {
-        List<Blog> blogList = service.getLastFiveBlogs();
+        List<Blog> blogList = blogService.getLastFiveBlogs();
         model.addAttribute("blogList", blogList);
-        List<Category> categoryList = catService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
+        getAllCategoriesPublishDelete(model);
         model.addAttribute("categorySelected", categorySelected);
         return "publishDelete";
     }
 
-    @RequestMapping(value = "/getBlogsByCategoryPublishDelete", method = RequestMethod.GET)
-    public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
+    @RequestMapping(value = "/getAllBlogsByCategoryPublishDelete", method = RequestMethod.GET)
+    public String getAllBlogsByCategoryPublishDelete(HttpServletRequest request, Model model) {
         String categoryIdParameter = request.getParameter("selectedCat");
         int categoryId = Integer.parseInt(categoryIdParameter);
         Category category = catService.readCategory(categoryId);
         categorySelected = category.getCategoryName();
-        List<Blog> blogList = service.getAllBlogsByCategory(categoryId);
+        List<Blog> blogList = blogService.getAllBlogsByCategory(categoryId);
         model.addAttribute("blogList", blogList);
-        return "index";
+        getAllCategoriesPublishDelete(model);
+        model.addAttribute("categorySelected", categorySelected);
+        return "publishDelete";
     }
 
-    @RequestMapping(value = "getAllCategoriesPublishDelete", method = RequestMethod.GET)
-    public List<Category> getAllCategories(Model model) {
+    @RequestMapping(value = "/getAllCategoriesPublishDelete", method = RequestMethod.GET)
+    public List<Category> getAllCategoriesPublishDelete(Model model) {
         List<Category> categoryList = catService.getAllCategories();
         model.addAttribute("categoryList", categoryList);
         return categoryList;
     }
+
+    @RequestMapping(value = "/updateDelete", method = RequestMethod.GET)
+    public String updateDelete(HttpServletRequest request, Model model, String update) {
+        String blogIdParameter = request.getParameter("blogId");
+        int blogId = Integer.parseInt(blogIdParameter);
+        Blog blog = blogService.readBlog(blogId);
+        blog.setBlogDeleted("Y");
+        blog.setBlogPublished("N");
+        blogService.updateBlog(blog);
+        displayPublishDelete(model);
+        return "publishDelete";
+    }
+
+    @RequestMapping(value = "/updatePublish", method = RequestMethod.GET)
+    public String updatePublish(HttpServletRequest request, Model model, String update) {
+        String blogIdParameter = request.getParameter("blogId");
+        int blogId = Integer.parseInt(blogIdParameter);
+        Blog blog = blogService.readBlog(blogId);
+        blog.setBlogPublished("Y");
+        blog.setBlogDeleted("N");
+        blogService.updateBlog(blog);
+        displayPublishDelete(model);
+        return "/publishDelete";
+    }
+
+    @RequestMapping(value = "/updateRecover", method = RequestMethod.GET)
+    public String updateRecover(HttpServletRequest request, Model model, String update) {
+        String blogIdParameter = request.getParameter("blogId");
+        int blogId = Integer.parseInt(blogIdParameter);
+        Blog blog = blogService.readBlog(blogId);
+        blog.setBlogDeleted("N");
+        blogService.updateBlog(blog);
+        displayPublishDelete(model);
+        return "publishDelete";
+    }
+
 }

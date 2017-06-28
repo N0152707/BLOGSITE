@@ -43,10 +43,10 @@
             </ul>
         </div>
         <br/>
-        <div method="GET">
-            <h3><c:out value="${categorySelected}"/></h3></div>
-        <br/>
         <div class="col-md-8">
+            <div method="GET">
+                <h3><c:out value="${categorySelected}"/></h3></div>
+            <br/>
             <table id="blogTable" class="table table-hover">
                 <tr><th width="10%">DATE</th>
                     <th width="45%">TITLE</th>
@@ -60,18 +60,22 @@
                         <td style="font-size: 12pt"><c:out value="${currentItem.blogDatePublished}"/></td>
                         <td style="font-size: 14pt"><c:out value="${currentItem.blogTitle}"/></td>
                         <td style="font-size: 14pt">To Be Coded</td>
-                        <td style="font-size: 14pt; text-align: center"><c:out value="${currentItem.blogPublished}"/></td>
+                        <td style="font-size: 14pt; text-align: center"><c:out value="${currentItem.blogPublished}"/></a></td>
                         <td style="font-size: 14pt; text-align: center"><c:out value="${currentItem.blogDeleted}"/></td>
-                        <td style="font-size: 11pt"><div> PUBLISH </div><div> DELETE </div><div> RECOVER</div></td>
+                        <td style="font-size: 11pt">
+                            <div><a href="updatePublish?blogId=${currentItem.blogId}"> PUBLISH </a></div>
+                            <div><a href="updateDelete?blogId=${currentItem.blogId}"> DELETE </a></div>
+                            <div><a href="updateRecover?blogId=${currentItem.blogId}"> RECOVER </a></div>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-2">
-            <h3>Browse by Topic</h3>
+            <h3>Filter by Topic</h3>
             <c:forEach var="currentItem" items="${categoryList}">
-                <form action="getAllBlogsByCategory" method="GET">
+                <form action="getAllBlogsByCategoryPublishDelete" method="GET">
                     <button type ="submit"
                             name="selectedCat"
                             class="col-md-11 btn btn-default"

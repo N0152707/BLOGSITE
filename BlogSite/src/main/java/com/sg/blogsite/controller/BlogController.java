@@ -34,11 +34,6 @@ public class BlogController {
         return "index";
     }
 
-    @RequestMapping(value = "setCategory", method = RequestMethod.GET)
-    public void setCategory(HttpServletRequest request, Model model) {
-
-    }
-
     @RequestMapping(value = "/getAllBlogsByCategory", method = RequestMethod.GET)
     public String getAllBlogsByCategory(HttpServletRequest request, Model model) {
         String categoryIdParameter = request.getParameter("selectedCat");
