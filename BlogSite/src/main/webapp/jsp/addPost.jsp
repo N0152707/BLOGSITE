@@ -58,12 +58,25 @@
                             <input type="text" class="form-control" name="blogTitle" placeholder="blogTitle"/>
                         </div>
                     </div>
+                    
+                    
+                      <div class="form-group">
+                        <label for="add-categoryId" class="col-md-4 control-label">categoryId":</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="categoryId" placeholder="categoryId"/>
+                        </div>
+                    </div>
+                    
+                    
+                       <div class="form-group">
+                        <label for="add-userBlogId" class="col-md-4 control-label">userBlogId":</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="userBlogId" placeholder="userBlogId"/>
+                        </div>
+                    </div>
 
                     <textarea id="blogText" name="blogArticle" >
                         
-#tag1
-#tag2
-#tag3
 
                     </textarea>
 
@@ -92,7 +105,3 @@
 
 </body>
 </html>
-
-
-
-

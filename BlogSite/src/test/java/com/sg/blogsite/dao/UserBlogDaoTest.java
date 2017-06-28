@@ -118,7 +118,7 @@ public class UserBlogDaoTest {
         newuseblog5.setUserBlogLastName("Capest");
         userBlogDao.createUserBlog(newuseblog5);
         List<UserBlog> UserBlogList = userBlogDao.getAllUserBlogs();
-        assertEquals(UserBlogList.size(), 2);
+        assertEquals(UserBlogList.size(), 3);
         userBlogDao.deleteUserBlog(newuseblog4.getUserBlogId());
         userBlogDao.deleteUserBlog(newuseblog5.getUserBlogId());
     }

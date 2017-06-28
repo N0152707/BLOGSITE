@@ -31,7 +31,7 @@ public class AddPostController {
     @RequestMapping(value = "/displayAddPost", method = RequestMethod.GET)
     public String displayAddPost(Model model) {
         model.addAttribute("blog", blogService.readBlog(12));
-        
+
         return "addPost";
     }
 
@@ -43,7 +43,8 @@ public class AddPostController {
         blog.setBlogTitle(request.getParameter("blogTitle"));
         blog.setBlogArticle(request.getParameter("blogArticle"));
         blog.setBlogDeleted("N");
-       
+        blog.setUserBlogUserBlogId(Integer.parseInt(request.getParameter("userBlogId")));
+        blog.setCategoryCategoryId(Integer.parseInt(request.getParameter("categoryId")));
         blogService.createBlog(blog);
         return "redirect:index";
     }

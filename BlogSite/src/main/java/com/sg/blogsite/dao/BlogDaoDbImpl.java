@@ -20,18 +20,18 @@ public class BlogDaoDbImpl implements BlogDao {
     private static final String SQL_INSERT_BLOG
             = "insert into blog "
             + "(blog_published, blog_deleted, blog_date_published, blog_title, "
-            + "blog_article) "
-            + "values (?, ?, ?, ?, ?)";
+            + "blog_article, user_blog_user_blog_id, category_category_id) "
+            + "values (?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_SELECT_BLOG
             = "select * from blog where blog_id = ?";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY
-            = "select * from blogsite.blog where category_id = ?";  //this needs to be a join of some sort
+            = "select * from blog where category_category_id = ?";
     private static final String SQL_SELECT_LAST_FIVE_BLOGS
             = "select * from blog order by blog_date_published DESC limit 5";
     private static final String SQL_UPDATE_BLOG
             = "update blog set "
             + "blog_published = ?, blog_deleted = ?, blog_date_published = ?, blog_title = ?, "
-            + "blog_article = ? "
+            + "blog_article = ?, user_blog_user_blog_id = ?, category_category_id = ? "
             + "where blog_id = ?";
 
     private JdbcTemplate jdbcTemplate;
@@ -48,7 +48,9 @@ public class BlogDaoDbImpl implements BlogDao {
                 blog.getBlogDeleted(),
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
-                blog.getBlogArticle());
+                blog.getBlogArticle(),
+                blog.getUserBlogUserBlogId(),
+                blog.getCategoryCategoryId());
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
         blog.setBlogId(newId);
@@ -73,6 +75,8 @@ public class BlogDaoDbImpl implements BlogDao {
                 blog.getBlogDatePublished().toString(),
                 blog.getBlogTitle(),
                 blog.getBlogArticle(),
+                blog.getUserBlogUserBlogId(),
+                blog.getCategoryCategoryId(),
                 blog.getBlogId());
     }
 
@@ -98,6 +102,8 @@ public class BlogDaoDbImpl implements BlogDao {
             blog.setBlogTitle(rs.getString("blog_Title"));
             blog.setBlogArticle(rs.getString("blog_Article"));
             blog.setBlogDeleted(rs.getString("blog_Deleted"));
+            blog.setUserBlogUserBlogId(rs.getInt("user_blog_user_blog_id"));
+            blog.setCategoryCategoryId(rs.getInt("category_category_id"));
             return blog;
         }
     }
