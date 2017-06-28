@@ -25,6 +25,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class BlogDaoTest {
 
     private BlogDao blogdao;
+    private UserBlogDao userblogdao;
 
     public BlogDaoTest() {
 
@@ -43,7 +44,14 @@ public class BlogDaoTest {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
         blogdao = ctx.getBean("blogDao", BlogDao.class);
-    }
+        userblogdao = ctx.getBean("userBlogDao", UserBlogDao.class);
+        /*        UserBlog ub = new UserBlog();
+        ub.setUserBlogName("sam716");
+        ub.setUserBlogPassword("sam");
+        ub.setUserBlogFirstName("samual");
+        ub.setUserBlogLastName("Smith");
+        userblogdao.createUserBlog(ub);
+         */    }
 
     @After
     public void tearDown() {

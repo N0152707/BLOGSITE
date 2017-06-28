@@ -41,7 +41,11 @@ public class UserBlogDaoTest {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
         userBlogDao = ctx.getBean("userBlogDao", UserBlogDao.class);
-    }
+        /*        List<UserBlog> userBlogs = userBlogDao.getAllUserBlogs();
+        for (UserBlog currentUserBlog : userBlogs) {
+            userBlogDao.deleteUserBlog(currentUserBlog.getUserBlogId());
+        }
+         */    }
 
     @After
     public void tearDown() {

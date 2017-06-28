@@ -42,6 +42,7 @@ public class TagDaoTest {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
         tagdao = ctx.getBean("tagDao", TagDao.class);
+
     }
 
     @After
@@ -73,8 +74,7 @@ public class TagDaoTest {
         assertEquals(fromDb, newTag2);
         tagdao.deleteTag(newTag2.getTagId());
         assertNull(tagdao.readTag(newTag2.getTagId()));
-       
-      
+
     }
 
     /**
