@@ -43,10 +43,11 @@
             </ul>
         </div>
         <br/>
-        <div method="GET">
-            <h3><c:out value="${categorySelected}"/></h3></div>
-        <br/>
         <div class="col-md-8">
+            <div method="GET">
+                <h3><c:out value="${categorySelected}"/></h3></div>
+            <br/>
+
             <table id="blogTable" class="table table-hover">
                 <tr><th width="65%"></th>
                     <th width="35%"></th></tr>
