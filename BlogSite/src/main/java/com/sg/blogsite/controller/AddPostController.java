@@ -30,12 +30,11 @@ public class AddPostController {
 
     @RequestMapping(value = "/displayAddPost", method = RequestMethod.GET)
     public String displayAddPost(Model model) {
-        model.addAttribute("blog", blogService.readBlog(12));
-
+        model.addAttribute("blog", blogService.readBlog(0));
         return "addPost";
     }
 
-    @RequestMapping(value = "/createBlog", method = RequestMethod.POST)
+    @RequestMapping(value = "/addNewPost", method = RequestMethod.POST)
     public String addBlog(HttpServletRequest request) {
         Blog blog = new Blog();
         blog.setBlogPublished("N");
@@ -46,7 +45,7 @@ public class AddPostController {
         blog.setUserBlogUserBlogId(Integer.parseInt(request.getParameter("userBlogId")));
         blog.setCategoryCategoryId(Integer.parseInt(request.getParameter("categoryId")));
         blogService.createBlog(blog);
-        return "redirect:index";
+        return "addPost";
     }
 
     public String addTag(HttpServletRequest request) {

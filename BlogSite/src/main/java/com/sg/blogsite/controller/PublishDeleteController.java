@@ -40,7 +40,7 @@ public class PublishDeleteController {
         int categoryId = Integer.parseInt(categoryIdParameter);
         Category category = catService.readCategory(categoryId);
         categorySelected = category.getCategoryName();
-        List<Blog> blogList = blogService.getAllBlogsByCategory(categoryId);
+        List<Blog> blogList = blogService.getAllBlogsByCategoryUnpublishedDeleted(categoryId);
         model.addAttribute("blogList", blogList);
         getAllCategoriesPublishDelete(model);
         model.addAttribute("categorySelected", categorySelected);

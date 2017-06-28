@@ -38,4 +38,9 @@ public class BlogServiceLayerImpl implements BlogServiceLayer {
         return blogDao.getAllBlogsByCategory(categoryId);
     }
 
+    @Override
+    public List<Blog> getAllBlogsByCategoryUnpublishedDeleted(int categoryId) {
+        return blogDao.getAllBlogsByCategoryUnpublishedDeleted(categoryId);
+    }
+
 }

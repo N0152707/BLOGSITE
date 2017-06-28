@@ -129,7 +129,7 @@ public class BlogDaoTest {
 
     public void testGetLastFiveBlogs() {
         Blog newBlog4 = new Blog();
-        newBlog4.setBlogPublished("N");
+        newBlog4.setBlogPublished("Y");
         newBlog4.setBlogDatePublished(LocalDate.now());
         newBlog4.setBlogTitle("Test4CreateBlog");
         newBlog4.setBlogArticle("blog text added for number 4");
@@ -147,11 +147,11 @@ public class BlogDaoTest {
         newBlog5.setCategoryCategoryId(1);
         blogdao.createBlog(newBlog5);
         Blog newBlog6 = new Blog();
-        newBlog6.setBlogPublished("N");
+        newBlog6.setBlogPublished("Y");
         newBlog6.setBlogDatePublished(LocalDate.now());
         newBlog6.setBlogTitle("Test6CreateBlog");
         newBlog6.setBlogArticle("blog text added for number 6");
-        newBlog6.setBlogDeleted("Y");
+        newBlog6.setBlogDeleted("N");
         newBlog6.setUserBlogUserBlogId(1);
         newBlog6.setCategoryCategoryId(1);
         blogdao.createBlog(newBlog6);
@@ -160,12 +160,12 @@ public class BlogDaoTest {
         newBlog7.setBlogDatePublished(LocalDate.now());
         newBlog7.setBlogTitle("Test7CreateBlog");
         newBlog7.setBlogArticle("blog text added for number 7");
-        newBlog7.setBlogDeleted("Y");
+        newBlog7.setBlogDeleted("N");
         newBlog7.setUserBlogUserBlogId(1);
         newBlog7.setCategoryCategoryId(1);
         blogdao.createBlog(newBlog7);
         Blog newBlog8 = new Blog();
-        newBlog8.setBlogPublished("N");
+        newBlog8.setBlogPublished("Y");
         newBlog8.setBlogDatePublished(LocalDate.now());
         newBlog8.setBlogTitle("Test8CreateBlog");
         newBlog8.setBlogArticle("blog text added for number 8");

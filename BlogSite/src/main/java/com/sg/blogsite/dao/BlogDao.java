@@ -20,4 +20,6 @@ public interface BlogDao {
 
     public List<Blog> getAllBlogsByCategory(int categoryId);
 
+    public List<Blog> getAllBlogsByCategoryUnpublishedDeleted(int categoryId);
+
 }
