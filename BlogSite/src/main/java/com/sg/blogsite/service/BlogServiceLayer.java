@@ -22,4 +22,6 @@ public interface BlogServiceLayer {
 
     public List<Blog> getAllBlogsByCategoryUnpublishedDeleted(int categoryId);
 
+    public List<Blog> getAllBlogsUnpublishedDeleted();
+
 }

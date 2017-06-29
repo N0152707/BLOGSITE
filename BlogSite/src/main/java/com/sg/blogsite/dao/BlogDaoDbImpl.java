@@ -26,8 +26,10 @@ public class BlogDaoDbImpl implements BlogDao {
             = "select * from blog where blog_id = ?";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY
             = "select * from blog where (blog_deleted = 'N' and blog_published = 'Y') and category_category_id = ?";
+    private static final String SQL_SELECT_ALL_BLOGS_DELETED_UNPUBLISHED
+            = "select * from blog";
     private static final String SQL_SELECT_ALL_BLOGS_BY_CATEGORY_DELETED_UNPUBLISHED
-            = "select * from blog where (blog_deleted = 'N' and blog_published = 'Y') and category_category_id = ?";
+            = "select * from blog where category_category_id = ?";
     private static final String SQL_SELECT_LAST_FIVE_BLOGS
             = "select * from blog where (blog_deleted = 'N' and blog_published = 'Y') order by blog_date_published DESC limit 5";
     private static final String SQL_UPDATE_BLOG
@@ -98,6 +100,12 @@ public class BlogDaoDbImpl implements BlogDao {
     public List<Blog> getAllBlogsByCategoryUnpublishedDeleted(int categoryId) {
         return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS_BY_CATEGORY_DELETED_UNPUBLISHED,
                 new BlogMapper(), categoryId);
+    }
+
+    @Override
+    public List<Blog> getAllBlogsUnpublishedDeleted() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS_DELETED_UNPUBLISHED,
+                new BlogMapper());
     }
 
     private static final class BlogMapper implements RowMapper<Blog> {

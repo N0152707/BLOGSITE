@@ -27,8 +27,21 @@ public class PublishDeleteController {
 
     @RequestMapping(value = "/displayPublishDelete", method = RequestMethod.GET)
     public String displayPublishDelete(Model model) {
-        List<Blog> blogList = blogService.getLastFiveBlogs();
-        model.addAttribute("blogList", blogList);
+        List<Blog> blogList = blogService.getAllBlogsUnpublishedDeleted();
+        model.addAttribute("blogListUnpublishedDeleted", blogList);
+        getAllCategoriesPublishDelete(model);
+        model.addAttribute("categorySelected", categorySelected);
+        return "publishDelete";
+    }
+
+    @RequestMapping(value = "/getAllBlogsPublishDelete", method = RequestMethod.GET)
+    public String getAllBlogsPublishDelete(HttpServletRequest request, Model model) {
+        String categoryIdParameter = request.getParameter("selectedCat");
+        int categoryId = Integer.parseInt(categoryIdParameter);
+        Category category = catService.readCategory(categoryId);
+        categorySelected = category.getCategoryName();
+        List<Blog> blogList = blogService.getAllBlogsUnpublishedDeleted();
+        model.addAttribute("blogListUnpublishedDeleted", blogList);
         getAllCategoriesPublishDelete(model);
         model.addAttribute("categorySelected", categorySelected);
         return "publishDelete";
@@ -41,7 +54,7 @@ public class PublishDeleteController {
         Category category = catService.readCategory(categoryId);
         categorySelected = category.getCategoryName();
         List<Blog> blogList = blogService.getAllBlogsByCategoryUnpublishedDeleted(categoryId);
-        model.addAttribute("blogList", blogList);
+        model.addAttribute("blogListUnpublishedDeleted", blogList);
         getAllCategoriesPublishDelete(model);
         model.addAttribute("categorySelected", categorySelected);
         return "publishDelete";

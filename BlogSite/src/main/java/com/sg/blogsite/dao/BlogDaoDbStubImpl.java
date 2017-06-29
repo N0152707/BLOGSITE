@@ -65,4 +65,9 @@ public class BlogDaoDbStubImpl implements BlogDao {
     public List<Blog> getAllBlogsByCategoryUnpublishedDeleted(int categoryId) {
         return blogList;
     }
+
+    @Override
+    public List<Blog> getAllBlogsUnpublishedDeleted() {
+        return blogList;
+    }
 }

@@ -55,7 +55,7 @@
                     <th width="10%">DELETED?</th>
                     <th width="10%">ACTION</th>
                 </tr>
-                <c:forEach var="currentItem" items="${blogList}">
+                <c:forEach var="currentItem" items="${blogListUnpublishedDeleted}">
                     <tr>
                         <td style="font-size: 12pt"><c:out value="${currentItem.blogDatePublished}"/></td>
                         <td style="font-size: 14pt"><c:out value="${currentItem.blogTitle}"/></td>
