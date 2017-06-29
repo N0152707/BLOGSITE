@@ -126,26 +126,17 @@ CREATE TABLE IF NOT EXISTS blogsite.static_page (
   blog_static_article VARCHAR(500) NULL,
   PRIMARY KEY (static_page_id));
 
+INSERT INTO blogsite.role
+(role_id,
+role_name)
+VALUES
+(1,"ROLE_ADMIN");
 
 INSERT INTO blogsite.role
 (role_id,
 role_name)
 VALUES
-(1,"Admin");
-
-
-INSERT INTO blogsite.role
-(role_id,
-role_name)
-VALUES
-(2,"Author");
-
-
-INSERT INTO blogsite.role
-(role_id,
-role_name)
-VALUES
-(3,"Read-Only");
+(2,"ROLE_USER");
 
 INSERT into blogsite.user_blog 
 (user_blog_name, 
@@ -153,6 +144,21 @@ user_blog_password,
 user_blog_first_name,
 user_blog_last_name)
 values ("bakerDude23", "balloon", "Brett", "Breadmaker");
+
+INSERT INTO role_has_user_blog
+(role_role_id, user_blog_user_blog_id)
+VALUES (1,1);
+
+INSERT into blogsite.user_blog 
+(user_blog_name, 
+user_blog_password, 
+user_blog_first_name,
+user_blog_last_name)
+values ("GrudgeGrinder", "Author", "Judge", "Dread");
+
+INSERT INTO role_has_user_blog
+(role_role_id, user_blog_user_blog_id)
+VALUES (2,2);
 
 INSERT INTO blogsite.category (category_name) values ("Baking");
 
