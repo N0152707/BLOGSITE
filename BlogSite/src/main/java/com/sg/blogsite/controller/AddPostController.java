@@ -31,7 +31,6 @@ public class AddPostController {
     @RequestMapping(value = "/displayAddPost", method = RequestMethod.GET)
     public String displayAddPost(Model model) {
         model.addAttribute("blog", blogService.readBlog(12));
-
         return "addPost";
     }
 

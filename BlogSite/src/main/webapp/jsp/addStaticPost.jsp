@@ -11,6 +11,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
+       
         <div class="container">
             <h1>MyStreamOfConsciousnessBlog</h1>
             <hr/>
@@ -21,7 +22,7 @@
                             Home
                         </a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayAddPost">
                             Add Post
                         </a>
@@ -36,16 +37,14 @@
                             Publish/Delete Post
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                             Static Example
                         </a>
                     </li>
                 </ul>
             </div>
-
             <br/>
-
             <div class="col-md-6">
                 <h3>Add Post</h3>
                 <h5>Add your post in the below windows</h5>
@@ -75,8 +74,7 @@
                         </div>
                     </div>-->
 
-                    <textarea id="blogText" name="blogStaticArticle" >
-                    </textarea>
+                    <textarea id="blogText" name="blogStaticArticle" > </textarea>
 <!--
                     <div class="form-group">
                         <label for="add-tagName" class="col-md-4 control-label">tagName:</label>
@@ -87,7 +85,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-4 col-md-8">
-                            <input type="submit" class="btn btn-default" value="Create Blog"/>
+                            <input type="submit" class="btn btn-default" value="Create Static Blog"/>
                         </div>
                     </div>
                 </form>
