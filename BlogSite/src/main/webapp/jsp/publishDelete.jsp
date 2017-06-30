@@ -2,6 +2,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,6 +44,11 @@
                 </li>
             </ul>
         </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h4>Hello : ${pageContext.request.userPrincipal.name}
+                | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+            </h4>
+        </c:if>
         <br/>
         <div class="col-md-8">
             <div method="GET">
@@ -55,7 +62,7 @@
                     <th width="10%">DELETED?</th>
                     <th width="10%">ACTION</th>
                 </tr>
-                <c:forEach var="currentItem" items="${blogList}">
+                <c:forEach var="currentItem" items="${blogListUnpublishedDeleted}">
                     <tr>
                         <td style="font-size: 12pt"><c:out value="${currentItem.blogDatePublished}"/></td>
                         <td style="font-size: 14pt"><c:out value="${currentItem.blogTitle}"/></td>

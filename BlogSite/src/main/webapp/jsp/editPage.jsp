@@ -39,6 +39,11 @@
                 </li>
             </ul>
         </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h4>Hello : ${pageContext.request.userPrincipal.name}
+                | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+            </h4>
+        </c:if>
         <br/>
         <div method="GET">
             <h3><c:out value="${categorySelected}"/></h3></div>

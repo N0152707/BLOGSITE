@@ -44,6 +44,11 @@
             </ul>
         </div>
         <br/>
+        <sec:authorize access="isAuthenticated()">
+            <p>
+            Welcome Back!
+            </p>
+        </sec:authorize>
         <div class="col-md-8">
             <div method="GET">
                 <h3><c:out value="${categorySelected}"/></h3></div>
@@ -63,6 +68,11 @@
                 </c:forEach>
             </table>
         </div>
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <h4>Hello : ${pageContext.request.userPrincipal.name}
+                    | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                </h4>
+            </c:if>
         <div class="col-md-1"></div>
         <div class="col-md-2">
             <h3>Browse by Topic</h3>
