@@ -53,4 +53,9 @@ public class TagServiceLayerImpl implements TagServiceLayer {
         return tagdao.getAllTagsInABlog(blogId);
     }
 
+    @Override
+    public void addTagsToBridge(List tagList) {
+        tagdao.addTagsToBridge(tagList);
+    }
+
 }

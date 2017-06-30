@@ -76,6 +76,13 @@ public class TagDaoDbImpl implements TagDao {
                 new TagMapper(), blogId);
     }
 
+    @Override
+    public void addTagsToBridge(List tagList) {
+        for (int i = 0; i < tagList.size(); i++) {
+            jdbcTemplate.update(SQL_INSERT_TAG, tagList.get(i));
+        }
+    }
+
     private static final class TagMapper implements RowMapper<Tag> {
 
         public Tag mapRow(ResultSet rs, int rowNum) throws SQLException {

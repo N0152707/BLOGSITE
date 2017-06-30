@@ -4,6 +4,7 @@ import com.sg.blogsite.model.Blog;
 import com.sg.blogsite.model.Category;
 import com.sg.blogsite.service.BlogServiceLayer;
 import com.sg.blogsite.service.CategoryServiceLayer;
+import java.time.LocalDate;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +86,7 @@ public class PublishDeleteController {
         int blogId = Integer.parseInt(blogIdParameter);
         Blog blog = blogService.readBlog(blogId);
         blog.setBlogPublished("Y");
+        blog.setBlogDatePublished(LocalDate.now());
         blog.setBlogDeleted("N");
         blogService.updateBlog(blog);
         displayPublishDelete(model);

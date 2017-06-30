@@ -24,4 +24,6 @@ public interface TagServiceLayer {
 
     public List<Tag> getAllTagsInABlog(int blogId);
 
+    public void addTagsToBridge(List tagList);
+
 }

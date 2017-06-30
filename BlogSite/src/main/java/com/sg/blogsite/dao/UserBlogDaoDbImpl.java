@@ -19,14 +19,12 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
             = "insert into user_blog "
             + "(user_blog_name, user_blog_password, user_blog_first_name, user_blog_last_name) "
             + "values (?, ?, ?, ?)";
-    private static final String SQL_SELECT_USERBLOG
-            = "select * from user_blog where user_blog_id = ?";
     private static final String SQL_SELECT_USERBLOG_BY_ID
             = "select * from user_blog where user_blog_id = ?";
     private static final String SQL_SELECT_ALL_USERBLOGS
             = "select * from user_blog";
     private static final String SQL_DELETE_USERBLOG
-            = " DELETE FROM user_blog WHERE user_blog_id = ?";
+            = "DELETE FROM user_blog WHERE user_blog_id = ?";
     private static final String SQL_UPDATE_USERBLOG
             = "UPDATE user_blog SET user_blog_name = ?, user_blog_password = ?, user_blog_first_name = ?, user_blog_last_name = ? WHERE user_blog_id = ?";
 
@@ -83,7 +81,7 @@ public class UserBlogDaoDbImpl implements UserBlogDao {
     @Override
     public UserBlog readUserBlog(int userBlogId) {
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USERBLOG,
+            return jdbcTemplate.queryForObject(SQL_SELECT_USERBLOG_BY_ID,
                     new UserBlogMapper(), userBlogId);
         } catch (EmptyResultDataAccessException ex) {
             return null;

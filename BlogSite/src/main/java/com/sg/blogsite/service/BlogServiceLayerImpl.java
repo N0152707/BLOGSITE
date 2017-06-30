@@ -2,6 +2,7 @@ package com.sg.blogsite.service;
 
 import com.sg.blogsite.dao.BlogDao;
 import com.sg.blogsite.model.Blog;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BlogServiceLayerImpl implements BlogServiceLayer {
@@ -13,7 +14,12 @@ public class BlogServiceLayerImpl implements BlogServiceLayer {
     }
 
     @Override
-    public Blog createBlog(Blog blog) {
+    public Blog createBlog(Blog blog, int userId) {
+        blog.setBlogDatePublished(LocalDate.now());
+        blog.setBlogPublished("N");
+        blog.setBlogDeleted("N");
+        blog.setCategoryCategoryId(1);
+        blog.setUserBlogUserBlogId(userId);
         blogDao.createBlog(blog);
         return blog;
     }

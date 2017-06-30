@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BlogServiceLayer {
 
-    public Blog createBlog(Blog blog);
+    public Blog createBlog(Blog blog, int userId);
 
     public Blog readBlog(int blogId);
 

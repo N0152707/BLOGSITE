@@ -20,4 +20,6 @@ public interface TagDao {
 
     public List<Tag> getAllTagsInABlog(int blogId);
 
+    public void addTagsToBridge(List tagList);
+
 }

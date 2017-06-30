@@ -9,17 +9,17 @@ import java.util.Objects;
 
 public class UserBlog {
 
-    Integer userBlogId;
+    int userBlogId;
     String userBlogName;
     String userBlogPassword;
     String userBlogFirstName;
     String userBlogLastName;
 
-    public Integer getUserBlogId() {
+    public int getUserBlogId() {
         return userBlogId;
     }
 
-    public void setUserBlogId(Integer userBlogId) {
+    public void setUserBlogId(int userBlogId) {
         this.userBlogId = userBlogId;
     }
 
@@ -57,12 +57,12 @@ public class UserBlog {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.userBlogId);
-        hash = 43 * hash + Objects.hashCode(this.userBlogName);
-        hash = 43 * hash + Objects.hashCode(this.userBlogPassword);
-        hash = 43 * hash + Objects.hashCode(this.userBlogFirstName);
-        hash = 43 * hash + Objects.hashCode(this.userBlogLastName);
+        int hash = 5;
+        hash = 89 * hash + this.userBlogId;
+        hash = 89 * hash + Objects.hashCode(this.userBlogName);
+        hash = 89 * hash + Objects.hashCode(this.userBlogPassword);
+        hash = 89 * hash + Objects.hashCode(this.userBlogFirstName);
+        hash = 89 * hash + Objects.hashCode(this.userBlogLastName);
         return hash;
     }
 
@@ -78,6 +78,9 @@ public class UserBlog {
             return false;
         }
         final UserBlog other = (UserBlog) obj;
+        if (this.userBlogId != other.userBlogId) {
+            return false;
+        }
         if (!Objects.equals(this.userBlogName, other.userBlogName)) {
             return false;
         }
@@ -88,9 +91,6 @@ public class UserBlog {
             return false;
         }
         if (!Objects.equals(this.userBlogLastName, other.userBlogLastName)) {
-            return false;
-        }
-        if (!Objects.equals(this.userBlogId, other.userBlogId)) {
             return false;
         }
         return true;

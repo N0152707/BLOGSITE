@@ -152,7 +152,7 @@ INSERT into blogsite.user_blog
 user_blog_password, 
 user_blog_first_name,
 user_blog_last_name)
-values ("bakerDude23", "balloon", "Brett", "Breadmaker");
+values ("bakerDude23", "balloon", "Brad", "Billion");
 
 INSERT INTO blogsite.category (category_name) values ("Baking");
 

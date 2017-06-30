@@ -5,10 +5,16 @@
  */
 package com.sg.blogsite.dao;
 
+import java.util.List;
+
 /**
  *
  * @author apprentice
  */
 public class TagDaoDbStubImpl {
+
+    public void addTagsToBridge(List tagList) {
+
+    }
 
 }
