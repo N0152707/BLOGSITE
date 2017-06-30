@@ -43,6 +43,16 @@
                             Static Example
                         </a>
                     </li>
+                    
+                     <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/aboutUs">
+                            Add Post
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
                 </ul>
             </div>
             <c:if test="${pageContext.request.userPrincipal.name != null}">

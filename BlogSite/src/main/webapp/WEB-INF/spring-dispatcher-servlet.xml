@@ -21,4 +21,6 @@
         </property>
     </bean>
     
- </beans>
+ <mvc:resources mapping = "/html/**" location = "/html/AboutUs.html" />
+ 
+</beans>

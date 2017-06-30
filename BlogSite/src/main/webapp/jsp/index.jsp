@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MyStreamOfConsciousnessBlog</title>
+        <title>MyStreamOfConsciousnessBlog</title>     <a href="${pageContext.request.contextPath}/html/AboutUs.html">About Us</a>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
@@ -40,6 +40,7 @@
                         Static Example
                     </a>
                 </li>
+
             </ul>
         </div>
         <br/>
@@ -88,6 +89,7 @@
                 </form>
             </c:forEach>
         </div>
+
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

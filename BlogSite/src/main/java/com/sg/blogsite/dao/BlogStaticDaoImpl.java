@@ -6,6 +6,10 @@
 package com.sg.blogsite.dao;
 
 import com.sg.blogsite.model.BlogStatic;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +41,18 @@ public class BlogStaticDaoImpl implements BlogStaticDao {
         int newId = jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                 Integer.class);
         blogStatic.setBlogStaticId(newId);
-        return blogStatic;
-    }
+        
+        String fileName = blogStatic.getBlogStaticTitle();
+        File f = new File ("/home/apprentice/Desktop/BLOGSITE-GROUP PROJECT/BLOGSITE/BlogSite/src/main/webapp/html/"+fileName+".html");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            String staticContent = blogStatic.getBlogStaticArticle();  
+            bw.write(staticContent);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        return blogStatic;
+}
 }
