@@ -38,7 +38,7 @@
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
-
+<!--
     <authentication-manager>
         <authentication-provider>
             <user-service>
@@ -51,8 +51,8 @@
             </user-service>
         </authentication-provider>
     </authentication-manager>
-   
-<!--     
+-->   
+     
     <authentication-manager>
         <authentication-provider>
             <password-encoder ref="encoder"/>
@@ -60,13 +60,13 @@
                                data-source-ref="dataSource"
                                users-by-username-query=
                               "select user_blog_name as username, user_blog_password as password, 
-0 as enabled from user_blog where user_blog_name=?"
+1 as enabled from user_blog where user_blog_name=?"
                                authorities-by-username-query=
             "select user_blog_name as username, role.role_name as authority from role 
 inner join role_has_user_blog on role_has_user_blog.role_role_id = role.role_id 
 inner join user_blog on user_blog.user_blog_id = role_has_user_blog.user_blog_user_blog_id 
 where user_blog.user_blog_name = ?"/>
         </authentication-provider>
-    </authentication-manager>  -->
+    </authentication-manager> 
      
 </beans:beans>

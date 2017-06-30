@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS blogsite.user_blog ;
 CREATE TABLE IF NOT EXISTS blogsite.user_blog (
   user_blog_id INT NOT NULL AUTO_INCREMENT,
   user_blog_name VARCHAR(45) NOT NULL,
-  user_blog_password VARCHAR(45) NOT NULL,
+  user_blog_password VARCHAR NOT NULL,
   user_blog_first_name VARCHAR(45) NOT NULL,
   user_blog_last_name VARCHAR(45) NOT NULL,
   PRIMARY KEY (user_blog_id));
@@ -143,7 +143,7 @@ INSERT into blogsite.user_blog
 user_blog_password, 
 user_blog_first_name,
 user_blog_last_name)
-values ("bakerDude23", "balloon", "Brett", "Breadmaker");
+values ("bakerDude23", "$2a$10$AlmbVmw8yUH3Te4.BMsms.UH7f4DlINVOi30jFG5.fPZrPs.jEGkG", "Brett", "Breadmaker");
 
 INSERT INTO role_has_user_blog
 (role_role_id, user_blog_user_blog_id)
@@ -154,7 +154,7 @@ INSERT into blogsite.user_blog
 user_blog_password, 
 user_blog_first_name,
 user_blog_last_name)
-values ("GrudgeGrinder", "Author", "Judge", "Dread");
+values ("GrudgeGrinder", "$2a$10$0TJFmnY2fPKU8MuZz2kGaOcn20MMXYiJKxBqBDQ.HZjRB9aoK0yNy", "Judge", "Dread");
 
 INSERT INTO role_has_user_blog
 (role_role_id, user_blog_user_blog_id)
