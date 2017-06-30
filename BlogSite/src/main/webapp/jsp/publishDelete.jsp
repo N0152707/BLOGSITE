@@ -2,6 +2,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,23 +27,28 @@
                         Add Post
                     </a>
                 </li>
-                <li role="presentation">
+                <!--li role="presentation">
                     <a href="${pageContext.request.contextPath}/displaySelectEditPost">
                         Select To Edit
                     </a>
-                </li>
+                </li-->
                 <li role="presentation" class="active">
                     <a href="${pageContext.request.contextPath}/displayPublishDelete">
                         Publish/Delete Post
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="${pageContext.request.contextPath}/aboutUs.jsp">
+                    <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                         Static Example
                     </a>
                 </li>
             </ul>
         </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h4>Hello : ${pageContext.request.userPrincipal.name}
+                | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+            </h4>
+        </c:if>
         <br/>
         <div class="col-md-8">
             <div method="GET">

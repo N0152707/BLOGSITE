@@ -7,6 +7,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,22 +33,27 @@
                             Add Post
                         </a>
                     </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/displaySelectEditPost">
-                            Select To Edit
-                        </a>
-                    </li>
+                    <!--li role="presentation">
+                    <a href="${pageContext.request.contextPath}/displaySelectEditPost">
+                        Select To Edit
+                    </a>
+                </li-->
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayPublishDelete">
                             Publish/Delete Post
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/aboutUs.jsp">
+                        <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                             Static Example
                         </a>
                     </li>
             </div>
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <h4>Hello : ${pageContext.request.userPrincipal.name}
+                    | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                </h4>
+            </c:if>
 
             <h2>Edit Post</h2>
             <h5>Edit you post in the window below</h5>

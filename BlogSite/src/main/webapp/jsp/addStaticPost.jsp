@@ -2,6 +2,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +13,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
+
         <div class="container">
             <h1>MyStreamOfConsciousnessBlog</h1>
             <hr/>
@@ -21,22 +24,22 @@
                             Home
                         </a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayAddPost">
                             Add Post
                         </a>
                     </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/displaySelectEditPost">
-                            Select To Edit
-                        </a>
-                    </li>
+                    <!--li role="presentation">
+                   <a href="${pageContext.request.contextPath}/displaySelectEditPost">
+                       Select To Edit
+                   </a>
+               </li-->
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayPublishDelete">
                             Publish/Delete Post
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/displayAddStaticPost">
                             Static Example
                         </a>
@@ -44,13 +47,18 @@
                 </ul>
             </div>
 
-            <br/>
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <h4>Hello : ${pageContext.request.userPrincipal.name}
+                    | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                </h4>
+            </c:if>
 
+            <br/>
             <div class="col-md-6">
                 <h3>Add Post</h3>
                 <h5>Add your post in the below windows</h5>
-                <form class="form-horizontal" 
-                      role="form" method="POST" 
+                <form class="form-horizontal"
+                      role="form" method="POST"
                       action="createStaticBlog">
                     <div class="form-group">
                         <label for="add-blogStaticTitle" class="col-md-4 control-label">blogStaticTitle:</label>
@@ -58,36 +66,35 @@
                             <input type="text" class="form-control" name="blogStaticTitle" placeholder="blogStaticTitle"/>
                         </div>
                     </div>
-                    
-                    
-<!--                      <div class="form-group">
-                        <label for="add-categoryId" class="col-md-4 control-label">categoryId":</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="categoryId" placeholder="categoryId"/>
-                        </div>
-                    </div>
-                    
-                    
-                       <div class="form-group">
-                        <label for="add-userBlogId" class="col-md-4 control-label">userBlogId":</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="userBlogId" placeholder="userBlogId"/>
-                        </div>
-                    </div>-->
 
-                    <textarea id="blogText" name="blogStaticArticle" >
-                    </textarea>
-<!--
-                    <div class="form-group">
-                        <label for="add-tagName" class="col-md-4 control-label">tagName:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="tagName" placeholder="tagName"/>
-                        </div>
-                    </div>-->
+
+                    <!--                      <div class="form-group">
+                                            <label for="add-categoryId" class="col-md-4 control-label">categoryId":</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="categoryId" placeholder="categoryId"/>
+                                            </div>
+                                        </div>
+
+
+                                           <div class="form-group">
+                                            <label for="add-userBlogId" class="col-md-4 control-label">userBlogId":</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="userBlogId" placeholder="userBlogId"/>
+                                            </div>
+                                        </div>-->
+
+                    <textarea id="blogText" name="blogStaticArticle" > </textarea>
+                    <!--
+                                        <div class="form-group">
+                                            <label for="add-tagName" class="col-md-4 control-label">tagName:</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="tagName" placeholder="tagName"/>
+                                            </div>
+                                        </div>-->
 
                     <div class="form-group">
                         <div class="col-md-offset-4 col-md-8">
-                            <input type="submit" class="btn btn-default" value="Create Blog"/>
+                            <input type="submit" class="btn btn-default" value="Create Static Blog"/>
                         </div>
                     </div>
                 </form>

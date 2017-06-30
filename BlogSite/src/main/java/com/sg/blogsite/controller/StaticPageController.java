@@ -42,40 +42,7 @@ public class StaticPageController {
         blogstatic.setBlogStaticArticle(request.getParameter("blogStaticArticle"));
         blogstatic.setBlogStaticTitle(request.getParameter("blogStaticTitle"));
         blogStaticService.createStaticBlog(blogstatic);
-
-        
-        File f = new File ("/home/apprentice/Desktop/test.html");
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-            String staticContent = blogstatic.getBlogStaticArticle();
-            bw.write(staticContent);
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return "addStaticPost";
-        
-    }
-    
-//    
-//            String html = "<div><h1> This is a test <h1></div>";
-//        File f = new File ("/home/apprentice/Desktop/test.html");
-//                
-//        
-//        try {
-//            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-//            bw.write(html);
-//            bw.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
 
-    
-    
-    
-    
-   //      return "redirect:index";
-} 
-        
-        
-        
-        
+    }
+}
